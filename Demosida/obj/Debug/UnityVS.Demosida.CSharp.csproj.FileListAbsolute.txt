@@ -1,0 +1,11 @@
+C:\Users\Hampus\Documents\Demosida\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+C:\Users\Hampus\Documents\Demosida\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+C:\Users\Hampus\Documents\Demosida\Temp\UnityVS_bin\Debug\UnityEditor.dll
+C:\Users\Hampus\Documents\Demosida\Temp\UnityVS_bin\Debug\UnityEngine.dll
+C:\Users\Hampus\Documents\Demosida\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+C:\Users\Hampus\Documents\Demosida\Temp\UnityVS_bin\Debug\UnityEngine.xml
+C:\Users\Hampus\Documents\Demosida\Temp\UnityVS_bin\Debug\UnityEditor.xml
+C:\Users\Hampus\Documents\Demosida\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+C:\Users\Hampus\Documents\Demosida\obj\Debug\UnityVS.Demosida.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Hampus\Documents\Demosida\obj\Debug\Assembly-CSharp.dll
+C:\Users\Hampus\Documents\Demosida\obj\Debug\Assembly-CSharp.pdb
