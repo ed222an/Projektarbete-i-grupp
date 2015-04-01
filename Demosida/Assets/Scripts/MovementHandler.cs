@@ -4,12 +4,16 @@ using System.Collections;
 public class MovementHandler : MonoBehaviour 
 {
     public float speed = 30;
+	public Vector2 velocity;
     public LayerMask whatIsGround;
     public Transform groundCheck;
+	public bool facingRight = true;
 
     private Rigidbody2D rBody;
     private bool grounded = false;
     private float groundRadius = 0.02f;
+
+	private Animator anim;
     
     void FixedUpdate()
     {
@@ -18,12 +22,24 @@ public class MovementHandler : MonoBehaviour
         //float moveHorizontal = Input.GetAxis("Horizontal");
         float moveHorizontal = Input.GetAxis("Horizontal");
 
-        rBody.velocity = new Vector2(moveHorizontal * speed, rBody.velocity.y);  
+		velocity = new Vector2(moveHorizontal * speed, rBody.velocity.y);  
+		rBody.velocity = velocity;
+
+		// Flip the player
+		if (moveHorizontal > 0 && !facingRight)
+		{
+			Flip();
+		}
+		else if(moveHorizontal < 0 && facingRight)
+		{
+			Flip();
+		}
     }
 
 	void Start() 
     {
         rBody = GetComponent<Rigidbody2D>();
+		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -31,5 +47,19 @@ public class MovementHandler : MonoBehaviour
     {
         if (grounded && Input.GetKeyDown("space"))
             rBody.AddForce(new Vector2(0f, 200f));
+
+		if (velocity.x != 0)
+			anim.SetBool ("Running",true);
+		else
+			anim.SetBool ("Running",false);
+	}
+
+	// Flips the world around the player, allowing us to only use 1 set of animations.
+	private void Flip()
+	{
+		facingRight = !facingRight;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 }
