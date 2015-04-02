@@ -45,8 +45,15 @@ public class MovementHandler : MonoBehaviour
 	// Update is called once per frame
 	void Update() 
     {
-        if (grounded && Input.GetKeyDown("space"))
-            rBody.AddForce(new Vector2(0f, 200f));
+		// Jumping
+        if (grounded && Input.GetKeyDown ("space"))
+			rBody.AddForce (new Vector2 (0f, 200f));
+
+		// Jumping animation
+		if (grounded)
+			anim.SetBool ("Grounded", true);
+		else
+			anim.SetBool ("Grounded", false);
 
 		if (velocity.x != 0)
 			anim.SetBool ("Running",true);
