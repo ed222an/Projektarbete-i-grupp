@@ -59,6 +59,14 @@ public class MovementHandler : MonoBehaviour
 			anim.SetBool ("Running",true);
 		else
 			anim.SetBool ("Running",false);
+
+		// Attack animation test
+		if (grounded && Input.GetMouseButtonDown (0)) {
+			anim.SetBool ("Attacking", true);
+		} else
+		{
+			anim.SetBool("Attacking", false);
+		}
 	}
 
 	// Flips the world around the player, allowing us to only use 1 set of animations.
