@@ -61,7 +61,7 @@ public class MovementHandler : MonoBehaviour
 			anim.SetBool ("Running",false);
 
 		// Attack animation test
-		if (grounded && Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (0)) {
 			anim.SetBool ("Attacking", true);
 		} else
 		{
