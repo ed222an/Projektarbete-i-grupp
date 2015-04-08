@@ -17,8 +17,8 @@ public class EnemyHandler : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate() 
     {
-        if (transform != null && (transform.position.x + followRange > target.position.x && transform.position.x < target.position.x) 
-            || (transform.position.x - followRange < target.position.x && transform.position.x > target.position.x))
+        if (target != null && ((transform.position.x + followRange > target.position.x && transform.position.x < target.position.x) 
+            || (transform.position.x - followRange < target.position.x && transform.position.x > target.position.x)))
             FollowTarget();
 	}
 

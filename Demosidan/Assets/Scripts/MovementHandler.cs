@@ -61,20 +61,30 @@ public class MovementHandler : MonoBehaviour
 			anim.SetBool ("Running",false);
 
 		// Attack animation test
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (0)) 
+        {
 			anim.SetBool ("Attacking", true);
-		} else
+		} 
+        else
 		{
 			anim.SetBool("Attacking", false);
 		}
 	}
 
 	// Flips the world around the player, allowing us to only use 1 set of animations.
-	private void Flip()
+	void Flip()
 	{
 		facingRight = !facingRight;
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    public void KnockbackOnHit(float playerPosX, float enemyPosX)
+    {
+        if (playerPosX > enemyPosX)
+            rBody.AddForce(new Vector2(-50f, 20f));
+        else
+            rBody.AddForce(new Vector2(50f, 20f));
+    }
 }
