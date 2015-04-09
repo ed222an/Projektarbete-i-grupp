@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyLife : MonoBehaviour 
 {
     public float maxLife;
+    public EnemyHandler enemyHandler;
 
     private float currentLife;
     private bool isAlive;
@@ -40,13 +41,21 @@ public class EnemyLife : MonoBehaviour
         }
 	}
 
-    ////Take damage
-    //IEnumerator OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.transform.tag == "Weapon")
-    //        return;
-    //    return;
-    //}
+    //Take damage
+    IEnumerator OnTriggerEnter2D(Collider2D other)
+    {
+        
+        if (other.transform.tag == "Weapon")
+        {
+            currentLife -= 2;
+            Debug.Log("Enemy took " + currentLife + " damage.");
+            enemyHandler.KnockbackOnHit(transform.position.x, other.transform.position.x);
+
+            yield return new WaitForSeconds(0.25f);
+        }
+
+        
+    }
 
     void DestroyEnemy()
     {

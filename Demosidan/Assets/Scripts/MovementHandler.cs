@@ -3,13 +3,14 @@ using System.Collections;
 
 public class MovementHandler : MonoBehaviour 
 {
-    public float speed = 30;
+    public float speed;
 	public Vector2 velocity;
     public LayerMask whatIsGround;
     public Transform groundCheck;
 	public bool facingRight = true;
 
     private Rigidbody2D rBody;
+    private BoxCollider2D pickaxeCollider;
     private bool grounded = false;
     private float groundRadius = 0.02f;
 
@@ -22,8 +23,9 @@ public class MovementHandler : MonoBehaviour
         //float moveHorizontal = Input.GetAxis("Horizontal");
         float moveHorizontal = Input.GetAxis("Horizontal");
 
-		velocity = new Vector2(moveHorizontal * speed, rBody.velocity.y);  
-		rBody.velocity = velocity;
+        velocity = new Vector2(moveHorizontal * speed, rBody.velocity.y);
+
+        rBody.velocity = velocity;
 
 		// Flip the player
 		if (moveHorizontal > 0 && !facingRight)
@@ -40,6 +42,10 @@ public class MovementHandler : MonoBehaviour
     {
         rBody = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator> ();
+
+        //Weapon
+        Transform pickaxe = transform.Find("Pickaxe");
+        pickaxeCollider = pickaxe.GetComponent<BoxCollider2D>();
 	}
 	
 	// Update is called once per frame
@@ -69,6 +75,8 @@ public class MovementHandler : MonoBehaviour
 		{
 			anim.SetBool("Attacking", false);
 		}
+
+        
 	}
 
 	// Flips the world around the player, allowing us to only use 1 set of animations.
@@ -83,8 +91,12 @@ public class MovementHandler : MonoBehaviour
     public void KnockbackOnHit(float playerPosX, float enemyPosX)
     {
         if (playerPosX > enemyPosX)
-            rBody.AddForce(new Vector2(-50f, 20f));
+        {
+            rBody.AddRelativeForce(new Vector2(1500f, 100f));
+        }
         else
-            rBody.AddForce(new Vector2(50f, 20f));
+        {
+            rBody.AddRelativeForce(new Vector2(-1500f, 100f));
+        }
     }
 }

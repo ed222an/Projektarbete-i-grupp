@@ -46,13 +46,12 @@ public class PlayerLife : MonoBehaviour
         DestroyObject(transform.gameObject);
     }
 
-    //TODO: This aint working
     IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             currentLife -= 1; //TODO: This should be the enemies damage.
-
+            Debug.Log("Player took " + currentLife + "damage.");
             movementHandler.KnockbackOnHit(transform.position.x, collision.transform.position.x);
 
             yield return new WaitForSeconds(0.1f);

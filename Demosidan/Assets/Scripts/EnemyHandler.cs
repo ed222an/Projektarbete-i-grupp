@@ -29,4 +29,16 @@ public class EnemyHandler : MonoBehaviour
         else
             rBody.velocity = new Vector2(-1f * speed, rBody.velocity.y);
     }
+
+    public void KnockbackOnHit(float playerPosX, float enemyPosX)
+    {
+        if (playerPosX > enemyPosX)
+        {
+            rBody.AddRelativeForce(new Vector2(1500f, 0f));
+        }
+        else
+        {
+            rBody.AddRelativeForce(new Vector2(-1500f, 0f));
+        }
+    }
 }
