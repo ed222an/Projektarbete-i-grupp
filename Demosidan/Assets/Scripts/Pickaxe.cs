@@ -11,6 +11,5 @@ public class Pickaxe : MonoBehaviour
 	void Start()
     {
         collider = GetComponent<BoxCollider2D>();
-        collider.enabled = false;
 	}
 }
