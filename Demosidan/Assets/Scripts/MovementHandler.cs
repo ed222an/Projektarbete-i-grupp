@@ -21,18 +21,18 @@ public class MovementHandler : MonoBehaviour
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 
         //float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         velocity = new Vector2(moveHorizontal * speed, rBody.velocity.y);
 
         rBody.velocity = velocity;
 
 		// Flip the player
-		if (moveHorizontal > 0 && !facingRight)
+        if (moveHorizontal > 0 && !facingRight)
 		{
 			Flip();
 		}
-		else if(moveHorizontal < 0 && facingRight)
+        else if (moveHorizontal < 0 && facingRight)
 		{
 			Flip();
 		}

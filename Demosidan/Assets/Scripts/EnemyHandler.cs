@@ -22,6 +22,7 @@ public class EnemyHandler : MonoBehaviour
             FollowTarget();
 	}
 
+    //TODO: Use the vector to check if target is close by, right now it's only x, needs to be Y aswell.
     void FollowTarget()
     {
         if (transform.position.x < target.position.x)
