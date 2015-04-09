@@ -1,0 +1,319 @@
+fileFormatVersion: 2
+guid: b4d667346ea235541a523a5eb0a6ad52
+timeCreated: 1428608306
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: floor
+    21300002: floor3
+    21300004: floor2
+    21300006: grass2
+    21300008: grass
+    21300010: door
+    21300012: anvil
+    21300014: furnace
+    21300016: weaponstand
+    21300018: wall
+    21300020: wall2
+    21300022: stairsup
+    21300024: startinglevel,hubarea mockup_1
+    21300026: stairsdown
+    21300028: stairsdown2
+    21300030: bed
+    21300032: bedroomwall
+    21300034: bedroomceiling
+    21300036: bedroomfloor
+    21300038: dirt
+    21300040: startinglevel,hubarea mockup_0
+    21300042: backgroundhouse
+    21300044: bedroombackground
+    21300046: background
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: floor
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 442
+        width: 275
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: floor3
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 554
+        width: 424
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: floor2
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 442
+        width: 95
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: grass2
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 444
+        width: 682
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: grass
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 444
+        width: 695
+        height: 25
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: door
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 468
+        width: 54
+        height: 73
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anvil
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 559
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: furnace
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 559
+        width: 63
+        height: 95
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weaponstand
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 559
+        width: 64
+        height: 37
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wall
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 451
+        width: 4
+        height: 206
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wall2
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 469
+        width: 5
+        height: 186
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stairsup
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 451
+        width: 115
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: startinglevel,hubarea mockup_1
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 657
+        width: 466
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stairsdown
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 292
+        width: 149
+        height: 148
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stairsdown2
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 291
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bed
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 291
+        width: 67
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bedroomwall
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 291
+        width: 5
+        height: 115
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bedroomceiling
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 406
+        width: 636
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bedroomfloor
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 287
+        width: 635
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dirt
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 291
+        width: 947
+        height: 151
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: startinglevel,hubarea mockup_0
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 469
+        width: 58
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundhouse
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 451
+        width: 113
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bedroombackground
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 339
+        width: 618
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: background
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 555
+        width: 631
+        height: 271
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
