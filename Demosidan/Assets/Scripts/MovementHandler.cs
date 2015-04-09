@@ -75,8 +75,6 @@ public class MovementHandler : MonoBehaviour
 		{
 			anim.SetBool("Attacking", false);
 		}
-
-        
 	}
 
 	// Flips the world around the player, allowing us to only use 1 set of animations.

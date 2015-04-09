@@ -47,20 +47,16 @@ public class EnemyLife : MonoBehaviour
         
         if (other.transform.tag == "Weapon")
         {
-            currentLife -= 2;
+            currentLife -= other.gameObject.GetComponent<Pickaxe>().weaponDamage;
             Debug.Log("Enemy took " + currentLife + " damage.");
             enemyHandler.KnockbackOnHit(transform.position.x, other.transform.position.x);
 
             yield return new WaitForSeconds(0.25f);
         }
-
-        
     }
 
     void DestroyEnemy()
     {
-
-
         DestroyObject(transform.gameObject);
     }
 }
