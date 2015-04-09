@@ -5,6 +5,8 @@ public class PlayerLife : MonoBehaviour
 {
     public float maxLife;
     public MovementHandler movementHandler;
+    public GUIText lifeText;
+
 
     private float currentLife;
     private bool isAlive;
@@ -28,6 +30,8 @@ public class PlayerLife : MonoBehaviour
         currentLife = maxLife;
 
         isAlive = true;
+
+        lifeText.text = "Life: " + currentLife + " / " + maxLife;
 	}
 	
 	// Update is called once per frame
@@ -51,7 +55,8 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             currentLife -= 1; //TODO: This should be the enemies damage.
-            Debug.Log("Player took " + currentLife + "damage.");
+            lifeText.text = "Life: " + currentLife + " / " + maxLife;
+            Debug.Log("Player took " + 1 + "damage.");
             movementHandler.KnockbackOnHit(transform.position.x, collision.transform.position.x);
 
             yield return new WaitForSeconds(0.1f);

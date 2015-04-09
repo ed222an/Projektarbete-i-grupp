@@ -44,11 +44,11 @@ public class EnemyLife : MonoBehaviour
     //Take damage
     IEnumerator OnTriggerEnter2D(Collider2D other)
     {
-        
         if (other.transform.tag == "Weapon")
         {
-            currentLife -= other.gameObject.GetComponent<Pickaxe>().weaponDamage;
-            Debug.Log("Enemy took " + currentLife + " damage.");
+            float damage = other.gameObject.GetComponent<Pickaxe>().weaponDamage;
+            currentLife -= damage;
+            Debug.Log("Enemy took " + damage + " damage.");
             enemyHandler.KnockbackOnHit(transform.position.x, other.transform.position.x);
 
             yield return new WaitForSeconds(0.25f);

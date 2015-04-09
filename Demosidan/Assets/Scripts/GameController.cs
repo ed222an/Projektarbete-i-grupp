@@ -1,16 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Restart : MonoBehaviour 
+public class GameController : MonoBehaviour 
 {
+    public GUIText restartText;
 	// Update is called once per frame
 	void Update()
+    {
+        CheckForRestart();
+	}
+
+    void CheckForRestart()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
             return;
 
-        if (Input.GetKeyDown("R"))
+        restartText.enabled = true;
+
+        if (Input.GetKeyDown(KeyCode.R))
             Application.LoadLevel(Application.loadedLevel);
-	}
+    }
 }
