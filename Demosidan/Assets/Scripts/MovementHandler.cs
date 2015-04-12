@@ -10,7 +10,7 @@ public class MovementHandler : MonoBehaviour
 	public bool facingRight = true;
 
     private Rigidbody2D rBody;
-    private BoxCollider2D pickaxeCollider;
+    private BoxCollider2D weaponCollider;
     private bool grounded = false;
     private float groundRadius = 0.02f;
 
@@ -44,8 +44,8 @@ public class MovementHandler : MonoBehaviour
 		anim = GetComponent<Animator> ();
 
         //Weapon
-        Transform pickaxe = transform.Find("Pickaxe");
-        pickaxeCollider = pickaxe.GetComponent<BoxCollider2D>();
+        GameObject weapon = GameObject.FindGameObjectWithTag("Weapon");
+		weaponCollider = weapon.GetComponent<BoxCollider2D>();
 	}
 	
 	// Update is called once per frame
