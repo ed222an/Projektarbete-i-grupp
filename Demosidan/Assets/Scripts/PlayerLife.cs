@@ -56,7 +56,7 @@ public class PlayerLife : MonoBehaviour
         {
             float damageToTake = collision.gameObject.GetComponent<EnemyHandler>().GetTotalAttack();
             currentLife -= damageToTake;
-            lifeText.text = "Life: " + damageToTake + " / " + maxLife;
+            lifeText.text = "Life: " + currentLife + " / " + maxLife;
             Debug.Log("Player took " + damageToTake + "damage.");
             movementHandler.KnockbackOnHit(transform.position.x, collision.transform.position.x);
 
