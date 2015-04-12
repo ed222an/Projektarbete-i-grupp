@@ -3,26 +3,34 @@ using System.Collections;
 
 public class EnemyHandler : MonoBehaviour 
 {
-    public float followRange;
+    public float followRangeRadiusX;
+    public float followRangeRadiusY;
     public Transform target;
     public float speed;
+    public LayerMask playerLayer;
 
     private Rigidbody2D rBody;
+
+    private EnemyStats enemyStats;
 	// Use this for initialization
 	void Start() 
     {
         rBody = GetComponent<Rigidbody2D>();
+        enemyStats = GetComponent<EnemyStats>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate() 
     {
-        if (target != null && ((transform.position.x + followRange > target.position.x && transform.position.x < target.position.x) 
-            || (transform.position.x - followRange < target.position.x && transform.position.x > target.position.x)))
-            FollowTarget();
-	}
+        //bool isInRange = Physics2D.OverlapCircle(transform.position, followRange, playerLayer);
+        bool isInRange = Physics2D.OverlapArea(new Vector2(transform.position.x - followRangeRadiusX, transform.position.y - followRangeRadiusY),
+                                                new Vector2(transform.position.x + followRangeRadiusX, transform.position.y + followRangeRadiusY), playerLayer);
 
-    //TODO: Use the vector to check if target is close by, right now it's only x, needs to be Y aswell.
+        if (target != null && isInRange)
+            FollowTarget();
+    }
+
+    //TODO: Do we want 
     void FollowTarget()
     {
         if (transform.position.x < target.position.x)
@@ -41,5 +49,11 @@ public class EnemyHandler : MonoBehaviour
         {
             rBody.AddRelativeForce(new Vector2(-1200f, 150f), ForceMode2D.Force);
         }
+    }
+
+    //The idea is that this function gets all stats, flat damage and combines it to a single value, then is returned to the caller.
+    public float GetTotalAttack()
+    {
+        return enemyStats.damage;
     }
 }

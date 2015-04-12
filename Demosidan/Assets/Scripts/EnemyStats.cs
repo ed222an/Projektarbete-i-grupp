@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy1 : MonoBehaviour 
+public class EnemyStats : MonoBehaviour 
 {
+    public float damage;
 
 	// Use this for initialization
 	void Start()

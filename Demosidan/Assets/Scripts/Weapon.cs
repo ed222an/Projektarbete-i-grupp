@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pickaxe : MonoBehaviour 
+public class Weapon : MonoBehaviour 
 {
     public float weaponDamage;
 

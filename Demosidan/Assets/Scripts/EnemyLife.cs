@@ -46,7 +46,7 @@ public class EnemyLife : MonoBehaviour
     {
         if (other.transform.tag == "Weapon")
         {
-            float damage = other.gameObject.GetComponent<Pickaxe>().weaponDamage;
+            float damage = other.gameObject.GetComponentInParent<PlayerHandler>().GetTotalPlayerAttack();
             currentLife -= damage;
             Debug.Log("Enemy took " + damage + " damage.");
             enemyHandler.KnockbackOnHit(transform.position.x, other.transform.position.x);
