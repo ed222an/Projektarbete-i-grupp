@@ -3,8 +3,8 @@ using System.Collections;
 
 public class EnemyHandler : MonoBehaviour 
 {
-    public float followRangeRadiusX;
-    public float followRangeRadiusY;
+    public float followRangeRadiusX = 3;
+    public float followRangeRadiusY = 1;
     public Transform target;
     public float speed;
     public LayerMask playerLayer;
@@ -30,7 +30,6 @@ public class EnemyHandler : MonoBehaviour
             FollowTarget();
     }
 
-    //TODO: Do we want 
     void FollowTarget()
     {
         if (transform.position.x < target.position.x)
