@@ -16,6 +16,8 @@ public class WWWPostPlayerData : MonoBehaviour
 
     IEnumerator PostPlayerData()
     {
+        killCount = KillCountManager.KillCount;
+
         WWWForm form = new WWWForm();
 
         form.AddField("statName", statName);

@@ -4,6 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour 
 {
     public GUIText restartText;
+    public GameObject gameController;
 
     private bool isPaused = false;
 	// Update is called once per frame
@@ -24,7 +25,12 @@ public class GameController : MonoBehaviour
             if (GUI.Button(new Rect(470, 150, 150, 20), "Continue"))
                 isPaused = false;
 
-            if (GUI.Button(new Rect(470, 200, 150, 20), "Back to Main Menu"))
+            if (GUI.Button(new Rect(470, 200, 150, 20), "Post kill count"))
+            {
+                GameObject go = Instantiate(gameController) as GameObject;
+            }
+
+            if (GUI.Button(new Rect(470, 250, 150, 20), "Back to Main Menu"))
             {
                 isPaused = false;
                 Application.LoadLevel("mainmenu");

@@ -5,6 +5,7 @@ public class EnemyLife : MonoBehaviour
 {
     public float maxLife;
     public EnemyHandler enemyHandler;
+    public GUIText killCount;
 
     private float currentLife;
     private bool isAlive;
@@ -37,6 +38,8 @@ public class EnemyLife : MonoBehaviour
         {
             isAlive = false;
 
+            KillCountManager.AddKill();
+
             DestroyEnemy();
         }
 	}
@@ -58,5 +61,10 @@ public class EnemyLife : MonoBehaviour
     void DestroyEnemy()
     {
         DestroyObject(transform.gameObject);
+    }
+
+    void OnDestroy()
+    { 
+        
     }
 }
