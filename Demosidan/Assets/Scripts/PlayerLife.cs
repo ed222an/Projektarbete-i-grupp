@@ -7,7 +7,6 @@ public class PlayerLife : MonoBehaviour
     public MovementHandler movementHandler;
     public GUIText lifeText;
 
-
     private float currentLife;
     private bool isAlive;
 
