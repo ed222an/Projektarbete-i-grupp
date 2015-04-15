@@ -42,11 +42,11 @@ public class EnemyHandler : MonoBehaviour
     {
         if (playerPosX > enemyPosX)
         {
-            rBody.AddRelativeForce(new Vector2(1200f, 150f), ForceMode2D.Force);
+            rBody.AddForce(new Vector2(1200f, 150f), ForceMode2D.Force);
         }
         else
         {
-            rBody.AddRelativeForce(new Vector2(-1200f, 150f), ForceMode2D.Force);
+            rBody.AddForce(new Vector2(-1200f, 150f), ForceMode2D.Force);
         }
     }
 

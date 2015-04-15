@@ -90,11 +90,11 @@ public class MovementHandler : MonoBehaviour
     {
         if (playerPosX > enemyPosX)
         {
-            rBody.AddRelativeForce(new Vector2(1500f, 100f));
+            rBody.AddForce(new Vector2(1500f, 100f));
         }
         else
         {
-            rBody.AddRelativeForce(new Vector2(-1500f, 100f));
+            rBody.AddForce(new Vector2(-1500f, 100f));
         }
     }
 }
