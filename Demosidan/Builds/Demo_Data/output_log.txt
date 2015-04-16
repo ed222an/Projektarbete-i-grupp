@@ -12,15 +12,21 @@ Platform assembly: C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\
 Loading C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.033 seconds
+- Completed reload, in  0.034 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
 Platform assembly: C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo_Data\Managed\System.Core.dll (this message is harmless)
-Setting up 1 worker threads for Enlighten.
-  Thread -> id: 88e0 -> priority: 1 
 Platform assembly: C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo_Data\Managed\System.dll (this message is harmless)
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.785230 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 533.
+Total: 0.200278 ms (FindLiveObjects: 0.026804 ms CreateObjectMapping: 0.012649 ms MarkObjects: 0.154199 ms  DeleteObjects: 0.005722 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 515c -> priority: 1 
 Enemy took 5 damage.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -105,7 +111,11 @@ Enemy took 5 damage.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Player took 1damage.
+encrypted PW: /Ctcdmb3Kogi1SJJwOtoneNDYzHMhQFukinZC/EGxaw= name: Admin Kills: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Kill counted uploaded.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -125,19 +135,7 @@ Enemy took 5 damage.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Enemy took 5 damage.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Enemy took 5 damage.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Player took 1damage.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Player took 1damage.
+Player took 3damage.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -149,27 +147,17 @@ Enemy took 5 damage.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Player took 1damage.
+encrypted PW: /Ctcdmb3Kogi1SJJwOtoneNDYzHMhQFukinZC/EGxaw= name: Admin Kills: 8
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Enemy took 5 damage.
+Kill counted uploaded.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Player took 1damage.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.351767 ms
 
-Enemy took 5 damage.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Enemy took 5 damage.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Enemy took 5 damage.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+Unloading 90 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.299966 ms (FindLiveObjects: 0.013853 ms CreateObjectMapping: 0.010239 ms MarkObjects: 0.149682 ms  DeleteObjects: 0.125889 ms)
 
