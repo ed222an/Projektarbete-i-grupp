@@ -5,8 +5,10 @@ public class WWWPostPlayerData : MonoBehaviour
 {
     public string URL = "http://www.metalgenre.se/api/rest/status.php";
     public string statName = "kills";
-    public int userID = 1; // TEMP TESTING
-    public int killCount = 1;
+    public string username = "Admin";
+    public string password = "Password";
+
+    private int killCount;
 
 	// Use this for initialization
 	void Start()
@@ -21,8 +23,11 @@ public class WWWPostPlayerData : MonoBehaviour
         WWWForm form = new WWWForm();
 
         form.AddField("statName", statName);
-        form.AddField("userID", userID);
         form.AddField("statCount", killCount);
+        form.AddField("username", username);
+        form.AddField("password", AES.encrypt(password));
+
+        Debug.Log("encrypted PW: " + AES.encrypt(password) + " name: " + username + " Kills: " + killCount);
 
         WWW w = new WWW(URL, form);
         yield return w;
