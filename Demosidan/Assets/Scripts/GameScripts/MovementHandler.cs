@@ -12,15 +12,32 @@ public class MovementHandler : MonoBehaviour
     private Rigidbody2D rBody;
     private BoxCollider2D weaponCollider;
     private bool grounded = false;
-    private float groundRadius = 0.02f;
+    private bool canAttack = true;
+    private float groundRadiusX = 0.4f;
+    private float groundRadiusY = 0.05f;
+    private float attackTimer = 0.0f;
 
 	private Animator anim;
-    
+
+    private PlayerHandler playerHandler;
+
+    void Start()
+    {
+        rBody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+
+        //Weapon
+        GameObject weapon = GameObject.FindGameObjectWithTag("Weapon");
+        weaponCollider = weapon.GetComponent<BoxCollider2D>();
+
+        playerHandler = GetComponent<PlayerHandler>();
+    }
+
     void FixedUpdate()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+        grounded = Physics2D.OverlapArea(new Vector2(groundCheck.position.x - groundRadiusX, groundCheck.position.y - groundRadiusY),
+                                            new Vector2(groundCheck.position.x + groundRadiusX, groundCheck.position.y + groundRadiusY), whatIsGround);
 
-        //float moveHorizontal = Input.GetAxis("Horizontal");
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         velocity = new Vector2(moveHorizontal * speed, rBody.velocity.y);
@@ -38,43 +55,51 @@ public class MovementHandler : MonoBehaviour
 		}
     }
 
-	void Start() 
-    {
-        rBody = GetComponent<Rigidbody2D>();
-		anim = GetComponent<Animator> ();
-
-        //Weapon
-        GameObject weapon = GameObject.FindGameObjectWithTag("Weapon");
-		weaponCollider = weapon.GetComponent<BoxCollider2D>();
-	}
-	
 	// Update is called once per frame
 	void Update() 
     {
+        if (Time.timeScale == 0)
+            return;
+
 		// Jumping
-        if (grounded && Input.GetKeyDown ("space"))
+        if (grounded && Input.GetKeyDown("space"))
 			rBody.AddForce (new Vector2 (0f, 200f));
 
 		// Jumping animation
 		if (grounded)
-			anim.SetBool ("Grounded", true);
+			anim.SetBool("Grounded", true);
 		else
-			anim.SetBool ("Grounded", false);
+			anim.SetBool("Grounded", false);
 
 		if (velocity.x != 0)
-			anim.SetBool ("Running",true);
+			anim.SetBool("Running", true);
 		else
-			anim.SetBool ("Running",false);
+			anim.SetBool("Running", false);
 
 		// Attack animation test
-		if (Input.GetMouseButtonDown (0)) 
+		if (Input.GetMouseButton(0) && canAttack) 
         {
-			anim.SetBool ("Attacking", true);
+			anim.SetBool("Attacking", true);
+            canAttack = false;
+            
+            attackTimer = playerHandler.GetAttackSpeed();
 		} 
         else
 		{
 			anim.SetBool("Attacking", false);
 		}
+
+        //Attack timer
+        //TODO: Should the attack timer be here? maybe? maybe not ?
+        if (attackTimer <= 0)
+        {
+            canAttack = true;
+        }
+        else
+        {
+            attackTimer -= Time.deltaTime;
+        }
+
 	}
 
 	// Flips the world around the player, allowing us to only use 1 set of animations.

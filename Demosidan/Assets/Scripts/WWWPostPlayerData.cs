@@ -8,17 +8,14 @@ public class WWWPostPlayerData : MonoBehaviour
     public string username = "Admin";
     public string password = "Password";
 
-    private int killCount;
-
-	// Use this for initialization
-	void Start()
+    public void PostPlayerKillData()
     {
         StartCoroutine(PostPlayerData());
-	}
+    }
 
     IEnumerator PostPlayerData()
     {
-        killCount = KillCountManager.KillCount;
+        int killCount = KillCountManager.KillCount;
 
         WWWForm form = new WWWForm();
 
@@ -36,8 +33,5 @@ public class WWWPostPlayerData : MonoBehaviour
             print(w.error);
         else
             print("Kill counted uploaded.");
-
-        //Remove the object that this script belongs to from the scene when it's done.
-        DestroyObject(gameObject);
     }
 }
