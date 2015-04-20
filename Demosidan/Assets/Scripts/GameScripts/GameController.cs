@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     {
         CheckForRestart();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0f)
             Application.LoadLevelAdditive("pausemenu");
     }
 

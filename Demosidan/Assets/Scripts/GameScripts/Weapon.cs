@@ -6,11 +6,11 @@ public class Weapon : MonoBehaviour
     public float weaponDamage;
     public float attackSpeed;
 
-    BoxCollider2D collider;
+    BoxCollider2D weaponCollider;
 
 	// Use this for initialization
 	void Start()
     {
-        collider = GetComponent<BoxCollider2D>();
+        weaponCollider = GetComponent<BoxCollider2D>();
 	}
 }

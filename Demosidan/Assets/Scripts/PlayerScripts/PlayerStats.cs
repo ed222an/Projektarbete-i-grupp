@@ -29,13 +29,13 @@ public class PlayerStats : MonoBehaviour
     private float strAtkWeight = 0.35f;
 
     //Dex stat weights.
-    private float dexAtkWeight = 0.03f;
+    private float dexAtkSpdWeight = 0.03f;
 
     public float CalculateAttackSpeed(Weapon currentWeapon)
     {
         float attackSpeed = currentWeapon.attackSpeed;
 
-        attackSpeed -= dexAtkWeight * dexterity;
+        attackSpeed -= dexAtkSpdWeight * dexterity;
 
         return attackSpeed;
     }
