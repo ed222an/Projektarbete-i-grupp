@@ -5,7 +5,6 @@ public class EnemyHandler : MonoBehaviour
 {
     public float followRangeRadiusX = 3;
     public float followRangeRadiusY = 1;
-    public Transform target;
     public float speed;
     public LayerMask playerLayer;
 	public bool facingRight = true;
@@ -13,6 +12,7 @@ public class EnemyHandler : MonoBehaviour
     private Rigidbody2D rBody;
 	private Animator anim;
     private EnemyStats enemyStats;
+	private Transform target;
 
 	// Use this for initialization
 	void Start() 
@@ -20,6 +20,7 @@ public class EnemyHandler : MonoBehaviour
         rBody = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
         enemyStats = GetComponent<EnemyStats>();
+		target = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
 	// Update is called once per frame
