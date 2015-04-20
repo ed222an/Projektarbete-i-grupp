@@ -19,7 +19,6 @@ public class PlayerHandler : MonoBehaviour
         return playerStats.CalculateAttackDamage(currentWeapon);
     }
 
-    //TODO: Temp hard coded value for testing.
     public float GetAttackSpeed()
     {
         return playerStats.CalculateAttackSpeed(currentWeapon);

@@ -6,12 +6,23 @@ public class GameController : MonoBehaviour
     public GUIText restartText;
     public GameObject gameController;
 
+    //TODO: Might not want to be lazy and use a static variable here.
+    public static bool characterStatsMenuActive = false;
+
     void Update()
     {
         CheckForRestart();
 
+        //Pause menu
         if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0f)
             Application.LoadLevelAdditive("pausemenu");
+
+        //Character stats menu
+        if (Input.GetKeyDown(KeyCode.I) && !characterStatsMenuActive)
+        {
+            Application.LoadLevelAdditive("characterinformation");
+            characterStatsMenuActive = true;
+        }
     }
 
     void CheckForRestart()

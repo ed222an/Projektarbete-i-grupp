@@ -5,8 +5,8 @@ public class PlayerLife : MonoBehaviour
 {
     public float maxLife;
     public MovementHandler movementHandler;
-    public GUIText lifeText;
 
+    private GUIText lifeText;
     private float currentLife;
     private bool isAlive;
 
@@ -26,11 +26,12 @@ public class PlayerLife : MonoBehaviour
     // Use this for initialization
 	void Start()
     {
+        lifeText = GameObject.Find("LifeText").GetComponent<GUIText>();
         currentLife = maxLife;
 
         isAlive = true;
 
-        lifeText.text = "Life: " + currentLife + " / " + maxLife;
+        SetLifeText(currentLife, maxLife);
 	}
 	
 	// Update is called once per frame
@@ -55,11 +56,16 @@ public class PlayerLife : MonoBehaviour
         {
             float damageToTake = collision.gameObject.GetComponent<EnemyHandler>().GetTotalAttack();
             currentLife -= damageToTake;
-            lifeText.text = "Life: " + currentLife + " / " + maxLife;
+            SetLifeText(currentLife, maxLife);
             Debug.Log("Player took " + damageToTake + "damage.");
             movementHandler.KnockbackOnHit(transform.position.x, collision.transform.position.x);
 
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    void SetLifeText(float currentLife, float maxLife)
+    {
+        lifeText.text = "Life: " + currentLife + " / " + maxLife;
     }
 }
