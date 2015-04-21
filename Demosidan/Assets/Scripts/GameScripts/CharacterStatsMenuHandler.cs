@@ -6,25 +6,35 @@ public class CharacterStatsMenuHandler : MonoBehaviour
 {
     public GameObject statsMenuObject;
 
-    public Text strValue;
-    public Text dexValue;
-    public Text intValue;
+    private Text strValue;
+    private Text dexValue;
+    private Text intValue;
+    private PlayerStats playerStats;
 
 	// Use this for initialization
 	void Start()
     {
-	    
+        strValue = GameObject.Find("StrValue").GetComponent<Text>();
+        dexValue = GameObject.Find("DexValue").GetComponent<Text>();
+        intValue = GameObject.Find("IntValue").GetComponent<Text>();
+
+        //Tried this with FindGameObjectWithTag, but that's not working for some reason.
+        playerStats = GameObject.Find("Dwarf_1").GetComponent<PlayerStats>();
+
 	}
 	
 	// Update is called once per frame
 	void Update()
     {
-	    
-
+        if (playerStats == null)
+        {
+            Debug.Log("Unable to find PlayerStats on Dwarf_1");
+            return;
+        }
         //Update values
-        strValue.text = "" + 0; //Get the values.
-        dexValue.text = "" + 0; //Get the values.
-        intValue.text = "" + 0; //Get the values.
+        strValue.text = "" + playerStats.Strength; //Get the values.
+        dexValue.text = "" + playerStats.Dexterity; //Get the values.
+        intValue.text = "" + playerStats.Intelligence; //Get the values.
 	}
 
     public void CloseStatsMenu()
