@@ -32,6 +32,6 @@ public class WWWPostPlayerData : MonoBehaviour
         if (!string.IsNullOrEmpty(w.error))
             print(w.error);
         else
-            print("Kill counted uploaded.");
+            print("Kill count uploaded.");
     }
 }

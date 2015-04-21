@@ -3,8 +3,10 @@ using System.Collections;
 
 public class PlayerStats : MonoBehaviour
 {
-    private int strength = 5;//Life, damage
-    private int dexterity = 3;// Atk speed, crit chance
+    public static PlayerStats playerStats;
+
+    private int strength = 10;//Life, damage
+    private int dexterity = 5;// Atk speed, crit chance
     private int intelligence = 3;//Magic damage, mana
 
     #region get/set
@@ -30,6 +32,18 @@ public class PlayerStats : MonoBehaviour
 
     //Dex stat weights.
     private float dexAtkSpdWeight = 0.03f;
+
+    void Awake()
+    {
+        if (playerStats == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            playerStats = this;
+        }
+        else if (playerStats != this)
+            Destroy(gameObject);
+
+    }
 
     public float CalculateAttackSpeed(Weapon currentWeapon)
     {

@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
             Application.LoadLevelAdditive("pausemenu");
 
         //Character stats menu
-        if (Input.GetKeyDown(KeyCode.I) && !characterStatsMenuActive)
+        if (Input.GetKeyDown(KeyCode.C) && !characterStatsMenuActive)
         {
             Application.LoadLevelAdditive("characterinformation");
             characterStatsMenuActive = true;

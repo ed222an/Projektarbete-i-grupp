@@ -12,6 +12,7 @@ public class PlayerHandler : MonoBehaviour
 	void Start()
     {
         currentWeapon = GetComponentInChildren<Weapon>();
+        playerStats = PlayerStats.playerStats;
 	}
 
     public float GetTotalPlayerAttack()

@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PauseMenuHandler : MonoBehaviour 
+public class PauseMenuHandler : MonoBehaviour
 {
     public GameObject pauseObject;
+
+    private WWWPostPlayerData poster;
 
     void Start()
     {
         Time.timeScale = 0.0f;
+        poster = GameObject.Find("GameController").GetComponent<WWWPostPlayerData>();
     }
 
     //Continue the game.
@@ -19,7 +22,6 @@ public class PauseMenuHandler : MonoBehaviour
 
     public void PostKillCount()
     {
-        WWWPostPlayerData poster = new WWWPostPlayerData();
         poster.PostPlayerKillData();
     }
 
