@@ -12,7 +12,7 @@ public class PlayerHandler : MonoBehaviour
 	void Start()
     {
         currentWeapon = GetComponentInChildren<Weapon>();
-        playerStats = PlayerStats.playerStats;
+        playerStats = GameObject.Find("Dwarf_1").GetComponent<PlayerStats>();
 	}
 
     public float GetTotalPlayerAttack()

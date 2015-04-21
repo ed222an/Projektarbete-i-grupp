@@ -22,7 +22,7 @@ public class CharacterStatsMenuHandler : MonoBehaviour
         intValue = GameObject.Find("IntValue").GetComponent<Text>();
         atkDmgValue = GameObject.Find("AttackDamageValue").GetComponent<Text>();
         atkSpdValue = GameObject.Find("AttackSpeedValue").GetComponent<Text>();
-        playerStats = PlayerStats.playerStats;
+        playerStats = GameObject.Find("Dwarf_1").GetComponent<PlayerStats>();
 
         //TODO: We want to get the player, not the specific dwarf.
         playerHandler = GameObject.Find("Dwarf_1").GetComponent<PlayerHandler>();
