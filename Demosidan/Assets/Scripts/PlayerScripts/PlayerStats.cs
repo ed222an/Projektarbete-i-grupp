@@ -3,8 +3,18 @@ using System.Collections;
 
 public class PlayerStats : MonoBehaviour
 {
-    private int strength = 10;//Life, damage
-    private int dexterity = 5;// Atk speed, crit chance
+    public static PlayerStats playerStats;
+    public float baseLife = 5;
+
+    //Str stat weights.
+    public float lifePerStr = 3;
+    public float strAtkWeight = 0.35f;
+
+    //Dex stat weights.
+    public float dexAtkSpdWeight = 0.03f;
+
+    private int strength = 5;//Life, damage
+    private int dexterity = 3;// Atk speed, crit chance
     private int intelligence = 3;//Magic damage, mana
 
     #region get/set
@@ -25,11 +35,17 @@ public class PlayerStats : MonoBehaviour
     }
     #endregion
 
-    //Str stat weights.
-    private float strAtkWeight = 0.35f;
+    void Awake()
+    {
+        if (playerStats == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            playerStats = this;
+        }
+        else if (playerStats != this)
+            Destroy(gameObject);
 
-    //Dex stat weights.
-    private float dexAtkSpdWeight = 0.03f;
+    }
 
     public float CalculateAttackSpeed(Weapon currentWeapon)
     {
@@ -47,5 +63,12 @@ public class PlayerStats : MonoBehaviour
         attackDamage += strAtkWeight * strength;
 
         return attackDamage;
+    }
+
+    public float CalculateMaxLife()
+    {
+        float life = baseLife + lifePerStr * strength;
+
+        return life;
     }
 }

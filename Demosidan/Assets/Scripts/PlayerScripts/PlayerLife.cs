@@ -3,10 +3,11 @@ using System.Collections;
 
 public class PlayerLife : MonoBehaviour 
 {
-    public float maxLife;
     public MovementHandler movementHandler;
+    public PlayerHandler playerHandler;
 
     private GUIText lifeText;
+    private float maxLife;
     private float currentLife;
     private bool isAlive;
 
@@ -27,7 +28,8 @@ public class PlayerLife : MonoBehaviour
 	void Start()
     {
         lifeText = GameObject.Find("LifeText").GetComponent<GUIText>();
-        currentLife = maxLife;
+        playerHandler = GameObject.Find("Dwarf_1").GetComponent<PlayerHandler>();//TODO: Still don't want to get the specific dwarf, but w/e right now.
+        currentLife = maxLife = playerHandler.GetPlayerMaxLife();
 
         isAlive = true;
 

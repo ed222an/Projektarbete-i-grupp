@@ -12,7 +12,7 @@ public class PlayerHandler : MonoBehaviour
 	void Start()
     {
         currentWeapon = GetComponentInChildren<Weapon>();
-        playerStats = GameObject.Find("Dwarf_1").GetComponent<PlayerStats>();
+        playerStats = PlayerStats.playerStats;
 	}
 
     public float GetTotalPlayerAttack()
@@ -20,8 +20,13 @@ public class PlayerHandler : MonoBehaviour
         return playerStats.CalculateAttackDamage(currentWeapon);
     }
 
-    public float GetAttackSpeed()
+    public float GetPlayerAttackSpeed()
     {
         return playerStats.CalculateAttackSpeed(currentWeapon);
+    }
+
+    public float GetPlayerMaxLife()
+    {
+        return playerStats.CalculateMaxLife();
     }
 }

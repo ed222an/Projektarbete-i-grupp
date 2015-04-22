@@ -82,7 +82,7 @@ public class MovementHandler : MonoBehaviour
 			anim.SetBool("Attacking", true);
             canAttack = false;
             
-            attackTimer = playerHandler.GetAttackSpeed();
+            attackTimer = playerHandler.GetPlayerAttackSpeed();
 		} 
         else
 		{

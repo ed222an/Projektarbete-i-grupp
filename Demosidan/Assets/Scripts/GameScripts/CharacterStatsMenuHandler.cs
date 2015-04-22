@@ -22,7 +22,7 @@ public class CharacterStatsMenuHandler : MonoBehaviour
         intValue = GameObject.Find("IntValue").GetComponent<Text>();
         atkDmgValue = GameObject.Find("AttackDamageValue").GetComponent<Text>();
         atkSpdValue = GameObject.Find("AttackSpeedValue").GetComponent<Text>();
-        playerStats = GameObject.Find("Dwarf_1").GetComponent<PlayerStats>();
+        playerStats = PlayerStats.playerStats;
 
         //TODO: We want to get the player, not the specific dwarf.
         playerHandler = GameObject.Find("Dwarf_1").GetComponent<PlayerHandler>();
@@ -37,7 +37,7 @@ public class CharacterStatsMenuHandler : MonoBehaviour
         intValue.text = "" + playerStats.Intelligence; //Get the values.
 
         atkDmgValue.text = "" + playerHandler.GetTotalPlayerAttack();
-        atkSpdValue.text = "" + playerHandler.GetAttackSpeed();
+        atkSpdValue.text = "" + playerHandler.GetPlayerAttackSpeed();
 
         //Handle a second I press, this should close the window
         if (Input.GetKeyDown(KeyCode.C))
