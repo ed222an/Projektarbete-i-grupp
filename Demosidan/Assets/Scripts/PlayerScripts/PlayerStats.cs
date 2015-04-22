@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static PlayerStats playerStats;
     public float baseLife = 5;
 
     //Str stat weights.
@@ -34,18 +33,6 @@ public class PlayerStats : MonoBehaviour
         get { return intelligence; }
     }
     #endregion
-
-    void Awake()
-    {
-        if (playerStats == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            playerStats = this;
-        }
-        else if (playerStats != this)
-            Destroy(gameObject);
-
-    }
 
     public float CalculateAttackSpeed(Weapon currentWeapon)
     {
