@@ -14,8 +14,7 @@ public class CharacterStatsMenuHandler : MonoBehaviour
     private PlayerStats playerStats;
     private PlayerHandler playerHandler;
 
-	// Use this for initialization
-	void Start()
+    void Awake()
     {
         strValue = GameObject.Find("StrValue").GetComponent<Text>();
         dexValue = GameObject.Find("DexValue").GetComponent<Text>();
@@ -26,6 +25,12 @@ public class CharacterStatsMenuHandler : MonoBehaviour
 
         //TODO: We want to get the player, not the specific dwarf.
         playerHandler = GameObject.Find("Dwarf_1").GetComponent<PlayerHandler>();
+    }
+
+	// Use this for initialization
+	void Start()
+    {
+        
 	}
 	
 	// Update is called once per frame

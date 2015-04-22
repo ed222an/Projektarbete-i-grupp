@@ -14,13 +14,18 @@ public class EnemyHandler : MonoBehaviour
     private EnemyStats enemyStats;
 	private Transform target;
 
+    void Awake()
+    {
+        rBody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        enemyStats = GetComponent<EnemyStats>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
 	// Use this for initialization
 	void Start() 
     {
-        rBody = GetComponent<Rigidbody2D>();
-		anim = GetComponent<Animator>();
-        enemyStats = GetComponent<EnemyStats>();
-		target = GameObject.FindGameObjectWithTag("Player").transform;
+        
 	}
 	
 	// Update is called once per frame

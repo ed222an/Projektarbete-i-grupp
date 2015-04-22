@@ -15,7 +15,12 @@ public class PlayerLife : MonoBehaviour
     public float MaxLife
     {
         get { return maxLife; }
-        set { maxLife = value; }
+        set 
+        {
+            if (value < 0)
+                value = 0;
+            maxLife = value; 
+        }
     }
 
     public float CurrentLife
@@ -24,15 +29,18 @@ public class PlayerLife : MonoBehaviour
     }
     #endregion
 
-    // Use this for initialization
-	void Start()
+    void Awake()
     {
         lifeText = GameObject.Find("LifeText").GetComponent<GUIText>();
         playerHandler = GameObject.Find("Dwarf_1").GetComponent<PlayerHandler>();//TODO: Still don't want to get the specific dwarf, but w/e right now.
         currentLife = maxLife = playerHandler.GetPlayerMaxLife();
 
         isAlive = true;
+    }
 
+    // Use this for initialization
+	void Start()
+    {
         SetLifeText(currentLife, maxLife);
 	}
 	

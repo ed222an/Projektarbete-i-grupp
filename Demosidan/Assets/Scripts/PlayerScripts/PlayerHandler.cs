@@ -8,11 +8,15 @@ public class PlayerHandler : MonoBehaviour
 
     private Weapon currentWeapon;
 
-	// Use this for initialization
-	void Start()
+    void Awake()
     {
         currentWeapon = GetComponentInChildren<Weapon>();
         playerStats = GameObject.Find("Dwarf_1").GetComponent<PlayerStats>();
+    }
+	// Use this for initialization
+	void Start()
+    {
+        
 	}
 
     public float GetTotalPlayerAttack()

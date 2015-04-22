@@ -23,12 +23,17 @@ public class EnemyLife : MonoBehaviour
     }
 #endregion
 
-    // Use this for initialization
-	void Start()
+    void Awake()
     {
         currentLife = maxLife;
 
         isAlive = true;
+    }
+
+    // Use this for initialization
+	void Start()
+    {
+        
 	}
 	
 	// Update is called once per frame

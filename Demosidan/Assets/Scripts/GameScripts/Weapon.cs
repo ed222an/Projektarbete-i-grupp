@@ -8,9 +8,14 @@ public class Weapon : MonoBehaviour
 
     BoxCollider2D weaponCollider;
 
+    void Awake()
+    {
+        weaponCollider = GetComponent<BoxCollider2D>();
+    }
+
 	// Use this for initialization
 	void Start()
     {
-        weaponCollider = GetComponent<BoxCollider2D>();
+        
 	}
 }

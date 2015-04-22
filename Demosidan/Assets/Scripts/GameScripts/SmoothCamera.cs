@@ -9,10 +9,15 @@ public class SmoothCamera : MonoBehaviour
     private Camera mainCamera;
     private Vector3 velocity = Vector3.zero;
 
+    void Awake()
+    {
+        mainCamera = GetComponent<Camera>();
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
+
     void Start()
     {
-		mainCamera = GetComponent<Camera>();
-		target = GameObject.FindGameObjectWithTag ("Player");
+		
     }
 
 	// Update is called once per frame

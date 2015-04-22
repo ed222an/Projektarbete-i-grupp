@@ -21,7 +21,7 @@ public class MovementHandler : MonoBehaviour
 
     private PlayerHandler playerHandler;
 
-    void Start()
+    void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -31,6 +31,11 @@ public class MovementHandler : MonoBehaviour
         weaponCollider = weapon.GetComponent<BoxCollider2D>();
 
         playerHandler = GetComponent<PlayerHandler>();
+    }
+
+    void Start()
+    {
+        
     }
 
     void FixedUpdate()

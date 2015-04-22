@@ -7,10 +7,15 @@ public class PauseMenuHandler : MonoBehaviour
 
     private WWWPostPlayerData poster;
 
-    void Start()
+    void Awake()
     {
         Time.timeScale = 0.0f;
         poster = GameObject.Find("GameController").GetComponent<WWWPostPlayerData>();
+    }
+
+    void Start()
+    {
+        
     }
 
     //Continue the game.
