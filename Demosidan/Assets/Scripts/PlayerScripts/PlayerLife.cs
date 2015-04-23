@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour 
 {
@@ -7,6 +8,7 @@ public class PlayerLife : MonoBehaviour
     public PlayerHandler playerHandler;
 
     private GUIText lifeText;
+    //private Slider healthBar;
     private float maxLife;
     private float currentLife;
     private bool isAlive;
@@ -39,7 +41,14 @@ public class PlayerLife : MonoBehaviour
     {
         lifeText = GameObject.Find("LifeText").GetComponent<GUIText>();
         playerHandler = GameObject.Find("Dwarf_1").GetComponent<PlayerHandler>();//TODO: Still don't want to get the specific dwarf, but w/e right now.
+
         currentLife = maxLife = playerHandler.GetPlayerMaxLife();
+
+        //Setup the HP bar.
+        //healthBar = GameObject.Find("HealthSlider").GetComponent<Slider>();
+        //healthBar.maxValue = maxLife;
+        //healthBar.value = maxLife;
+        
 
         isAlive = true;
     }
@@ -72,6 +81,7 @@ public class PlayerLife : MonoBehaviour
         {
             float damageToTake = collision.gameObject.GetComponent<EnemyHandler>().GetTotalAttack();
             CurrentLife -= damageToTake;
+            //healthBar.value = CurrentLife;
             SetLifeText(CurrentLife, MaxLife);
             Debug.Log("Player took " + damageToTake + "damage.");
             movementHandler.KnockbackOnHit(transform.position.x, collision.transform.position.x);
