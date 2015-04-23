@@ -11,7 +11,7 @@ public class PlayerHandler : MonoBehaviour
     void Awake()
     {
         currentWeapon = GetComponentInChildren<Weapon>();
-        playerStats = GameObject.Find("Dwarf_1").GetComponent<PlayerStats>();
+		playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 	// Use this for initialization
 	void Start()
