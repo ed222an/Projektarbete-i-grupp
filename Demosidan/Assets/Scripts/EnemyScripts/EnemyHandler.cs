@@ -14,12 +14,16 @@ public class EnemyHandler : MonoBehaviour
     private EnemyStats enemyStats;
 	private Transform target;
 
+    //This is the HP bar ontop of the enemy
+    private RectTransform hpBarRect;
+
     void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         enemyStats = GetComponent<EnemyStats>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        hpBarRect = GetComponentInChildren<RectTransform>();
     }
 
 	// Use this for initialization
@@ -78,6 +82,11 @@ public class EnemyHandler : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+
+        //Flip the HP bar aswell.
+        Vector3 hpBarScale = hpBarRect.localScale;
+        hpBarScale *= -1;
+        hpBarRect.localScale = hpBarScale;
 	}
 
     public void KnockbackOnHit(float playerPosX, float enemyPosX)
