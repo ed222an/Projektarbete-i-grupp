@@ -42,7 +42,7 @@ public class PlayerLife : MonoBehaviour
     {
         lifeText = GameObject.Find("HpBarText").GetComponent<Text>();
         healthBar = GameObject.Find("HpOverlayBar").GetComponent<Image>();
-        playerHandler = GameObject.Find("Dwarf_1").GetComponent<PlayerHandler>();//TODO: Still don't want to get the specific dwarf, but w/e right now.
+		playerHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
 
         currentLife = maxLife = playerHandler.GetPlayerMaxLife();
 
