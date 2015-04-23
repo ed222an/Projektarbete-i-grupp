@@ -7,7 +7,8 @@ public class PlayerLife : MonoBehaviour
     public MovementHandler movementHandler;
     public PlayerHandler playerHandler;
 
-    private GUIText lifeText;
+    private Text lifeText;
+    private Image healthBar;
     //private Slider healthBar;
     private float maxLife;
     private float currentLife;
@@ -39,7 +40,8 @@ public class PlayerLife : MonoBehaviour
 
     void Awake()
     {
-        lifeText = GameObject.Find("LifeText").GetComponent<GUIText>();
+        lifeText = GameObject.Find("HpBarText").GetComponent<Text>();
+        healthBar = GameObject.Find("HpOverlayBar").GetComponent<Image>();
         playerHandler = GameObject.Find("Dwarf_1").GetComponent<PlayerHandler>();//TODO: Still don't want to get the specific dwarf, but w/e right now.
 
         currentLife = maxLife = playerHandler.GetPlayerMaxLife();
@@ -82,6 +84,7 @@ public class PlayerLife : MonoBehaviour
             float damageToTake = collision.gameObject.GetComponent<EnemyHandler>().GetTotalAttack();
             CurrentLife -= damageToTake;
             //healthBar.value = CurrentLife;
+            ModifyHpBar();
             SetLifeText(CurrentLife, MaxLife);
             Debug.Log("Player took " + damageToTake + "damage.");
             movementHandler.KnockbackOnHit(transform.position.x, collision.transform.position.x);
@@ -90,8 +93,13 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
+    void ModifyHpBar()
+    {
+        healthBar.fillAmount = currentLife / maxLife;
+    }
+
     void SetLifeText(float currentLife, float maxLife)
     {
-        lifeText.text = "Life: " + currentLife + " / " + maxLife;
+        lifeText.text = currentLife + " / " + maxLife;
     }
 }

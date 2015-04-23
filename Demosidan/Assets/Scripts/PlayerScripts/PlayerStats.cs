@@ -12,7 +12,7 @@ public class PlayerStats : MonoBehaviour
     //Dex stat weights.
     public float dexAtkSpdWeight = 0.03f;
 
-    private int strength = 5;//Life, damage
+    private int strength = 50000;//Life, damage
     private int dexterity = 3;// Atk speed, crit chance
     private int intelligence = 3;//Magic damage, mana
 
