@@ -26,6 +26,12 @@ public class PlayerLife : MonoBehaviour
     public float CurrentLife
     {
         get { return currentLife; }
+        set
+        {
+            if (value < 0)
+                value = 0;
+            currentLife = value;
+        }
     }
     #endregion
 
@@ -65,8 +71,8 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             float damageToTake = collision.gameObject.GetComponent<EnemyHandler>().GetTotalAttack();
-            currentLife -= damageToTake;
-            SetLifeText(currentLife, maxLife);
+            CurrentLife -= damageToTake;
+            SetLifeText(CurrentLife, MaxLife);
             Debug.Log("Player took " + damageToTake + "damage.");
             movementHandler.KnockbackOnHit(transform.position.x, collision.transform.position.x);
 
