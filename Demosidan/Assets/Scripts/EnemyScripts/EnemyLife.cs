@@ -56,6 +56,7 @@ public class EnemyLife : MonoBehaviour
     //Take damage
     IEnumerator OnTriggerEnter2D(Collider2D other)
     {
+        //TODO: Rewrite the player damage functionality to look more like the enemy version.
         if (other.transform.tag == "Weapon")
         {
             if (!hpBarCanvas.enabled)

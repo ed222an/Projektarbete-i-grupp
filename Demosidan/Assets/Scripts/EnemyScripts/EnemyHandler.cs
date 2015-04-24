@@ -8,11 +8,15 @@ public class EnemyHandler : MonoBehaviour
     public float speed;
     public LayerMask playerLayer;
 	public bool facingRight = true;
-
+    
     private Rigidbody2D rBody;
 	private Animator anim;
     private EnemyStats enemyStats;
 	private Transform target;
+    private bool isInAttackRange = false;
+    private bool canAttack = false;
+    private float attackTimer = 0.0f;
+    private GameObject playerObject;
 
     //This is the HP bar ontop of the enemy
     private RectTransform hpBarRect;
@@ -23,6 +27,7 @@ public class EnemyHandler : MonoBehaviour
         anim = GetComponent<Animator>();
         enemyStats = GetComponent<EnemyStats>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        playerObject = target.gameObject;
         hpBarRect = GetComponentInChildren<RectTransform>();
     }
 
@@ -39,14 +44,45 @@ public class EnemyHandler : MonoBehaviour
         bool isInRange = Physics2D.OverlapArea(new Vector2(transform.position.x - followRangeRadiusX, transform.position.y - followRangeRadiusY),
                                                 new Vector2(transform.position.x + followRangeRadiusX, transform.position.y + followRangeRadiusY), playerLayer);
 
-        if (target != null && isInRange)
-		{
+        if (target != null && isInRange && !isInAttackRange)
+        {
             FollowTarget();
-		}
-		else
-		{
-			anim.SetBool("Moving", false);
-		}
+        }
+        else
+        {
+            anim.SetBool("Moving", false);
+        }
+    }
+
+    void Update()
+    {
+        //Lower the time to the next attack by passed time.
+        if (attackTimer > 0)
+            attackTimer -= Time.deltaTime;
+        else if (attackTimer <= 0)
+            canAttack = true;
+
+        if (canAttack && isInAttackRange)
+        {
+            playerObject.gameObject.GetComponentInParent<PlayerLife>().DealDamageToPlayer(enemyStats.damage);
+            canAttack = false;
+            attackTimer = enemyStats.attackSpeed;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            isInAttackRange = true;
+            rBody.velocity = new Vector2(0.0f, rBody.velocity.y);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+            isInAttackRange = false;
     }
 
     void FollowTarget()

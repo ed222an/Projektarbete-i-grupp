@@ -3,7 +3,8 @@ using System.Collections;
 
 public class EnemyStats : MonoBehaviour 
 {
-    public float damage;
+    public float damage = 3f;
+    public float attackSpeed = 1f;
 
 	// Use this for initialization
 	void Start()

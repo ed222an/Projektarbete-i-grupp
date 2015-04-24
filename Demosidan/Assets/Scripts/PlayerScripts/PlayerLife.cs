@@ -9,7 +9,6 @@ public class PlayerLife : MonoBehaviour
 
     private Text lifeText;
     private Image healthBar;
-    //private Slider healthBar;
     private float maxLife;
     private float currentLife;
     private bool isAlive;
@@ -46,12 +45,6 @@ public class PlayerLife : MonoBehaviour
 
         currentLife = maxLife = playerHandler.GetPlayerMaxLife();
 
-        //Setup the HP bar.
-        //healthBar = GameObject.Find("HealthSlider").GetComponent<Slider>();
-        //healthBar.maxValue = maxLife;
-        //healthBar.value = maxLife;
-        
-
         isAlive = true;
     }
 
@@ -77,20 +70,12 @@ public class PlayerLife : MonoBehaviour
         DestroyObject(transform.gameObject);
     }
 
-    IEnumerator OnCollisionEnter2D(Collision2D collision)
+    public void DealDamageToPlayer(float damageToTake)
     {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            float damageToTake = collision.gameObject.GetComponent<EnemyHandler>().GetTotalAttack();
-            CurrentLife -= damageToTake;
-            //healthBar.value = CurrentLife;
-            ModifyHpBar();
-            SetLifeText(CurrentLife, MaxLife);
-            Debug.Log("Player took " + damageToTake + "damage.");
-            movementHandler.KnockbackOnHit(transform.position.x, collision.transform.position.x);
-
-            yield return new WaitForSeconds(0.1f);
-        }
+        CurrentLife -= damageToTake;
+        ModifyHpBar();
+        SetLifeText(CurrentLife, MaxLife);
+        Debug.Log("Player took " + damageToTake + "damage.");
     }
 
     void ModifyHpBar()
