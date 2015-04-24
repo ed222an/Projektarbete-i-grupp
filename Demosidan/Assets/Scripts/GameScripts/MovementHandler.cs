@@ -4,6 +4,7 @@ using System.Collections;
 public class MovementHandler : MonoBehaviour 
 {
     public float speed;
+    public float jumpForce;
 	public Vector2 velocity;
     public LayerMask whatIsGround;
     public Transform groundCheck;
@@ -68,7 +69,8 @@ public class MovementHandler : MonoBehaviour
 
 		// Jumping
         if (grounded && Input.GetKeyDown("space"))
-			rBody.AddForce (new Vector2 (0f, 300f));
+			//rBody.AddForce (new Vector2 (0f, 300f));
+            rBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
 
 		// Jumping animation
 		if (grounded)
