@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Weapon : MonoBehaviour 
+public class Weapon : Item 
 {
-    public float weaponDamage;
     public float attackSpeed;
-
-    BoxCollider2D weaponCollider;
 
     void Awake()
     {
-        weaponCollider = GetComponent<BoxCollider2D>();
+
     }
 
 	// Use this for initialization
@@ -18,4 +15,9 @@ public class Weapon : MonoBehaviour
     {
         
 	}
+
+    internal float GetDamage()
+    {
+        return base.damage;
+    }
 }

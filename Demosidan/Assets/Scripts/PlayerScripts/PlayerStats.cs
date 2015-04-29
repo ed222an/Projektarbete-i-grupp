@@ -10,25 +10,25 @@ public class PlayerStats : MonoBehaviour
     public float strAtkWeight = 0.35f;
 
     //Dex stat weights.
-    public float dexAtkSpdWeight = 0.03f;
+    public float dexAtkSpdWeightPercent = 0.015f; //Percent attack speed increase.
 
-    private int strength = 5;//Life, damage
-    private int dexterity = 3;// Atk speed, crit chance
-    private int intelligence = 3;//Magic damage, mana
+    private float strength = 5;//Life, damage
+    private float dexterity = 3;// Atk speed, crit chance
+    private float intelligence = 3;//Magic damage, mana
 
     #region get/set
 
-    public int Strength
+    public float Strength
     {
         get { return strength; }
     }
 
-    public int Dexterity
+    public float Dexterity
     {
         get { return dexterity; }
     }
 
-    public int Intelligence
+    public float Intelligence
     {
         get { return intelligence; }
     }
@@ -38,14 +38,14 @@ public class PlayerStats : MonoBehaviour
     {
         float attackSpeed = currentWeapon.attackSpeed;
 
-        attackSpeed -= dexAtkSpdWeight * dexterity;
+        attackSpeed -= (attackSpeed * (dexAtkSpdWeightPercent * dexterity));
 
         return attackSpeed;
     }
 
     public float CalculateAttackDamage(Weapon currentWeapon)
     {
-        float attackDamage = currentWeapon.weaponDamage;
+        float attackDamage = currentWeapon.GetDamage();
 
         attackDamage += strAtkWeight * strength;
 

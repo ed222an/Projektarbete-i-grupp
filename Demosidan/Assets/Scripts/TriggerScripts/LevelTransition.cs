@@ -3,7 +3,6 @@ using System.Collections;
 
 public class LevelTransition : MonoBehaviour 
 {
-    private BoxCollider2D trigger;
     private GameObject controller;
 
     public GameObject icon;
@@ -11,7 +10,6 @@ public class LevelTransition : MonoBehaviour
 
     void Awake()
     {
-        trigger = GetComponent<BoxCollider2D>();
         controller = GameObject.Find("GameController");
 
     }

@@ -11,9 +11,9 @@ public class MovementHandler : MonoBehaviour
 	public bool facingRight = true;
 
     private Rigidbody2D rBody;
-    private BoxCollider2D weaponCollider;
     private bool grounded = false;
     private bool canAttack = true;
+    private bool controllable = true;
     private float groundRadiusX = 0.4f;
     private float groundRadiusY = 0.05f;
     private float attackTimer = 0.0f;
@@ -27,10 +27,6 @@ public class MovementHandler : MonoBehaviour
         rBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
-        //Weapon
-        GameObject weapon = GameObject.FindGameObjectWithTag("Weapon");
-        weaponCollider = weapon.GetComponent<BoxCollider2D>();
-
         playerHandler = GetComponent<PlayerHandler>();
     }
 
@@ -41,6 +37,9 @@ public class MovementHandler : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!controllable)
+            return;
+
         grounded = Physics2D.OverlapArea(new Vector2(groundCheck.position.x - groundRadiusX, groundCheck.position.y - groundRadiusY),
                                             new Vector2(groundCheck.position.x + groundRadiusX, groundCheck.position.y + groundRadiusY), whatIsGround);
 
@@ -64,7 +63,7 @@ public class MovementHandler : MonoBehaviour
 	// Update is called once per frame
 	void Update() 
     {
-        if (Time.timeScale == 0)
+        if (Time.timeScale == 0 || !controllable)
             return;
 
 		// Jumping
@@ -128,5 +127,10 @@ public class MovementHandler : MonoBehaviour
         {
             rBody.AddForce(new Vector2(-1500f, 100f));
         }
+    }
+
+    public void SetCanControlCharacter(bool status)
+    {
+        controllable = status;
     }
 }

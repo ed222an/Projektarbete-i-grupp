@@ -62,11 +62,15 @@ public class EnemyHandler : MonoBehaviour
         else if (attackTimer <= 0)
             canAttack = true;
 
-        if (canAttack && isInAttackRange)
+        //Make sure the player exists before asking anything about the player.
+        if (playerObject != null)
         {
-            playerObject.gameObject.GetComponentInParent<PlayerLife>().DealDamageToPlayer(enemyStats.damage);
-            canAttack = false;
-            attackTimer = enemyStats.attackSpeed;
+            if (canAttack && isInAttackRange)
+            {
+                playerObject.gameObject.GetComponentInParent<PlayerLife>().DealDamageToPlayer(enemyStats.damage);
+                canAttack = false;
+                attackTimer = enemyStats.attackSpeed;
+            }
         }
     }
 
