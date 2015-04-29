@@ -51,7 +51,7 @@ public class PlayerLife : MonoBehaviour
     // Use this for initialization
 	void Start()
     {
-        SetLifeText(currentLife, maxLife);
+        SetLifeText();
 	}
 	
 	// Update is called once per frame
@@ -63,7 +63,18 @@ public class PlayerLife : MonoBehaviour
 
             KillPlayer();
         }
+
+        UpdateLife();
 	}
+
+    //Makes sure that the actual life and text is up to date based on stats.
+    void UpdateLife()
+    {
+        float lifeDif = maxLife - currentLife;
+        maxLife = playerHandler.GetPlayerMaxLife();
+        currentLife = maxLife - lifeDif;
+        SetLifeText();
+    }
 
     void KillPlayer()
     {
@@ -74,7 +85,7 @@ public class PlayerLife : MonoBehaviour
     {
         CurrentLife -= damageToTake;
         ModifyHpBar();
-        SetLifeText(CurrentLife, MaxLife);
+        SetLifeText();
         Debug.Log("Player took " + damageToTake + "damage.");
     }
 
@@ -83,7 +94,7 @@ public class PlayerLife : MonoBehaviour
         healthBar.fillAmount = currentLife / maxLife;
     }
 
-    void SetLifeText(float currentLife, float maxLife)
+    void SetLifeText()
     {
         lifeText.text = currentLife + " / " + maxLife;
     }

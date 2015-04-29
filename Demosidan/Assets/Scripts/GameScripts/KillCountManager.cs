@@ -12,7 +12,6 @@ public class KillCountManager : MonoBehaviour
 
     GUIText text;
 
-
     void Awake()
     {
         text = GetComponent<GUIText>();

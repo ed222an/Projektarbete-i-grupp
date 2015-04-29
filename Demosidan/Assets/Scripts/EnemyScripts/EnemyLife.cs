@@ -27,7 +27,7 @@ public class EnemyLife : MonoBehaviour
 
     void Awake()
     {
-        healthBar = GameObject.Find("HpBarForeGround").GetComponent<Image>();
+        healthBar = GetComponentInChildren<Image>();
         hpBarCanvas = GetComponentInChildren<Canvas>();
         currentLife = maxLife;
 

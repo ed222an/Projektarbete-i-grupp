@@ -14,6 +14,7 @@ public class Elevator : MonoBehaviour
 	void Awake()
 	{
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        //Make the player unable to move.
         GameObject.FindGameObjectWithTag("Player").GetComponent<MovementHandler>().SetCanControlCharacter(false);
 	}
 	
@@ -22,6 +23,7 @@ public class Elevator : MonoBehaviour
 	{
         if (transform.position.y <= endTransform.position.y)
         {
+            //Elevator stopped, alow him to move again.
             GameObject.FindGameObjectWithTag("Player").GetComponent<MovementHandler>().SetCanControlCharacter(true);
             return;
         }
@@ -29,23 +31,5 @@ public class Elevator : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime, transform.position.z);
 
         playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - moveSpeed * Time.deltaTime, playerTransform.position.z);
-
-        
-		/*
-		transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
-
-		if(transform.position.y >= startPos.position.y)
-		{
-			Debug.Log ("down");
-			moveSpeed = moveSpeed * -1;
-		}
-
-		if (transform.position.y <= endPos.position.y)
-		{
-			Debug.Log ("up");
-			moveSpeed = moveSpeed * -1;
-		}
-
-		*/
 	}
 }
