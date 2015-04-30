@@ -129,6 +129,10 @@ public class PlayerStats : MonoBehaviour
         foreach (Item item in items)
         {
             lifeFromItems += item.bonusLife;
+
+            //Would be pretty stupid if negative bonus life could kill you
+            if (lifeFromItems < -baseLife + 1)
+                lifeFromItems = -baseLife + 1;
         }
 
         float totalLife = baseLife + lifeFromItems + lifePerStr * Strength;
