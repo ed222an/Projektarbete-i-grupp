@@ -9,9 +9,12 @@ public class PlayerHandler : MonoBehaviour
 
     private List<Item> items = new List<Item>();
 
+    private GameObject inventory;
+
     void Awake()
     {
-        foreach (Item item in GetComponentsInChildren<Item>())
+        inventory = GameObject.FindGameObjectWithTag("Inventory");
+        foreach (Item item in inventory.GetComponentsInChildren<Item>())
             items.Add(item);
 		playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }

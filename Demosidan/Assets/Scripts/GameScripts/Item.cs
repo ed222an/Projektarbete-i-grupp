@@ -16,6 +16,8 @@ public class Item : MonoBehaviour
 {
     private Dictionary<ItemTypes, string> itemTypeNames = new Dictionary<ItemTypes, string>();
 
+    public string itemName;
+
     public ItemTypes itemType;
 
     public float damage;
