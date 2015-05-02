@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 
     //TODO: Might not want to be lazy and use a static variable here.
     public static bool characterStatsMenuActive = false;
+    public static bool inventoryActive = false;
 
     void Update()
     {
@@ -22,6 +23,13 @@ public class GameController : MonoBehaviour
         {
             Application.LoadLevelAdditive("characterinformation");
             characterStatsMenuActive = true;
+        }
+
+        //Inventory
+        if (Input.GetKeyDown(KeyCode.I) && !inventoryActive)
+        {
+            Application.LoadLevelAdditive("inventory");
+            inventoryActive = true;
         }
     }
 
