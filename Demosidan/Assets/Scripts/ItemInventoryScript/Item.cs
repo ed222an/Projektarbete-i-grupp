@@ -2,6 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 
+class ItemType
+{
+    public List<string> typeNames = new List<string>();
+
+    public ItemType()
+    {
+        typeNames.Add("Weapon");
+        typeNames.Add("Helmet");
+        typeNames.Add("Body Armor");
+        typeNames.Add("Gloves");
+        typeNames.Add("Pants");
+        typeNames.Add("Boots");
+    }
+
+    public string GetTypeName(ItemTypes index)
+    {
+        return typeNames[(int)index];
+    }
+}
+
 public enum ItemTypes
 {
     Weapon = 0,
@@ -14,7 +34,7 @@ public enum ItemTypes
 
 public class Item : MonoBehaviour 
 {
-    private Dictionary<ItemTypes, string> itemTypeNames = new Dictionary<ItemTypes, string>();
+    private ItemType itemTypeNames = new ItemType();
 
     public string itemName;
 
@@ -32,12 +52,7 @@ public class Item : MonoBehaviour
 
     void Awake()
     {
-        itemTypeNames.Add(ItemTypes.Weapon, "Weapon");
-        itemTypeNames.Add(ItemTypes.Helm, "Helm");
-        itemTypeNames.Add(ItemTypes.BodyArmor, "BodyArmor");
-        itemTypeNames.Add(ItemTypes.Gloves, "Gloves");
-        itemTypeNames.Add(ItemTypes.Pants, "Pants");
-        itemTypeNames.Add(ItemTypes.Boots, "Boots");
+
     }
 
 	// Use this for initialization
@@ -54,6 +69,6 @@ public class Item : MonoBehaviour
 
     public string GetTypeNamesString(ItemTypes type)
     {
-        return itemTypeNames[type];
+        return itemTypeNames.GetTypeName(type);
     }
 }
