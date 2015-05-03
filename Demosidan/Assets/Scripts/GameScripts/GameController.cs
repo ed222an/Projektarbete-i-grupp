@@ -5,10 +5,16 @@ public class GameController : MonoBehaviour
 {
     public GUIText restartText;
     public GameObject gameController;
+    public GameObject inventory;
 
     //TODO: Might not want to be lazy and use a static variable here.
     public static bool characterStatsMenuActive = false;
     public static bool inventoryActive = false;
+
+    void Awake()
+    {
+        inventory = GameObject.FindGameObjectWithTag("Inventory");
+    }
 
     void Update()
     {
@@ -28,8 +34,13 @@ public class GameController : MonoBehaviour
         //Inventory
         if (Input.GetKeyDown(KeyCode.I) && !inventoryActive)
         {
-            Application.LoadLevelAdditive("inventory");
+            inventory.GetComponentInChildren<Canvas>().enabled = true;
             inventoryActive = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.I) && inventoryActive)
+        {
+            inventory.GetComponentInChildren<Canvas>().enabled = false;
+            inventoryActive = false;
         }
     }
 
