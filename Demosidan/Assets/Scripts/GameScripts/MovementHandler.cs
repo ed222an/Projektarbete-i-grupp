@@ -26,7 +26,7 @@ public class MovementHandler : MonoBehaviour
     {
         rBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
+        Physics2D.IgnoreLayerCollision(8, 14);
         playerHandler = GetComponent<PlayerHandler>();
     }
 
