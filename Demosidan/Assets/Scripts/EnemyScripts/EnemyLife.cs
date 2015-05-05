@@ -47,7 +47,7 @@ public class EnemyLife : MonoBehaviour
         {
             isAlive = false;
 
-            KillCountManager.AddKill();
+            StatManager.AddKill();
 
             DestroyEnemy();
         }

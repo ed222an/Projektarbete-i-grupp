@@ -31,11 +31,8 @@ public class ShowStatsOnMouseOver : MonoBehaviour
 
     public void MouseEnter()
     {
-        Debug.Log("Enter");
-        Item currentItem = gameObject.GetComponentInChildren<Item>();
-
         itemName.text = itemInSlot.name;
-        itemType.text = itemInSlot.GetTypeNamesString(itemInSlot.itemType);
+        itemType.text = itemInSlot.GetTypeNameString(itemInSlot.itemType);
 
         strValue.text = itemInSlot.strAmount.ToString();
         dexValue.text = itemInSlot.dexAmount.ToString();
@@ -46,12 +43,10 @@ public class ShowStatsOnMouseOver : MonoBehaviour
         bonusLifeValue.text = itemInSlot.bonusLife.ToString();
 
         infoPanels.SetActive(true);
-
     }
 
     public void MouseExit()
     {
-        Debug.Log("Exit");
         infoPanels.SetActive(false);
     }
 }

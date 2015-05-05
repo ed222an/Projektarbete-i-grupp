@@ -68,8 +68,10 @@ public class MovementHandler : MonoBehaviour
 
 		// Jumping
         if (grounded && Input.GetKeyDown("space"))
-			//rBody.AddForce (new Vector2 (0f, 300f));
+        {
             rBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            StatManager.AddJump();
+        }
 
 		// Jumping animation
 		if (grounded)

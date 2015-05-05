@@ -67,7 +67,7 @@ public class Item : MonoBehaviour
 	
 	}
 
-    public string GetTypeNamesString(ItemTypes type)
+    public string GetTypeNameString(ItemTypes type)
     {
         return itemTypeNames.GetTypeName(type);
     }

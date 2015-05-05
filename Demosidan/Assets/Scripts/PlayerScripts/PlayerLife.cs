@@ -79,6 +79,7 @@ public class PlayerLife : MonoBehaviour
     void KillPlayer()
     {
         DestroyObject(transform.gameObject);
+        StatManager.AddDeath();
     }
 
     public void DealDamageToPlayer(float damageToTake)
