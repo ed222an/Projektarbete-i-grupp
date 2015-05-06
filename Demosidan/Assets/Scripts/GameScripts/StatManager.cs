@@ -14,6 +14,16 @@ public class StatManager : MonoBehaviour
         get { return killCount; }
     }
 
+    public static int JumpCount
+    {
+        get { return jumpCount; }
+    }
+
+    public static int DeathCount
+    {
+        get { return deathCount; }
+    }
+
     GUIText text;
 
     void Awake()

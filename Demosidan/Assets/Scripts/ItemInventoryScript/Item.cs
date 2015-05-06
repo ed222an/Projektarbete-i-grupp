@@ -2,39 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 
-class ItemType
-{
-    public List<string> typeNames = new List<string>();
-
-    public ItemType()
-    {
-        typeNames.Add("Weapon");
-        typeNames.Add("Helmet");
-        typeNames.Add("Body Armor");
-        typeNames.Add("Gloves");
-        typeNames.Add("Pants");
-        typeNames.Add("Boots");
-    }
-
-    public string GetTypeName(ItemTypes index)
-    {
-        return typeNames[(int)index];
-    }
-}
-
 public enum ItemTypes
 {
-    Weapon = 0,
+    None = 0,
+    Weapon,
     Helm,
     BodyArmor,
     Gloves,
     Pants,
-    Boots
+    Boots,
+    End
 }
 
 public class Item : MonoBehaviour 
 {
-    private ItemType itemTypeNames = new ItemType();
+    private Dictionary<ItemTypes, string> itemTypeName = new Dictionary<ItemTypes, string>();
 
     public string itemName;
 
@@ -52,13 +34,18 @@ public class Item : MonoBehaviour
 
     void Awake()
     {
-
+        itemTypeName.Add(ItemTypes.Weapon, "Weapon");
+        itemTypeName.Add(ItemTypes.Helm, "Helmet");
+        itemTypeName.Add(ItemTypes.BodyArmor, "Body Armor");
+        itemTypeName.Add(ItemTypes.Gloves, "Gloves");
+        itemTypeName.Add(ItemTypes.Pants, "Pants");
+        itemTypeName.Add(ItemTypes.Boots, "Boots");
     }
 
 	// Use this for initialization
 	void Start()
     {
-	    
+
 	}
 	
 	// Update is called once per frame
@@ -69,6 +56,15 @@ public class Item : MonoBehaviour
 
     public string GetTypeNameString(ItemTypes type)
     {
-        return itemTypeNames.GetTypeName(type);
+        if (type >= ItemTypes.End)
+            return "ERROR: Unknown item type, too big.";
+        else if (type <= ItemTypes.None)
+            return "ERROR: Unknown item type, too small.";
+
+        string name;
+        if (itemTypeName.TryGetValue(type, out name))
+            return name;
+
+        return "ERROR: Unknown item type.";
     }
 }
