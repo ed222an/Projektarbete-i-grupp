@@ -1,11 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum AchievementType
-{
-    KillCount
-}
-
 public class Achievement
 {
     public string achTitle;
@@ -16,13 +11,22 @@ public class Achievement
 
     private bool isComplete = false;
 
-    private AchievementType achType;
-
     public Achievement(string title, string description, int completeAt)
     {
         achTitle = title;
         achDescription = description;
         achCompleteAt = completeAt;
+    }
+
+    public void AddProgress(int progress)
+    {
+        //You can insert negative values to remove ach progress.
+        if (progress > achCompleteAt)
+            progress = achCompleteAt;
+
+        achCompleteAt += progress;
+
+        CheckIfComplete();
     }
 
     public void SetProgress(int progress)

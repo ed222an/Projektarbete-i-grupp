@@ -3,6 +3,7 @@ using System.Collections;
 
 public class StatManager : MonoBehaviour 
 {
+    //TODO: This is temp while we test achieves
     public static bool statChanged = false;
 
     private static int killCount;
