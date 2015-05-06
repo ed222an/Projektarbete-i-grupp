@@ -18,6 +18,13 @@ public class PauseMenuHandler : MonoBehaviour
         
     }
 
+    void Update()
+    {
+        //Handle a second press, this should close the window
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ClosePausMenu();
+    }
+
     //Continue the game.
     public void Continue()
     {
@@ -33,6 +40,12 @@ public class PauseMenuHandler : MonoBehaviour
     public void GoToMainMenu()
     {
         Application.LoadLevel("mainmenu");
+        Time.timeScale = 1f;
+        Destroy(pauseObject);
+    }
+
+    public void ClosePausMenu()
+    {
         Time.timeScale = 1f;
         Destroy(pauseObject);
     }

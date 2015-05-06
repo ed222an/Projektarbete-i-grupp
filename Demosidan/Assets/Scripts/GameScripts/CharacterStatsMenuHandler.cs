@@ -45,7 +45,7 @@ public class CharacterStatsMenuHandler : MonoBehaviour
         atkSpdValue.text = "" + playerHandler.GetPlayerAttackSpeed().ToString("F2");
 
         //Handle a second I press, this should close the window
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Escape) || !GameController.characterStatsMenuActive)
             CloseStatsMenu();
 	}
 
