@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WWWPostPlayerData : MonoBehaviour 
 {
-    public string URL = "http://www.metalgenre.se/api/rest/status.php";
+    public string URL = "http://www.metalgenre.se/api/stats/PostStats.php";
     public string statName = "kills";
     public string username = "Admin";
     public string password = "Password";

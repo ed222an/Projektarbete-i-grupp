@@ -9,8 +9,8 @@ public class AchievementHandler : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
-        achievements.Add(new Achievement("10 kills", "Kill 10 monsters.", 10));
-        achievements.Add(new Achievement("10 jumps", "Jump 10 times.", 10));
+        achievements.Add(new Achievement("Murder.", "Kill 10 monsters.", 10));
+        achievements.Add(new Achievement("Like a bunny.", "Jump 10 times.", 10));
         achievements.Add(new Achievement("Great force in every swing.", "Reach a total of 10 attack damage.", 1));
 	}
 	
@@ -20,8 +20,8 @@ public class AchievementHandler : MonoBehaviour
         //TODO: A temporary way to test achieves and show them in the upcoming GUI.
         if (StatManager.statChanged)
         {
-            SetAchievementProgress("10 kills", StatManager.KillCount);
-            SetAchievementProgress("10 jumps", StatManager.JumpCount);
+            SetAchievementProgress("Murder", StatManager.KillCount);
+            SetAchievementProgress("Like a bunny.", StatManager.JumpCount);
 
             StatManager.statChanged = false;
         }
