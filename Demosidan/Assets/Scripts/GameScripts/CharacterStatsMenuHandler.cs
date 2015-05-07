@@ -52,6 +52,10 @@ public class CharacterStatsMenuHandler : MonoBehaviour
     public void CloseStatsMenu()
     {
         Destroy(statsMenuObject);
+    }
+
+    void OnDestroy()
+    {
         GameController.characterStatsMenuActive = false;
     }
 }
