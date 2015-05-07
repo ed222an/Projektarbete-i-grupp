@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
             }
 
             //Achievement menu
-            if (Input.GetKeyDown(KeyCode.Y) )
+            if (Input.GetKeyDown(KeyCode.Y) && !achievementActive)
             {
                 //TODO: Compile stats and achievements in one scene to eliminate the issue with closing and opening a new scene (looks like flickering)
                 if (characterStatsMenuActive)
