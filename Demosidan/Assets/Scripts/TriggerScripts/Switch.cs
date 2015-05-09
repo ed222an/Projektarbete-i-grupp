@@ -5,9 +5,16 @@ public class Switch : MonoBehaviour
 {
 	public GameObject icon;
 	public float waitTime = 0.1f;
+    public GameObject target;    
 
 	private Animator anim;
 	private bool canFlip = true;
+    private Component targetScript;
+
+    void Awake()
+    {
+        targetScript = target.GetComponent<MonoBehaviour>();
+    }
 
 	void Start() 
 	{
@@ -18,7 +25,7 @@ public class Switch : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{            
-			if (Input.GetKeyUp(KeyCode.E))
+			if (Input.GetKeyDown(KeyCode.E))
 			{
 				if(canFlip)
 				{
@@ -32,7 +39,13 @@ public class Switch : MonoBehaviour
 	IEnumerator FlipSwitch()
 	{
 		anim.SetTrigger ("Flip");
+        
 		yield return new WaitForSeconds (waitTime);
+        if (targetScript is ISwitch)
+        {
+            ISwitch script = (ISwitch)targetScript;
+            script.SwitchAction();
+        }
 		canFlip = true;
 	}
 	
