@@ -3,6 +3,9 @@ using System.Collections;
 
 public class GameController : MonoBehaviour 
 {
+    public static GameController controller;
+    public static int[] nonGameLevels = new int[] { 0 };
+
     public GUIText restartText;
     public GameObject gameController;
     public GameObject inventory;
@@ -15,7 +18,27 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory");
+
+        //if (controller == null)
+        //{
+        //    DontDestroyOnLoad(gameObject);
+        //    controller = this;
+        //}
+        //else if (controller != this)
+        //    Destroy(gameObject);
     }
+
+    //TODO: Figure out how to do with inventory, make i persist just the way this one does?
+    //void OnLevelWasLoaded(int levelId)
+    //{
+    //    foreach (int level in nonGameLevels)
+    //    {
+    //        if (levelId == level)
+    //        {
+    //            Destroy(gameObject);
+    //        }
+    //    }
+    //}
 
     void Update()
     {      

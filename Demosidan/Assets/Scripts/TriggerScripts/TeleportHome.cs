@@ -5,11 +5,11 @@ public class TeleportHome : MonoBehaviour {
 
     private GameObject controller;
     public int sceneToLoad;
+    public int spawnPoint = 1;
 
     void Awake()
     {
         controller = GameObject.Find("GameController");
-
     }
 
     IEnumerator ChangeLevel()
@@ -17,6 +17,7 @@ public class TeleportHome : MonoBehaviour {
         float fadeTime = controller.GetComponent<Fading>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
         GameController.characterStatsMenuActive = false;
+        SpawnPoint.spawnAt = spawnPoint;
         Application.LoadLevel(sceneToLoad);
     }
 

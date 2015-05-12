@@ -102,7 +102,6 @@ public class PlayerStats : MonoBehaviour
         //Debug.Log("After dimnish : " + ((0.7f * (1 - Mathf.Pow(1 + (dexAtkSpdWeightPercent * dex + atkSpdPercentIncrease), -1f))) * 100));
 
         //Can't say if this is even 90% Correct, but this will make sure the bonus attackspeed % can never go over 70%
-        //TODO: Check back on this formula.
         attackSpeed -= (attackSpeed * (0.7f * (1 - Mathf.Pow(1 + (dexAtkSpdWeightPercent * Dexterity + atkSpdPercentIncrease), -1f))));
         
         return attackSpeed;

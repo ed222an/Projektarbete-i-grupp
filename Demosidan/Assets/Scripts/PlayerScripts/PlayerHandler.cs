@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//TODO: Figure out exactly what this class should handle.
 public class PlayerHandler : MonoBehaviour 
 {
     public PlayerStats playerStats;

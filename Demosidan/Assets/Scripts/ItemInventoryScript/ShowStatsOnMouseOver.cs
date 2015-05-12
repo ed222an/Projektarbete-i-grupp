@@ -24,8 +24,6 @@ public class ShowStatsOnMouseOver : MonoBehaviour
 
     void Awake()
     {
-        //TODO: We might want to find all the text fields here, just to make it easier?
-
         itemInSlot = GetComponentInChildren<Item>();
     }
 

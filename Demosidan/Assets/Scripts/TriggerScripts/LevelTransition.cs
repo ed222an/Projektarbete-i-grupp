@@ -7,6 +7,7 @@ public class LevelTransition : MonoBehaviour
 
     public GameObject icon;
     public int sceneToLoad;
+    public int spawnPoint = 1;
 
     void Awake()
     {
@@ -32,10 +33,10 @@ public class LevelTransition : MonoBehaviour
 
     IEnumerator ChangeLevel()
     {
-        
         float fadeTime = controller.GetComponent<Fading>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
         GameController.characterStatsMenuActive = false;
+        SpawnPoint.spawnAt = spawnPoint;
         Application.LoadLevel(sceneToLoad);
     }
 

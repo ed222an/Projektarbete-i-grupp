@@ -7,7 +7,7 @@ public class AchievementHandler : MonoBehaviour
 {
     public List<Achievement> achievements = new List<Achievement>();
 
-	// Use this for initialization
+	//Use this for initialization
 	void Start()
     {
         achievements.Add(new Achievement("Murder", "Kill 10 monsters.", 10));
@@ -15,15 +15,15 @@ public class AchievementHandler : MonoBehaviour
         achievements.Add(new Achievement("Big force in every swing", "Reach a total of 4 attack damage.", 4));
 	}
 	
-	// Update is called once per frame
+	//Update is called once per frame
 	void Update()
     {
-        //TODO: A temporary way to test achieves and show them in the upcoming GUI.
+        //TODO: A temporary way to test achieves and show them in the GUI.
         if (StatManager.statChanged)
         {
             SetAchievementProgress("Murder", StatManager.KillCount);
             SetAchievementProgress("Like a bunny", StatManager.JumpCount);
-            Debug.Log("statChanged");
+            Debug.Log("Ach stats updated");
             StatManager.statChanged = false;
         }
 	}
