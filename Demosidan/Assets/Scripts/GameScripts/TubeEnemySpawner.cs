@@ -6,6 +6,7 @@ public class TubeEnemySpawner : MonoBehaviour, ISwitch
 
     public Transform startTransform;
     public Transform endTransform;
+    public Transform enemyParent;
     public float moveSpeed;
     public GameObject workerbotPrefab;
     public bool spawnerEnabled;
@@ -79,7 +80,8 @@ public class TubeEnemySpawner : MonoBehaviour, ISwitch
         canMove = false;
 
         yield return new WaitForSeconds(1);
-        Instantiate(workerbotPrefab, transform.position, transform.rotation);
+        GameObject enemy = (GameObject)Instantiate(workerbotPrefab, transform.position, transform.rotation);
+        enemy.transform.SetParent(enemyParent, false);
         yield return new WaitForSeconds(1);
 
         canMove = true;
