@@ -23,8 +23,13 @@ public class Switch : MonoBehaviour
 
 	void Start() 
 	{
-        objectiveText = objective.GetComponent<Text>();
-		anim = gameObject.GetComponent<Animator> ();
+        if (!onAndOffSwitch)
+        {
+            objectiveText = objective.GetComponent<Text>();
+            
+        }
+
+        anim = gameObject.GetComponent<Animator>();
 	}
 	
 	void OnTriggerStay2D(Collider2D other)
@@ -51,9 +56,13 @@ public class Switch : MonoBehaviour
         {
             ISwitch script = (ISwitch)targetScript;
             script.SwitchAction();
-            objectiveText.color = Color.green;
-            objectiveText.text += " DONE";
-            StartCoroutine("showCompletionText");
+            if (!onAndOffSwitch)
+            {
+                objectiveText.color = Color.green;
+                objectiveText.text += " DONE";
+                StartCoroutine("showCompletionText");
+            }
+            
         }
 
         if (onAndOffSwitch)

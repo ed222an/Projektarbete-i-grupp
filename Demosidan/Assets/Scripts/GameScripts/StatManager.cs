@@ -30,7 +30,7 @@ public class StatManager : MonoBehaviour
     void Awake()
     {
         text = GetComponent<GUIText>();
-        killCount = 0;
+        //killCount = 0;
     }
 	
 	void Update () 

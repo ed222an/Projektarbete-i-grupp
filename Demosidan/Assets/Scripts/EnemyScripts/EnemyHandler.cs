@@ -46,7 +46,6 @@ public class EnemyHandler : MonoBehaviour
         speed = Random.Range(speed - 0.5f, speed + 1);
         moveDirection = Random.Range(0, 2);
         Physics2D.IgnoreLayerCollision(12, 12);
-        Physics2D.IgnoreLayerCollision(12, 14);
 
         if (moveDirection == 0)
             moveDirection = -1;
