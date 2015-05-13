@@ -5,6 +5,13 @@ using System.Collections.Generic;
 public class PlayerHandler : MonoBehaviour 
 {
     public PlayerStats playerStats;
+    private float goldCoins;
+
+    public float GoldCoins
+    {
+        get { return goldCoins; }
+        set { goldCoins = value; }
+    }
 
     private List<Item> items = new List<Item>();
 

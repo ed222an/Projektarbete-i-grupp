@@ -74,6 +74,7 @@ public class PlayerLife : MonoBehaviour
         maxLife = playerHandler.GetPlayerMaxLife();
         currentLife = maxLife - lifeDif;
         SetLifeText();
+        ModifyHpBar();
     }
 
     void KillPlayer()
@@ -85,9 +86,7 @@ public class PlayerLife : MonoBehaviour
     public void DealDamageToPlayer(float damageToTake)
     {
         CurrentLife -= damageToTake;
-        ModifyHpBar();
-        SetLifeText();
-        Debug.Log("Player took " + damageToTake + "damage.");
+        Debug.Log("Player took " + damageToTake + " damage.");
     }
 
     void ModifyHpBar()

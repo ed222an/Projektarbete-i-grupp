@@ -20,9 +20,6 @@ public class StickBetweenScenes : MonoBehaviour
 
             if (objectsToAdd.Length != 0)
             {
-                foreach (GameObject gameObj in objectsToAdd)
-                    Debug.Log(gameObj + "Unique ID = " + gameObj.GetInstanceID());
-
                 if (CheckIfObjectExists(objectsToAdd))
                 {
                     GameObject objectToDestroy = GetObjectForRemoval(objectsToAdd);

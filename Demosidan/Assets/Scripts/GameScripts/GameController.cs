@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameController : MonoBehaviour 
@@ -18,27 +19,8 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory");
-
-        //if (controller == null)
-        //{
-        //    DontDestroyOnLoad(gameObject);
-        //    controller = this;
-        //}
-        //else if (controller != this)
-        //    Destroy(gameObject);
+        restartText = GameObject.Find("RestartText").GetComponent<GUIText>();//TODO: This is not good, but is needed since most scenes don't have it assigned, and i'm too lazy to assign every single scene, won't be needed later on anyways since we won't have every object in every scene.
     }
-
-    //TODO: Figure out how to do with inventory, make i persist just the way this one does?
-    //void OnLevelWasLoaded(int levelId)
-    //{
-    //    foreach (int level in nonGameLevels)
-    //    {
-    //        if (levelId == level)
-    //        {
-    //            Destroy(gameObject);
-    //        }
-    //    }
-    //}
 
     void Update()
     {      
@@ -101,6 +83,9 @@ public class GameController : MonoBehaviour
 
         restartText.enabled = true;
         if (Input.GetKeyDown(KeyCode.R))
+        {
+            restartText.enabled = false;
             Application.LoadLevel(Application.loadedLevel);
+        }
     }
 }
