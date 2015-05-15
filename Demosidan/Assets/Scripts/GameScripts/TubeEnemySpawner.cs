@@ -26,8 +26,8 @@ public class TubeEnemySpawner : MonoBehaviour, ISwitch
         if (moveDirection == 0)
             moveDirection = -1;
 
-        minTime = 5;
-        maxTime = 10;
+        minTime = 8;
+        maxTime = 16;
 
         SetSpawnTime();
     }
@@ -51,7 +51,6 @@ public class TubeEnemySpawner : MonoBehaviour, ISwitch
     private void SetSpawnTime()
     {
         spawnTime = Random.Range(minTime, maxTime);
-        spawnTime = 5;
     }
 	
 	// Update is called once per frame
