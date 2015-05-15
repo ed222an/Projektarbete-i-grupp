@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerStats : MonoBehaviour
 {
     //Set this to false to reflect stat changes, like when a gear part has been upgraded, removed or added, anything that changes the current stats.
-    public static bool baseStatHasChanged = true;
+    public static bool baseStatHasChanged = true;//Has to be true initially
 
     public float baseLife = 5;
 
@@ -66,7 +66,6 @@ public class PlayerStats : MonoBehaviour
     void Awake()
     {
         playerHandler = GetComponent<PlayerHandler>();
-        UpdateBaseStats();
     }
 
     void Update()
