@@ -7,8 +7,9 @@ public class KillAllEnemies : MonoBehaviour
     public Transform enemies;
     public GameObject unlockTarget;
     public Text completionText;
+    public bool killAll;
+    public int totalEnemies;
 
-    private int totalEnemies;
     private int enemiesKilled;
     private Text objectiveText;
     private string objectiveString;
@@ -22,7 +23,11 @@ public class KillAllEnemies : MonoBehaviour
 
 	void Start () 
     {
-        totalEnemies = enemies.childCount;
+        if (killAll)
+        {
+            totalEnemies = enemies.childCount;
+        }
+        
 	}
 	
 	// Update is called once per frame
