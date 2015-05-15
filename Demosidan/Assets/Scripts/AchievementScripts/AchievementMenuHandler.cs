@@ -9,6 +9,7 @@ public class AchievementMenuHandler : MonoBehaviour {
     public GameObject statisticTab;
     public GameObject achievementTab;
     public GameObject achievementDisplayObject;
+    public GameObject achievementDisplayRewardObject;
     public Button achievementTabButton;
     public Button statisticsTabButton;
     public Sprite completeImage;
@@ -25,11 +26,25 @@ public class AchievementMenuHandler : MonoBehaviour {
 
     void Start()
     {
-        achList = GameObject.Find("GameController").GetComponent<AchievementHandler>().achievements;
+        AchievementHandler achHandler = GameObject.FindWithTag("GameController").GetComponent<AchievementHandler>();
+
+        achList = achHandler.GetAllAchievements();
 
         foreach (Achievement ach in achList)
         {
-            GameObject achDispObj = GameObject.Instantiate(achievementDisplayObject);
+            GameObject achDispObj;
+
+            if (ach.RewardType == RewardType.NONE)
+                achDispObj = GameObject.Instantiate(achievementDisplayObject);
+            else//If there's a reward on the achievement, instantiate a reward object and set the reward.
+            {
+                achDispObj = GameObject.Instantiate(achievementDisplayRewardObject);
+                AchievementDisplay display = achDispObj.GetComponent<AchievementDisplay>();
+                if (ach.RewardType == RewardType.atkSpd)
+                    display.rewardText.text = "Reward: " + (ach.RewardValue * 100).ToString() + "% " + achHandler.GetRewardTypeString(ach.RewardType);
+                else
+                    display.rewardText.text = "Reward: " + ach.RewardValue.ToString() + " " + achHandler.GetRewardTypeString(ach.RewardType);
+            }
             achDispObj.transform.SetParent(contentPanel.transform, false);
             achievementDisplayObjects.Add(achDispObj);
         }
@@ -60,15 +75,19 @@ public class AchievementMenuHandler : MonoBehaviour {
             for (int i = 0; i < achievementDisplayObjects.Count; i++)
             {
                 AchievementDisplay display = achievementDisplayObjects[i].GetComponent<AchievementDisplay>();
-                display.titleText.text = achList[i].achTitle;
+                display.titleText.text = achList[i].AchTitle;
                 if (achList[i].IsComplete())
-                    display.achievementImage.GetComponent<Image>().sprite = completeImage;
-                display.descriptionText.text = achList[i].achDescription;
-                if (achList[i].achProgress != 0)
                 {
-                    display.progressBar.fillAmount = ((float)achList[i].achProgress / (float)achList[i].achCompleteAt);
+                    display.achievementImage.GetComponent<Image>().sprite = completeImage;
+                    display.rewardText.GetComponentInParent<Image>().color = new Color32(246, 233, 75, 255);
                 }
-                display.progressValue.text = achList[i].achProgress.ToString() + " / " + achList[i].achCompleteAt.ToString();
+
+                display.descriptionText.text = achList[i].AchDescription;
+                if (achList[i].AchProgress != 0)
+                {
+                    display.progressBar.fillAmount = ((float)achList[i].AchProgress / (float)achList[i].AchCompleteAt);
+                }
+                display.progressValue.text = achList[i].AchProgress.ToString() + " / " + achList[i].AchCompleteAt.ToString();
             }
         }
     }

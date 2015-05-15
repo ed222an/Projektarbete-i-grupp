@@ -5,13 +5,24 @@ using System.Collections.ObjectModel;
 
 public class AchievementHandler : MonoBehaviour 
 {
-    public List<Achievement> achievements = new List<Achievement>();
+    private List<Achievement> achievements = new List<Achievement>();
+    private Dictionary<RewardType, string> rewardTypeNames = new Dictionary<RewardType, string>();
+
+    void Awake()
+    {
+        rewardTypeNames.Add(RewardType.str, "Strength");
+        rewardTypeNames.Add(RewardType.dex, "Dex");
+        rewardTypeNames.Add(RewardType.damage, "Damage");
+        rewardTypeNames.Add(RewardType.life, "Life");
+        rewardTypeNames.Add(RewardType.atkSpd, "Attack speed");
+        rewardTypeNames.Add(RewardType.movementSpd, "Movement speed");
+    }
 
 	//Use this for initialization
 	void Start()
     {
-        achievements.Add(new Achievement("Murder", "Kill 10 monsters.", 10));
-        achievements.Add(new Achievement("Like a bunny", "Jump 10 times.", 10));
+        achievements.Add(new Achievement("Murder", "Kill 10 monsters.", 1, RewardType.life, 3));
+        achievements.Add(new Achievement("Like a bunny", "Jump 10 times.", 1, RewardType.atkSpd, 0.05f));
         achievements.Add(new Achievement("Big force in every swing", "Reach a total of 4 attack damage.", 4));
 	}
 	
@@ -61,7 +72,7 @@ public class AchievementHandler : MonoBehaviour
 
     public Achievement GetAchievementByName(string name)
     {
-        return achievements.Find(ach => ach.achTitle == name);
+        return achievements.Find(ach => ach.AchTitle == name);
     }
 
     public IList<Achievement> GetAllAchievements()
@@ -69,8 +80,52 @@ public class AchievementHandler : MonoBehaviour
         return achievements.AsReadOnly();
     }
 
+    public IList<Achievement> GetAllCompletedAchievements()
+    {
+        List<Achievement> compList = new List<Achievement>();
+        foreach (Achievement ach in achievements)
+        {
+            if (ach.IsComplete())
+                compList.Add(ach);
+        }
+
+        return compList.AsReadOnly();
+    }
+
     private void LoadAchievements()
     {
 
+    }
+
+    public string GetRewardTypeString(RewardType type)
+    {
+        if (type >= RewardType.END)
+            return "ERROR: Unknown item type, too big.";
+        else if (type <= RewardType.NONE)
+            return "ERROR: Unknown item type, too small.";
+
+        string name;
+        if (rewardTypeNames.TryGetValue(type, out name))
+            return name;
+
+        return "ERROR: Unknown item type.";
+    }
+
+    public float GetActiveBonusByType(RewardType type)
+    {
+        float bonus = 0.0f;
+
+        foreach (Achievement ach in GetAllCompletedAchievements())
+        {
+            if (ach.RewardType == type)
+                bonus += ach.RewardValue;
+        }
+
+        return bonus;
+    }
+
+    public float GetActiveMovementSpeedBonus()
+    {
+        return 0.0f;
     }
 }

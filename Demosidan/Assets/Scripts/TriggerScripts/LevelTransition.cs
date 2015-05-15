@@ -11,7 +11,7 @@ public class LevelTransition : MonoBehaviour
 
     void Awake()
     {
-        controller = GameObject.Find("GameController");
+        controller = GameObject.FindWithTag("GameController");
 
     }
 	void Start() 

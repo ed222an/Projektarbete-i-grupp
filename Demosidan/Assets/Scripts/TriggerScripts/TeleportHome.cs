@@ -9,7 +9,7 @@ public class TeleportHome : MonoBehaviour {
 
     void Awake()
     {
-        controller = GameObject.Find("GameController");
+        controller = GameObject.FindWithTag("GameController");
     }
 
     IEnumerator ChangeLevel()

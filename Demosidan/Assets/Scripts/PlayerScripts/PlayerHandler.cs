@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlayerHandler : MonoBehaviour 
 {
     public PlayerStats playerStats;
+    public AchievementHandler achHandler;
     private float goldCoins;
 
     public float GoldCoins
@@ -23,6 +24,7 @@ public class PlayerHandler : MonoBehaviour
         foreach (Item item in inventory.GetComponentsInChildren<Item>())
             items.Add(item);
 		playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        achHandler = GameObject.FindWithTag("GameController").GetComponent<AchievementHandler>();
     }
 	// Use this for initialization
 	void Start()
@@ -32,21 +34,29 @@ public class PlayerHandler : MonoBehaviour
 
     public float GetTotalPlayerAttack()
     {
-        return playerStats.CalculateAttackDamage(items);
+        float achDamageBonus = achHandler.GetActiveBonusByType(RewardType.damage);
+        return playerStats.CalculateAttackDamage(items, achDamageBonus);
     }
 
     public float GetPlayerAttackSpeed()
     {
-        return playerStats.CalculateAttackSpeed(items);
+        float achAttackSpeedBonus = achHandler.GetActiveBonusByType(RewardType.atkSpd);
+        return playerStats.CalculateAttackSpeed(items, achAttackSpeedBonus);
     }
 
     public float GetPlayerMaxLife()
     {
-        return playerStats.CalculateMaxLife(items);
+        float achLifeBonus = achHandler.GetActiveBonusByType(RewardType.life);
+        return playerStats.CalculateMaxLife(items, achLifeBonus);
     }
 
     public List<Item> GetEquippedItems()
     {
         return items;
+    }
+
+    public IList<Achievement> GetFinishedAchievements()
+    {
+        return achHandler.GetAllCompletedAchievements();
     }
 }

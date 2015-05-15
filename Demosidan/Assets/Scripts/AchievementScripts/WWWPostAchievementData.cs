@@ -31,7 +31,7 @@ public class WWWPostAchievementData : MonoBehaviour
     {
         WWWForm form = new WWWForm();
 
-        form.AddField(achievement, ach.achTitle);
+        form.AddField(achievement, ach.AchTitle);
         form.AddField(achievementIsDone, ach.IsComplete() ? 1 : 0);
         form.AddField(username, userUsername);
         form.AddField(password, AES.encrypt(userPassword));
@@ -42,6 +42,6 @@ public class WWWPostAchievementData : MonoBehaviour
         if (!string.IsNullOrEmpty(w.error))
             print(w.error);
         else
-            print("Achievement " + ach.achTitle + " uploaded.");
+            print("Achievement " + ach.AchTitle + " uploaded.");
     }
 }

@@ -77,7 +77,8 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public float CalculateAttackSpeed(List<Item> items)
+    //TODO: Implement achievement rewards here.
+    public float CalculateAttackSpeed(List<Item> items, float achAttackSpeedBonus)
     {
         Weapon weapon = items.Find(item => item.itemType == ItemTypes.Weapon) as Weapon;
 
@@ -88,7 +89,7 @@ public class PlayerStats : MonoBehaviour
         else
             attackSpeed = 0.5f;
 
-        float atkSpdPercentIncrease = 0.0f;
+        float atkSpdPercentIncrease = achAttackSpeedBonus;
 
         foreach (Item item in items)
         {
@@ -107,9 +108,10 @@ public class PlayerStats : MonoBehaviour
         return attackSpeed;
     }
 
-    public float CalculateAttackDamage(List<Item> items)
+    //TODO: Implement achievement rewards here.
+    public float CalculateAttackDamage(List<Item> items, float achDamageBonus)
     {
-        float itemDamage = 0;
+        float itemDamage = achDamageBonus;
 
         foreach (Item item in items)
         {
@@ -121,9 +123,10 @@ public class PlayerStats : MonoBehaviour
         return totalDamage;
     }
 
-    public float CalculateMaxLife(List<Item> items)
+    //TODO: Implement achievement rewards here.
+    public float CalculateMaxLife(List<Item> items, float achLifeBonus)
     {
-        float lifeFromItems = 0;
+        float lifeFromItems = achLifeBonus;
 
         foreach (Item item in items)
         {
@@ -151,6 +154,15 @@ public class PlayerStats : MonoBehaviour
             Dexterity += item.dexAmount;
             Intelligence += item.intAmount;
         }
+
+        foreach (Achievement ach in playerHandler.GetFinishedAchievements())
+        {
+            if (ach.RewardType == RewardType.str)
+                Strength += ach.RewardValue;
+            else if (ach.RewardType == RewardType.dex)
+                Dexterity += ach.RewardValue;
+        }
+
         //TODO: Uncomment this when testing stats are finished. Not even sure it's needed, performance?
         //baseStatHasChanged = false;
     }

@@ -10,7 +10,7 @@ public class PauseMenuHandler : MonoBehaviour
     void Awake()
     {
         Time.timeScale = 0.0f;
-        poster = GameObject.Find("GameController").GetComponent<WWWPostPlayerData>();
+        poster = GameObject.FindWithTag("GameController").GetComponent<WWWPostPlayerData>();
     }
 
     void Start()
