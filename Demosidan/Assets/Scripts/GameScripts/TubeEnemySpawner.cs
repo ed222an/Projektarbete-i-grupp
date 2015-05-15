@@ -26,8 +26,8 @@ public class TubeEnemySpawner : MonoBehaviour, ISwitch
         if (moveDirection == 0)
             moveDirection = -1;
 
-        minTime = 8;
-        maxTime = 16;
+        minTime = 5;
+        maxTime = 10;
 
         SetSpawnTime();
     }

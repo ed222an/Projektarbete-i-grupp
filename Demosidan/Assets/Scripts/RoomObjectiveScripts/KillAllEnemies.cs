@@ -19,6 +19,12 @@ public class KillAllEnemies : MonoBehaviour
     {
         objectiveText = GetComponent<Text>();
         objectiveString = "Kill all enemies ";
+        EnemyDeathEventManager.OnDeath += AddKill;
+    }
+
+    void OnDisable()
+    {
+        EnemyDeathEventManager.OnDeath -= AddKill;
     }
 
 	void Start () 
@@ -26,16 +32,20 @@ public class KillAllEnemies : MonoBehaviour
         if (killAll)
         {
             totalEnemies = enemies.childCount;
-        }
-        
+        }      
 	}
+
+    private void AddKill()
+    {
+        Debug.Log("Killed one");
+        enemiesKilled += 1;
+    }
 	
 	// Update is called once per frame
 	void Update () 
     {
         if (!objectiveIsDone)
         {
-            enemiesKilled = totalEnemies - enemies.childCount;
             objectiveText.text = objectiveString + enemiesKilled + " / " + totalEnemies;
 
             if (enemiesKilled == totalEnemies)

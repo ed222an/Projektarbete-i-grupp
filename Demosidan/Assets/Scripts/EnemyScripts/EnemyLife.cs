@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class EnemyLife : MonoBehaviour 
 {
+    public static event EnemyDeathEventManager.DeathAction WorkerBotDeath;
+
     public float maxLife;
     public EnemyHandler enemyHandler;
 
@@ -48,7 +50,9 @@ public class EnemyLife : MonoBehaviour
             isAlive = false;
 
             StatManager.AddKill();
-
+            if (WorkerBotDeath != null)
+                WorkerBotDeath();
+            
             DestroyEnemy();
         }
 	}

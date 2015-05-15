@@ -43,7 +43,7 @@ public class EnemyHandler : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
         playerObject = target.gameObject;
         hpBarRect = GetComponentInChildren<RectTransform>();
-        speed = Random.Range(speed - 0.5f, speed + 1);
+        speed = Random.Range(speed - 0.5f, speed + 0.5f);
         moveDirection = Random.Range(0, 2);
         Physics2D.IgnoreLayerCollision(12, 12);
         Physics2D.IgnoreLayerCollision(12, 16);
