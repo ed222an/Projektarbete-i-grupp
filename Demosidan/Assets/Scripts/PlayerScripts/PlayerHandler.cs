@@ -24,7 +24,7 @@ public class PlayerHandler : MonoBehaviour
         foreach (Item item in inventory.GetComponentsInChildren<Item>())
             items.Add(item);
 		playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        achHandler = GameObject.FindGameObjectWithTag("GameController").GetComponent<AchievementHandler>();
+        achHandler = GameObject.FindWithTag("GameController").GetComponent<AchievementHandler>();
     }
 	// Use this for initialization
 	void Start()
