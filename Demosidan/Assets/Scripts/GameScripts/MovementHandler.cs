@@ -10,6 +10,11 @@ public class MovementHandler : MonoBehaviour
     public Transform groundCheck;
 	public bool facingRight = true;
 
+	// Engineer related
+	public bool isEngineer = false;
+	public GameObject cannonball;
+	public GameObject bulletSpawnpoint;
+
     private Rigidbody2D rBody;
     private bool grounded = false;
     private bool canAttack = true;
@@ -91,6 +96,11 @@ public class MovementHandler : MonoBehaviour
             canAttack = false;
             
             attackTimer = playerHandler.GetPlayerAttackSpeed();
+
+			if(isEngineer)
+			{
+				GameObject newBullet = Instantiate(cannonball, bulletSpawnpoint.transform.position, Quaternion.identity) as GameObject;
+			}
 		} 
         else
 		{
