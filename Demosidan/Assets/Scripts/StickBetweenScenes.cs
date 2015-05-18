@@ -7,7 +7,7 @@ public class StickBetweenScenes : MonoBehaviour
     private static List<GameObject> gameObjects = new List<GameObject>();
     private string[] tagsOnStickyObjects = new string[] { "GameController", "Inventory", "Player", "UI" };
 
-    public static int[] nonGameLevels = new int[] { 0, 18 };
+    public static int[] nonGameLevels = new int[] { 0, 17 };
 
     void Awake()
     {
