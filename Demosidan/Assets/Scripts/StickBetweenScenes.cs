@@ -33,7 +33,7 @@ public class StickBetweenScenes : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("obj " + objectsToAdd[0] + " added to sticky list");
+                    Debug.Log("obj " + objectsToAdd[0] + " added to sticky list, unique ID = " + objectsToAdd[0].GetInstanceID());
                     DontDestroyOnLoad(objectsToAdd[0]);
                     gameObjects.Add(objectsToAdd[0]);
                 }
