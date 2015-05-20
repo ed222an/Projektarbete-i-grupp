@@ -27,12 +27,20 @@ public class MovementHandler : MonoBehaviour
 
     private PlayerHandler playerHandler;
 
+	// Audio
+	public AudioClip[] jumpSounds;
+	public AudioClip[] attackSounds;
+	
+	private bool isPlaying = false;
+	private AudioSource audio;
+
     void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         Physics2D.IgnoreLayerCollision(8, 14);
         playerHandler = GetComponent<PlayerHandler>();
+		audio = gameObject.GetComponent<AudioSource>();
     }
 
     void Start()
@@ -76,13 +84,21 @@ public class MovementHandler : MonoBehaviour
         {
             rBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             StatManager.AddJump();
+
+			// Jump sound
+			if(!isPlaying)
+			{
+				StartCoroutine(PlayJumpSound());
+			}
         }
 
 		// Jumping animation
 		if (grounded)
 			anim.SetBool("Grounded", true);
 		else
+		{
 			anim.SetBool("Grounded", false);
+		}
 
 		if (velocity.x != 0)
 			anim.SetBool("Running", true);
@@ -97,9 +113,17 @@ public class MovementHandler : MonoBehaviour
             
             attackTimer = playerHandler.GetPlayerAttackSpeed();
 
+			// If the player is playing the Engineer...
 			if(isEngineer)
 			{
+				// Spawn a bullet.
 				GameObject newBullet = Instantiate(cannonball, bulletSpawnpoint.transform.position, Quaternion.identity) as GameObject;
+			}
+
+			// Attack sound
+			if(!isPlaying)
+			{
+				StartCoroutine(PlayAttackSound());
 			}
 		} 
         else
@@ -118,6 +142,38 @@ public class MovementHandler : MonoBehaviour
             attackTimer -= Time.deltaTime;
         }
 
+	}
+
+	// Plays the jump sound
+	public IEnumerator PlayJumpSound()
+	{
+		if (!isPlaying)
+		{
+			isPlaying = true;
+			
+			int random = Random.Range(0,jumpSounds.Length);
+			audio.PlayOneShot(jumpSounds[random]);
+			
+			yield return new WaitForSeconds(jumpSounds[random].length);
+			
+			isPlaying = false;
+		}
+	}
+
+	// Plays the attack sound
+	public IEnumerator PlayAttackSound()
+	{
+		if (!isPlaying)
+		{
+			isPlaying = true;
+			
+			int random = Random.Range(0,attackSounds.Length);
+			audio.PlayOneShot(attackSounds[random]);
+			
+			yield return new WaitForSeconds(attackSounds[random].length);
+			
+			isPlaying = false;
+		}
 	}
 
 	// Flips the world around the player, allowing us to only use 1 set of animations.

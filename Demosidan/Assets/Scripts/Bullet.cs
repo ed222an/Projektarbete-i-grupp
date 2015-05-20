@@ -11,31 +11,33 @@ public class Bullet : MonoBehaviour
 	
 	void Start ()
 	{
+		// Finds the player object and gets its rigidbody component.
 		player = GameObject.FindGameObjectWithTag ("Player");
 		rb = gameObject.GetComponent<Rigidbody2D>();
 	}
 
 	void FixedUpdate ()
 	{
+		// If speed should be added...
 		if(addSpeed)
 		{
 			addSpeed = false;
 
+			// Check where the player and add force relative to its position.
 			if (player.transform.position.x <= transform.position.x)
 			{
 				rb.AddForce(transform.right * speed);
-				Debug.Log ("Shoot right!");
 			}
 			else
 			{
 				rb.AddForce(transform.right * -speed);
-				Debug.Log("Shoot left!");
 			}
 
 			StartCoroutine(Despawn());
 		}
 	}
 
+	// Destroy the object.
 	private IEnumerator Despawn()
 	{
 		yield return new WaitForSeconds (0.5f);
