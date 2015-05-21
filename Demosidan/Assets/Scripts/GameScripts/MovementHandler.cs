@@ -145,7 +145,7 @@ public class MovementHandler : MonoBehaviour
 	}
 
 	// Plays the jump sound
-	public IEnumerator PlayJumpSound()
+	private IEnumerator PlayJumpSound()
 	{
 		if (!isPlaying)
 		{

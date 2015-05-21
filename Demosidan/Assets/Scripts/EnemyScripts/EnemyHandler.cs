@@ -35,6 +35,13 @@ public class EnemyHandler : MonoBehaviour
     //This is the HP bar ontop of the enemy
     private RectTransform hpBarRect;
 
+	// Audio
+	public AudioClip[] movingSounds;
+	public AudioClip[] attackSounds;
+	
+	private bool isPlaying = false;
+	private AudioSource audio;
+
     void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
@@ -47,6 +54,7 @@ public class EnemyHandler : MonoBehaviour
         moveDirection = Random.Range(0, 2);
         Physics2D.IgnoreLayerCollision(12, 12);
         Physics2D.IgnoreLayerCollision(12, 16);
+		audio = gameObject.GetComponent<AudioSource>();
 
         if (moveDirection == 0)
             moveDirection = -1;
@@ -123,6 +131,7 @@ public class EnemyHandler : MonoBehaviour
                 playerObject.gameObject.GetComponentInParent<PlayerLife>().DealDamageToPlayer(enemyStats.damage);
                 canAttack = false;
                 attackTimer = enemyStats.attackSpeed;
+				StartCoroutine(PlayAttackSound());
             }
         }
     }
@@ -215,6 +224,7 @@ public class EnemyHandler : MonoBehaviour
 		}
 
 		anim.SetBool("Moving", true);
+		StartCoroutine(PlayMovingSound());
     }
 
 	// Flips the world around the enemy, allowing us to only use 1 set of animations.
@@ -248,4 +258,36 @@ public class EnemyHandler : MonoBehaviour
     {
         return enemyStats.damage;
     }
+
+	// Plays the moving sound
+	private IEnumerator PlayMovingSound()
+	{
+		if (!isPlaying)
+		{
+			isPlaying = true;
+			
+			int random = Random.Range(0,movingSounds.Length);
+			audio.PlayOneShot(movingSounds[random]);
+			
+			yield return new WaitForSeconds(movingSounds[random].length);
+			
+			isPlaying = false;
+		}
+	}
+
+	// Plays the attack sound
+	public IEnumerator PlayAttackSound()
+	{
+		if (!isPlaying)
+		{
+			isPlaying = true;
+			
+			int random = Random.Range(0,attackSounds.Length);
+			audio.PlayOneShot(attackSounds[random]);
+			
+			yield return new WaitForSeconds(attackSounds[random].length);
+			
+			isPlaying = false;
+		}
+	}
 }
