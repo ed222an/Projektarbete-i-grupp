@@ -27,6 +27,7 @@ public class EnemyHandler : MonoBehaviour
     private bool isInAttackRange = false;
     private bool canAttack = false;
     private bool isInRange = false;
+	private bool isAttacking = false;
     private float attackTimer = 0.0f;
     private GameObject playerObject;
 
@@ -132,9 +133,26 @@ public class EnemyHandler : MonoBehaviour
                 canAttack = false;
                 attackTimer = enemyStats.attackSpeed;
 				StartCoroutine(PlayAttackSound());
+				anim.SetBool("Attacking",true);
+				isAttacking = true;
             }
+			else
+			{
+				StartCoroutine(StopAttacking());
+			}
         }
     }
+
+	// Stops the attack animation
+	private IEnumerator StopAttacking()
+	{
+		if(isAttacking)
+		{
+			isAttacking = false;
+			yield return new WaitForSeconds(0.3f);
+			anim.SetBool("Attacking",false);
+		}
+	}
 
     void EdgeCheck()
     {
