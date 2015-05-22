@@ -13,6 +13,7 @@ public class EnemyHandler : MonoBehaviour
     public bool patrol;
     public Transform edgeCheck;
     public Transform edgeCheck2;
+    public bool platformSticky;
 
     private float moveDirection;
     private bool changeDirection;
@@ -93,6 +94,10 @@ public class EnemyHandler : MonoBehaviour
             canPatrol = false;
             startPatrolTimer = 1f;
             FollowTarget();
+            if (platformSticky && EdgeCheck())
+            {
+                StopMovement();
+            }
         }
         else if (patrol && canPatrol && startPatrolTimer < 0)
         {
@@ -101,10 +106,15 @@ public class EnemyHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("stopped");
-            rBody.velocity = new Vector2(0.0f, rBody.velocity.y);
-            anim.SetBool("Moving", false);
+            StopMovement();
         }
+    }
+
+    void StopMovement()
+    {
+        Debug.Log("stopped");
+        rBody.velocity = new Vector2(0.0f, rBody.velocity.y);
+        anim.SetBool("Moving", false);
     }
 
     void Update()
@@ -154,14 +164,17 @@ public class EnemyHandler : MonoBehaviour
 		}
 	}
 
-    void EdgeCheck()
+    bool EdgeCheck()
     {
 
         if (!Physics2D.OverlapCircle(edgeCheck.position, edgeCheckRadius, whatIsGround) || !Physics2D.OverlapCircle(edgeCheck2.position, edgeCheckRadius, whatIsGround))
         {
             Debug.Log("yes");
             changeDirection = true;
+            return true;
         }
+
+        return false;
     }
 
     void OnCollisionEnter2D(Collision2D other)
