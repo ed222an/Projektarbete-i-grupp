@@ -13,6 +13,7 @@ public class EnemyLife : MonoBehaviour
     private Canvas hpBarCanvas;
     private float currentLife;
     private bool isAlive;
+	private PlayerHandler ph;
 
 #region Get/Set
     public float MaxLife
@@ -32,6 +33,8 @@ public class EnemyLife : MonoBehaviour
         healthBar = GetComponentInChildren<Image>();
         hpBarCanvas = GetComponentInChildren<Canvas>();
         currentLife = maxLife;
+
+		ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
 
         isAlive = true;
     }
@@ -65,7 +68,7 @@ public class EnemyLife : MonoBehaviour
         {
             if (!hpBarCanvas.enabled)
                 hpBarCanvas.enabled = true;
-            float damage = other.gameObject.GetComponentInParent<PlayerHandler>().GetTotalPlayerAttack();
+			float damage = ph.GetTotalPlayerAttack();
             currentLife -= damage;
             UpdateHealthBar();
             Debug.Log("Enemy took " + damage + " damage.");

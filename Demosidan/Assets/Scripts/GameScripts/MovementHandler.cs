@@ -43,11 +43,6 @@ public class MovementHandler : MonoBehaviour
 		audio = gameObject.GetComponent<AudioSource>();
     }
 
-    void Start()
-    {
-        
-    }
-
     void FixedUpdate()
     {
         if (!controllable)

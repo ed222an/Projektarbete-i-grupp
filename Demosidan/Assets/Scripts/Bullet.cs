@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
-	public float speed = 100;
+	public float hSpeed = 100;
+	public float lifeTime = 0.5f;
 
 	private GameObject player;
 	private Rigidbody2D rb;
@@ -26,11 +27,11 @@ public class Bullet : MonoBehaviour
 			// Check where the player and add force relative to its position.
 			if (player.transform.position.x <= transform.position.x)
 			{
-				rb.AddForce(transform.right * speed);
+				rb.AddForce(transform.right * hSpeed);
 			}
 			else
 			{
-				rb.AddForce(transform.right * -speed);
+				rb.AddForce(transform.right * -hSpeed);
 			}
 
 			StartCoroutine(Despawn());
@@ -40,7 +41,7 @@ public class Bullet : MonoBehaviour
 	// Destroy the object.
 	private IEnumerator Despawn()
 	{
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (lifeTime);
 		Destroy (gameObject);
 	}
 }
