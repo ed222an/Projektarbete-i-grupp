@@ -66,7 +66,7 @@ public class TubeEnemySpawner : MonoBehaviour, ISwitch
                 StartCoroutine("TimedEnemySpawn");
             }
 
-            if (transform.position.x < startTransform.position.x || transform.position.x > endTransform.transform.position.x)
+            if (transform.position.x <= startTransform.position.x || transform.position.x >= endTransform.position.x)
                 changeDirection = true;
 
             if (canMove)
@@ -95,6 +95,15 @@ public class TubeEnemySpawner : MonoBehaviour, ISwitch
         {
             moveDirection *= -1;
             changeDirection = false;
+
+            if (transform.position.x <= startTransform.position.x)
+            {
+                transform.position = new Vector3(transform.position.x + 3 * (moveSpeed * Time.deltaTime), transform.position.y, transform.position.z);
+            }
+            else if (transform.position.x >= endTransform.position.x)
+            {
+                transform.position = new Vector3(transform.position.x - 3 * (moveSpeed * Time.deltaTime), transform.position.y, transform.position.z);
+            }
         }
 
         if (moveDirection == 1)
