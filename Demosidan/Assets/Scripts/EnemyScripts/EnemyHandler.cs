@@ -112,7 +112,6 @@ public class EnemyHandler : MonoBehaviour
 
     void StopMovement()
     {
-        Debug.Log("stopped");
         rBody.velocity = new Vector2(0.0f, rBody.velocity.y);
         anim.SetBool("Moving", false);
     }

@@ -11,7 +11,7 @@ public class AchievementHandler : MonoBehaviour
     void Awake()
     {
         rewardTypeNames.Add(RewardType.str, "Strength");
-        rewardTypeNames.Add(RewardType.dex, "Dex");
+        rewardTypeNames.Add(RewardType.dex, "Dexterity");
         rewardTypeNames.Add(RewardType.damage, "Damage");
         rewardTypeNames.Add(RewardType.life, "Life");
         rewardTypeNames.Add(RewardType.atkSpd, "Attack speed");
@@ -21,9 +21,28 @@ public class AchievementHandler : MonoBehaviour
 	//Use this for initialization
 	void Start()
     {
-        achievements.Add(new Achievement("Murder", "Kill 10 monsters.", 1, RewardType.life, 3));
-        achievements.Add(new Achievement("Like a bunny", "Jump 10 times.", 1, RewardType.atkSpd, 0.05f));
-        achievements.Add(new Achievement("Big force in every swing", "Reach a total of 4 attack damage.", 4));
+        achievements.Add(new Achievement("Murder", "Kill 10 enemies.", 10, RewardType.life, 3));
+        achievements.Add(new Achievement("Mass murder", "Kill 50 enemies.", 1, RewardType.life, 6));
+        achievements.Add(new Achievement("Who likes robots anyways", "Kill 100 enemies.", 1, RewardType.life, 12));
+        achievements.Add(new Achievement("A robots worst enemy", "Kill 500 enemies.", 1, RewardType.life, 25));
+        achievements.Add(new Achievement("NOT SET", "Kill 5000 enemies.", 1, RewardType.life, 25));
+
+        achievements.Add(new Achievement("Like a bunny", "Jump 10 times.", 1));
+        achievements.Add(new Achievement("Like a bunny 2", "Jump 100 times.", 1, RewardType.damage, 1));
+        achievements.Add(new Achievement("Like a bunny 3", "Jump 500 times.", 1, RewardType.atkSpd, 0.03f));
+        achievements.Add(new Achievement("Like a bunny 4", "Jump 5000 times.", 1, RewardType.atkSpd, 0.09f));
+
+        achievements.Add(new Achievement("Everyone starts with a penny", "Collect your first gold coin.", 1));
+        achievements.Add(new Achievement("More than a penny", "Collect 50 gold.", 1, RewardType.atkSpd, 0.02f));
+        achievements.Add(new Achievement("Golden riches", "Collect a total of 500 gold.", 1, RewardType.atkSpd, 0.05f));
+        achievements.Add(new Achievement("Gold, GOLD GOOOOOLD", "Collect a total of 5000 gold.", 1, RewardType.damage, 10));
+
+        achievements.Add(new Achievement("Big force in every swing", "Reach a total of 4 attack damage.", 4, RewardType.str, 1));
+        achievements.Add(new Achievement("Swing like a truck", "Reach a total of 40 attack damage.", 4, RewardType.str, 3));
+
+        achievements.Add(new Achievement("Hot ride", "Get in your hot, metallish vehicle.", 1));
+
+
 	}
 	
 	//Update is called once per frame
