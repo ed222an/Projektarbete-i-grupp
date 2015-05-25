@@ -15,7 +15,7 @@ public class WWWPostPlayerData : MonoBehaviour
 
     IEnumerator PostPlayerData()
     {
-        int killCount = StatManager.KillCount;
+        int killCount = GameObject.FindWithTag("StatManager").GetComponent<StatManager>().KillCount; //TODO: This should be passed to the function instead
 
         WWWForm form = new WWWForm();
 

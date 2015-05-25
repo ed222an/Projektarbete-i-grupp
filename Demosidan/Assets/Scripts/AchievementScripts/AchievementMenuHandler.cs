@@ -79,7 +79,8 @@ public class AchievementMenuHandler : MonoBehaviour {
                 if (achList[i].IsComplete())
                 {
                     display.achievementImage.GetComponent<Image>().sprite = completeImage;
-                    display.rewardText.GetComponentInParent<Image>().color = new Color32(246, 233, 75, 255);
+                    if (achList[i].RewardType != RewardType.NONE)
+                        display.rewardText.GetComponentInParent<Image>().color = new Color32(246, 233, 75, 255);
                 }
 
                 display.descriptionText.text = achList[i].AchDescription;

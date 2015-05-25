@@ -16,6 +16,7 @@ public class EnemyLife : MonoBehaviour
     private bool isAlive;
 	private bool canTakeDamage = true;
 	private PlayerHandler ph;
+    private StatManager statManager;
 
 #region Get/Set
     public float MaxLife
@@ -37,6 +38,7 @@ public class EnemyLife : MonoBehaviour
         currentLife = maxLife;
 
 		ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
+        statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
 
         isAlive = true;
     }
@@ -48,7 +50,7 @@ public class EnemyLife : MonoBehaviour
         {
             isAlive = false;
 
-            StatManager.AddKill();
+            statManager.AddKill();
             if (WorkerBotDeath != null)
                 WorkerBotDeath();
             

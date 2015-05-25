@@ -21,41 +21,33 @@ public class AchievementHandler : MonoBehaviour
 	//Use this for initialization
 	void Start()
     {
-        achievements.Add(new Achievement("Murder", "Kill 10 enemies.", 10, RewardType.life, 3));
-        achievements.Add(new Achievement("Mass murder", "Kill 50 enemies.", 1, RewardType.life, 6));
-        achievements.Add(new Achievement("Who likes robots anyways", "Kill 100 enemies.", 1, RewardType.life, 12));
-        achievements.Add(new Achievement("A robots worst enemy", "Kill 500 enemies.", 1, RewardType.life, 25));
-        achievements.Add(new Achievement("NOT SET", "Kill 5000 enemies.", 1, RewardType.life, 25));
+        achievements.Add(new Achievement("Murder", "Kill 10 enemies.", 10, RewardType.life, 3, AchType.kill));
+        achievements.Add(new Achievement("Mass murder", "Kill 50 enemies.", 50, RewardType.life, 6, AchType.kill));
+        achievements.Add(new Achievement("Who likes robots anyways", "Kill 100 enemies.", 100, RewardType.life, 12, AchType.kill));
+        achievements.Add(new Achievement("A robots worst enemy", "Kill 500 enemies.", 500, RewardType.life, 25, AchType.kill));
+        achievements.Add(new Achievement("NOT SET", "Kill 5000 enemies.", 5000, RewardType.life, 25, AchType.kill));
 
-        achievements.Add(new Achievement("Like a bunny", "Jump 10 times.", 1));
-        achievements.Add(new Achievement("Like a bunny 2", "Jump 100 times.", 1, RewardType.damage, 1));
-        achievements.Add(new Achievement("Like a bunny 3", "Jump 500 times.", 1, RewardType.atkSpd, 0.03f));
-        achievements.Add(new Achievement("Like a bunny 4", "Jump 5000 times.", 1, RewardType.atkSpd, 0.09f));
+        achievements.Add(new Achievement("Like a bunny", "Jump 10 times.", 10, AchType.jump));
+        achievements.Add(new Achievement("Like a bunny 2", "Jump 100 times.", 100, RewardType.damage, 1, AchType.jump));
+        achievements.Add(new Achievement("Like a bunny 3", "Jump 500 times.", 500, RewardType.atkSpd, 0.03f, AchType.jump));
+        achievements.Add(new Achievement("Like a bunny 4", "Jump 5000 times.", 5000, RewardType.atkSpd, 0.09f, AchType.jump));
 
-        achievements.Add(new Achievement("Everyone starts with a penny", "Collect your first gold coin.", 1));
-        achievements.Add(new Achievement("More than a penny", "Collect 50 gold.", 1, RewardType.atkSpd, 0.02f));
-        achievements.Add(new Achievement("Golden riches", "Collect a total of 500 gold.", 1, RewardType.atkSpd, 0.05f));
-        achievements.Add(new Achievement("Gold, GOLD GOOOOOLD", "Collect a total of 5000 gold.", 1, RewardType.damage, 10));
+        achievements.Add(new Achievement("Everyone starts with a penny", "Collect your first gold coin.", 1, AchType.gold));
+        achievements.Add(new Achievement("More than a penny", "Collect a total of 100 gold.", 100, AchType.gold));
+        achievements.Add(new Achievement("Golden riches", "Collect a total of 500 gold.", 500, RewardType.atkSpd, 0.02f, AchType.gold));
+        achievements.Add(new Achievement("Golden riches", "Collect a total of 2000 gold.", 2000, RewardType.atkSpd, 0.03f, AchType.gold));
+        achievements.Add(new Achievement("Gold, GOLD GOOOOOLD", "Collect a total of 5000 gold.", 5000, RewardType.damage, 5, AchType.gold));
 
         achievements.Add(new Achievement("Big force in every swing", "Reach a total of 4 attack damage.", 4, RewardType.str, 1));
         achievements.Add(new Achievement("Swing like a truck", "Reach a total of 40 attack damage.", 4, RewardType.str, 3));
 
         achievements.Add(new Achievement("Hot ride", "Get in your hot, metallish vehicle.", 1));
-
-
 	}
 	
 	//Update is called once per frame
 	void Update()
     {
-        //TODO: A temporary way to test achieves and show them in the GUI.
-        if (StatManager.statChanged)
-        {
-            SetAchievementProgress("Murder", StatManager.KillCount);
-            SetAchievementProgress("Like a bunny", StatManager.JumpCount);
-            Debug.Log("Ach stats updated");
-            StatManager.statChanged = false;
-        }
+
 	}
 
     //Sets the achievement progress to the value supplied.
@@ -87,6 +79,28 @@ public class AchievementHandler : MonoBehaviour
             return;
 
         achievement.AddProgress(progress);
+    }
+
+    public void AddAchievementProgressByType(AchType type, int progress)
+    {
+        if (type == AchType.NONE || type == AchType.END)
+        {
+            Debug.LogError("Unallowed type entered to AchievementHandler::AddAchievementProgressByType");
+            return;
+        }
+
+        List<Achievement> achList = GetAchievementsByType(type);
+
+        foreach (Achievement ach in achList)
+        {
+            if (!ach.IsComplete())
+                ach.AddProgress(progress);
+        }
+    }
+
+    public List<Achievement> GetAchievementsByType(AchType type)
+    {
+        return achievements.FindAll(ach => ach.AchType == type);
     }
 
     public Achievement GetAchievementByName(string name)

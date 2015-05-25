@@ -3,56 +3,51 @@ using System.Collections;
 
 public class StatManager : MonoBehaviour 
 {
-    //TODO: This is temp while we test achieves
-    public static bool statChanged = false;
+    private int killCount;
+    private int jumpCount;
+    private int deathCount;
 
-    private static int killCount;
-    private static int jumpCount;
-    private static int deathCount;
-
-    public static int KillCount
+    public int KillCount
     {
         get { return killCount; }
     }
 
-    public static int JumpCount
+    public int JumpCount
     {
         get { return jumpCount; }
     }
 
-    public static int DeathCount
+    public int DeathCount
     {
         get { return deathCount; }
     }
 
-    GUIText text;
+    private AchievementHandler achHandler;
 
     void Awake()
     {
-        text = GetComponent<GUIText>();
-        //killCount = 0;
+        achHandler = GetComponent<AchievementHandler>();
     }
 	
 	void Update () 
     {
-        text.text = "Kill Count: " + killCount;
+
 	}
 
-    public static void AddKill(int amount = 1)
+    public void AddKill(int amount = 1)
     {
         killCount += amount;
-        statChanged = true;
+        achHandler.AddAchievementProgressByType(AchType.kill, 1);
     }
 
-    public static void AddJump(int amount = 1)
+    public void AddJump(int amount = 1)
     {
         jumpCount += amount;
-        statChanged = true;
+        achHandler.AddAchievementProgressByType(AchType.jump, 1);
     }
 
-    public static void AddDeath(int amount = 1)
+    public void AddDeath(int amount = 1)
     {
         deathCount += amount;
-        statChanged = true;
     }
 }

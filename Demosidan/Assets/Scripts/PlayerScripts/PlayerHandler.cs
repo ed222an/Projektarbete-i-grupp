@@ -32,6 +32,12 @@ public class PlayerHandler : MonoBehaviour
         
 	}
 
+    public void AddGold(int amount)
+    {
+        goldCoins += amount;
+        achHandler.AddAchievementProgressByType(AchType.gold, amount);
+    }
+
     public float GetTotalPlayerAttack()
     {
         float achDamageBonus = achHandler.GetActiveBonusByType(RewardType.damage);

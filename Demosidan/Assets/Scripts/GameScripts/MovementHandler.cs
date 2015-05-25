@@ -26,6 +26,7 @@ public class MovementHandler : MonoBehaviour
 	private Animator anim;
 
     private PlayerHandler playerHandler;
+    private StatManager statManager;
 
 	// Audio
 	public AudioClip[] jumpSounds;
@@ -41,6 +42,7 @@ public class MovementHandler : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 14);
         playerHandler = GetComponent<PlayerHandler>();
 		audio = gameObject.GetComponent<AudioSource>();
+        statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
     }
 
     void FixedUpdate()
@@ -78,7 +80,7 @@ public class MovementHandler : MonoBehaviour
         if (grounded && Input.GetKeyDown("space"))
         {
             rBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-            StatManager.AddJump();
+            statManager.AddJump();
 
 			// Jump sound
 			if(!isPlaying)

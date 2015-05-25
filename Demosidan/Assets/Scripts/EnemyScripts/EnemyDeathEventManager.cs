@@ -9,7 +9,6 @@ public class EnemyDeathEventManager : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("isenabled");
         EnemyLife.WorkerBotDeath += EnemyDeath;
     }
 

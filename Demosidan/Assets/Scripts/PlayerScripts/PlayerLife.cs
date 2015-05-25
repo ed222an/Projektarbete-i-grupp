@@ -7,6 +7,7 @@ public class PlayerLife : MonoBehaviour
     public MovementHandler movementHandler;
     public PlayerHandler playerHandler;
 
+    private StatManager statManager;
     private Text lifeText;
     private Image healthBar;
     private float maxLife;
@@ -42,6 +43,7 @@ public class PlayerLife : MonoBehaviour
         lifeText = GameObject.Find("HpBarText").GetComponent<Text>();
         healthBar = GameObject.Find("HpOverlayBar").GetComponent<Image>();
 		playerHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
+        statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
 
         currentLife = maxLife = playerHandler.GetPlayerMaxLife();
 
@@ -80,7 +82,7 @@ public class PlayerLife : MonoBehaviour
     void KillPlayer()
     {
         DestroyObject(transform.gameObject);
-        StatManager.AddDeath();
+        statManager.AddDeath();
     }
 
     public void DealDamageToPlayer(float damageToTake)

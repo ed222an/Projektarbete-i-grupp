@@ -13,6 +13,15 @@ public enum RewardType
     END
 }
 
+public enum AchType
+{
+    NONE,
+    kill,
+    jump,
+    gold,
+    END
+}
+
 public class Achievement
 {
     private string achTitle;
@@ -21,10 +30,11 @@ public class Achievement
     private int achProgress = 0;
     private int achCompleteAt;
 
-    private RewardType rewardType;
-    private float rewardValue;
+    private RewardType rewardType = RewardType.NONE;
+    private float rewardValue = 0;
 
     private bool isComplete = false;
+    private AchType achType = AchType.NONE;
 
     #region get/set
 
@@ -59,15 +69,38 @@ public class Achievement
         get { return rewardValue; }
     }
 
+    public AchType AchType
+    {
+        get { return achType; }
+    }
+
     #endregion
 
-    public Achievement(string title, string description, int completeAt, RewardType rewardType = RewardType.NONE, float rewardValue = 0)
+    public Achievement(string title, string description, int completeAt, RewardType rewardType, float rewardValue, AchType achType)
+        : this(title, description, completeAt, achType)
+    {
+        this.rewardType = rewardType;
+        this.rewardValue = rewardValue;
+    }
+
+    public Achievement(string title, string description, int completeAt, RewardType rewardType, float rewardValue)
+        : this(title, description, completeAt)
+    {
+        this.rewardType = rewardType;
+        this.rewardValue = rewardValue;
+    }
+
+    public Achievement(string title, string description, int completeAt, AchType achType)
+        : this(title, description, completeAt)
+    {
+        this.achType = achType;
+    }
+
+    public Achievement(string title, string description, int completeAt)
     {
         achTitle = title;
         achDescription = description;
         achCompleteAt = completeAt;
-        this.rewardType = rewardType;
-        this.rewardValue = rewardValue;
     }
 
     public void AddProgress(int progress)
@@ -76,7 +109,7 @@ public class Achievement
         if (progress > achCompleteAt)
             progress = achCompleteAt;
 
-        achCompleteAt += progress;
+        achProgress += progress;
 
         CheckIfComplete();
     }
