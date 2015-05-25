@@ -129,7 +129,6 @@ public class MovementHandler : MonoBehaviour
 		}
 
         //Attack timer
-        //TODO: Should the attack timer be here? maybe? maybe not ?
         if (attackTimer <= 0)
         {
             canAttack = true;

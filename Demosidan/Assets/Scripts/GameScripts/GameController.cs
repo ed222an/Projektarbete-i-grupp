@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory");
-        restartText = GameObject.Find("RestartText").GetComponent<GUIText>();//TODO: This is not good, but is needed since most scenes don't have it assigned, and i'm too lazy to assign every single scene, won't be needed later on anyways since we won't have every object in every scene.
+        restartText = GameObject.Find("RestartText").GetComponent<GUIText>();
     }
 
     void Update()

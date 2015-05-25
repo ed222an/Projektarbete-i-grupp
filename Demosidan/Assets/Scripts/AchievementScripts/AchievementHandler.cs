@@ -25,7 +25,7 @@ public class AchievementHandler : MonoBehaviour
         achievements.Add(new Achievement("Mass murder", "Kill 50 enemies.", 50, RewardType.life, 6, AchType.kill));
         achievements.Add(new Achievement("Who likes robots anyways", "Kill 100 enemies.", 100, RewardType.life, 12, AchType.kill));
         achievements.Add(new Achievement("A robots worst enemy", "Kill 500 enemies.", 500, RewardType.life, 25, AchType.kill));
-        achievements.Add(new Achievement("NOT SET", "Kill 5000 enemies.", 5000, RewardType.life, 25, AchType.kill));
+        achievements.Add(new Achievement("Scrapyard full of robots, check", "Kill 5000 enemies.", 5000, RewardType.life, 25, AchType.kill));
 
         achievements.Add(new Achievement("Like a bunny", "Jump 10 times.", 10, AchType.jump));
         achievements.Add(new Achievement("Like a bunny 2", "Jump 100 times.", 100, RewardType.damage, 1, AchType.jump));
@@ -42,7 +42,7 @@ public class AchievementHandler : MonoBehaviour
         achievements.Add(new Achievement("Swing like a truck", "Reach a total of 40 attack damage.", 40, RewardType.str, 3, AchType.totalDamage));
         achievements.Add(new Achievement("NOT SET", "Reach a total of 100 attack damage.", 100, RewardType.str, 10, AchType.totalDamage));
 
-        achievements.Add(new Achievement("Hot ride", "Get in your hot, metallish vehicle.", 1));
+        achievements.Add(new Achievement("Hot ride", "Get in your hot, metallish vehicle.", 1));//TODO: Not working yet
 	}
 	
 	//Update is called once per frame
