@@ -34,6 +34,9 @@ public class PlayerHandler : MonoBehaviour
 
     void Update()
     {
+        if (achHandler == null)
+            achHandler = GameObject.FindWithTag("GameController").GetComponent<AchievementHandler>();
+
         //Achievements related to the player
         achHandler.SetAchievementProgressByType(AchType.totalDamage, (int)GetTotalPlayerAttack());
     }

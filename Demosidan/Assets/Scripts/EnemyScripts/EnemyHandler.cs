@@ -136,7 +136,6 @@ public class EnemyHandler : MonoBehaviour
         {
             if (canAttack && isInAttackRange)
             {
-				Debug.Log ("Test2");
                 playerObject.gameObject.GetComponentInParent<PlayerLife>().DealDamageToPlayer(enemyStats.damage);
                 canAttack = false;
                 attackTimer = enemyStats.attackSpeed;

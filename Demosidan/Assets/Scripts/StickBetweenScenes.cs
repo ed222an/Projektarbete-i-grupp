@@ -82,11 +82,14 @@ public class StickBetweenScenes : MonoBehaviour
             //If the current level is blacklisted for the objects, destroy them.
             if (levelId == level)
             {
-                //Clear all objects
+                //Clear list from nulls
+                gameObjects.RemoveAll(obj => obj == null);
+
+                //Inactivate objects
                 foreach (GameObject obj in gameObjects)
                 {
-                    Debug.Log("Setting " + obj + " to inactive, blacklisted scene.");
                     obj.SetActive(false);
+                    Debug.Log("Setting " + obj + " to inactive, blacklisted scene.");
                 }
 
                 inactiveObjects = true;

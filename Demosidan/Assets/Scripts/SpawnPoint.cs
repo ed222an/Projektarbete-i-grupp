@@ -12,8 +12,10 @@ public class SpawnPoint : MonoBehaviour
     {
         if (spawnAt == spawnPointId)
         {
-            GameObject player = GameObject.FindWithTag("Player");
-            player.transform.position = transform.position;
+            GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+
+            foreach(GameObject obj in player)
+                obj.transform.position = transform.position;
         }
 	}
 }

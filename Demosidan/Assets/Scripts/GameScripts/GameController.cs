@@ -77,9 +77,12 @@ public class GameController : MonoBehaviour
     void CheckForRestart()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        
+
         if (player != null)
+        {
+            restartText.enabled = false;
             return;
+        }
 
         restartText.enabled = true;
         if (Input.GetKeyDown(KeyCode.R))

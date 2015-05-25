@@ -59,6 +59,11 @@ public class PlayerLife : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
+        if (lifeText == null)
+            lifeText = GameObject.Find("HpBarText").GetComponent<Text>();
+        if (healthBar == null)
+            healthBar = GameObject.Find("HpOverlayBar").GetComponent<Image>();
+
         if (currentLife <= 0 && isAlive)
         {
             isAlive = false;
