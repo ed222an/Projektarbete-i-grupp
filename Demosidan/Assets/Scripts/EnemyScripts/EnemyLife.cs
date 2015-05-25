@@ -74,9 +74,13 @@ public class EnemyLife : MonoBehaviour
 	            currentLife -= damage;
 	            UpdateHealthBar();
 
-	            //Debug.Log("Enemy took " + damage + " damage.");
+	            Debug.Log("Enemy took " + damage + " damage.");
 
-	            enemyHandler.KnockbackOnHit(transform.position.x, other.transform.position.x);
+				if(enemyHandler != null)
+				{
+	            	enemyHandler.KnockbackOnHit(transform.position.x, other.transform.position.x);
+				}
+
 				StartCoroutine(ChangeDamageStatus());
 			}
         }
