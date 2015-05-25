@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 public class PlayerStats : MonoBehaviour
 {
-    //Set this to false to reflect stat changes, like when a gear part has been upgraded, removed or added, anything that changes the current stats.
-    public static bool baseStatHasChanged = true;//Has to be true initially
-
     public float baseLife = 5;
 
     public float baseStrength = 5;
@@ -69,10 +66,7 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        if (baseStatHasChanged)
-        {
-            UpdateBaseStats();
-        }
+        UpdateBaseStats();
     }
 
     public float CalculateAttackSpeed(List<Item> items, float achAttackSpeedBonus)
@@ -157,7 +151,5 @@ public class PlayerStats : MonoBehaviour
             else if (ach.RewardType == RewardType.dex)
                 Dexterity += ach.RewardValue;
         }
-
-        baseStatHasChanged = false;
     }
 }
