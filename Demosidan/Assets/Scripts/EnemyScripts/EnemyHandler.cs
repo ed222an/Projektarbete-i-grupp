@@ -14,6 +14,7 @@ public class EnemyHandler : MonoBehaviour
     public Transform edgeCheck;
     public Transform edgeCheck2;
     public bool platformSticky;
+	public bool isRanged;
 
     private float moveDirection;
     private bool changeDirection;
@@ -88,26 +89,23 @@ public class EnemyHandler : MonoBehaviour
         {
             isInRange = false;
         }
+		if (!isRanged)
+		{
+			if (target != null && isInRange && !isInAttackRange) {
+				canPatrol = false;
+				startPatrolTimer = 1f;
+				FollowTarget ();
 
-        if (target != null && isInRange && !isInAttackRange)
-        {
-            canPatrol = false;
-            startPatrolTimer = 1f;
-            FollowTarget();
-            if (platformSticky && EdgeCheck())
-            {
-                StopMovement();
-            }
-        }
-        else if (patrol && canPatrol && startPatrolTimer < 0)
-        {
-            EdgeCheck();
-            Patrol();
-        }
-        else
-        {
-            StopMovement();
-        }
+				if (platformSticky && EdgeCheck ()) {
+					StopMovement ();
+				}
+			} else if (patrol && canPatrol && startPatrolTimer < 0) {
+				EdgeCheck ();
+				Patrol ();
+			} else {
+				StopMovement ();
+			}
+		}
     }
 
     void StopMovement()
@@ -138,6 +136,7 @@ public class EnemyHandler : MonoBehaviour
         {
             if (canAttack && isInAttackRange)
             {
+				Debug.Log ("Test2");
                 playerObject.gameObject.GetComponentInParent<PlayerLife>().DealDamageToPlayer(enemyStats.damage);
                 canAttack = false;
                 attackTimer = enemyStats.attackSpeed;
@@ -165,10 +164,8 @@ public class EnemyHandler : MonoBehaviour
 
     bool EdgeCheck()
     {
-
         if (!Physics2D.OverlapCircle(edgeCheck.position, edgeCheckRadius, whatIsGround) || !Physics2D.OverlapCircle(edgeCheck2.position, edgeCheckRadius, whatIsGround))
         {
-            Debug.Log("yes");
             changeDirection = true;
             return true;
         }
