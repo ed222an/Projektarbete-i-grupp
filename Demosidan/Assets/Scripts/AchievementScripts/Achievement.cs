@@ -19,6 +19,7 @@ public enum AchType
     kill,
     jump,
     gold,
+    totalDamage,
     END
 }
 

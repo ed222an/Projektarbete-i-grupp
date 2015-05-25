@@ -9,6 +9,10 @@ public class PlayerStats : MonoBehaviour
 
     public float baseLife = 5;
 
+    public float baseStrength = 5;
+    public float baseDexterity = 3;
+    public float baseIntelligence = 3;
+
     //Str stat weights.
     public float lifePerStr = 3;
     public float strAtkWeight = 0.35f;
@@ -19,11 +23,6 @@ public class PlayerStats : MonoBehaviour
     private float strength;//Life, damage
     private float dexterity;// Atk speed, crit chance
     private float intelligence;//Magic damage, mana
-
-    //TODO: Static values right now, might want to have these differ depending on character.
-    private float baseStrength = 5;
-    private float baseDexterity = 3;
-    private float baseIntelligence = 3;
 
     private PlayerHandler playerHandler;
 
@@ -76,7 +75,6 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    //TODO: Implement achievement rewards here.
     public float CalculateAttackSpeed(List<Item> items, float achAttackSpeedBonus)
     {
         Weapon weapon = items.Find(item => item.itemType == ItemTypes.Weapon) as Weapon;
@@ -107,7 +105,6 @@ public class PlayerStats : MonoBehaviour
         return attackSpeed;
     }
 
-    //TODO: Implement achievement rewards here.
     public float CalculateAttackDamage(List<Item> items, float achDamageBonus)
     {
         float itemDamage = achDamageBonus;
@@ -122,7 +119,6 @@ public class PlayerStats : MonoBehaviour
         return totalDamage;
     }
 
-    //TODO: Implement achievement rewards here.
     public float CalculateMaxLife(List<Item> items, float achLifeBonus)
     {
         float lifeFromItems = achLifeBonus;
@@ -162,7 +158,6 @@ public class PlayerStats : MonoBehaviour
                 Dexterity += ach.RewardValue;
         }
 
-        //TODO: Uncomment this when testing stats are finished. Not even sure it's needed, performance?
-        //baseStatHasChanged = false;
+        baseStatHasChanged = false;
     }
 }

@@ -32,6 +32,12 @@ public class PlayerHandler : MonoBehaviour
         
 	}
 
+    void Update()
+    {
+        //Achievements related to the player
+        achHandler.SetAchievementProgressByType(AchType.totalDamage, (int)GetTotalPlayerAttack());
+    }
+
     public void AddGold(int amount)
     {
         goldCoins += amount;

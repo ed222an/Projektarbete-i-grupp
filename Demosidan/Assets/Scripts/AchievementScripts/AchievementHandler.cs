@@ -38,8 +38,9 @@ public class AchievementHandler : MonoBehaviour
         achievements.Add(new Achievement("Golden riches", "Collect a total of 2000 gold.", 2000, RewardType.atkSpd, 0.03f, AchType.gold));
         achievements.Add(new Achievement("Gold, GOLD GOOOOOLD", "Collect a total of 5000 gold.", 5000, RewardType.damage, 5, AchType.gold));
 
-        achievements.Add(new Achievement("Big force in every swing", "Reach a total of 4 attack damage.", 4, RewardType.str, 1));
-        achievements.Add(new Achievement("Swing like a truck", "Reach a total of 40 attack damage.", 4, RewardType.str, 3));
+        achievements.Add(new Achievement("Big force in every swing", "Reach a total of 4 attack damage.", 4, RewardType.str, 1, AchType.totalDamage));
+        achievements.Add(new Achievement("Swing like a truck", "Reach a total of 40 attack damage.", 40, RewardType.str, 3, AchType.totalDamage));
+        achievements.Add(new Achievement("NOT SET", "Reach a total of 100 attack damage.", 100, RewardType.str, 10, AchType.totalDamage));
 
         achievements.Add(new Achievement("Hot ride", "Get in your hot, metallish vehicle.", 1));
 	}
@@ -57,7 +58,7 @@ public class AchievementHandler : MonoBehaviour
 
         if (achievement == null)
         {
-            Debug.Log("Achievement is null.");
+            Debug.LogError("Achievement is null.");
             return;
         }
         else if (achievement.IsComplete())
@@ -66,13 +67,30 @@ public class AchievementHandler : MonoBehaviour
         achievement.SetProgress(progress);
     }
 
+    public void SetAchievementProgressByType(AchType type, int progress)
+    {
+        if (type == AchType.NONE || type == AchType.END)
+        {
+            Debug.LogError("Unallowed type entered to AchievementHandler::SetAchievementProgressByType");
+            return;
+        }
+
+        List<Achievement> achList = GetAchievementsByType(type);
+
+        foreach (Achievement ach in achList)
+        {
+            if (!ach.IsComplete())
+                ach.SetProgress(progress);
+        }
+    }
+
     public void AddAchievementProgress(string name, int progress)
     {
         Achievement achievement = GetAchievementByName(name);
 
         if (achievement == null)
         {
-            Debug.Log("Achievement is null.");
+            Debug.LogError("Achievement is null.");
             return;
         }
         else if (achievement.IsComplete())
