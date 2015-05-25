@@ -45,7 +45,7 @@ public class PlayerLife : MonoBehaviour
 		playerHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
         statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
 
-        currentLife = maxLife = playerHandler.GetPlayerMaxLife();
+        
 
         isAlive = true;
     }
@@ -53,6 +53,7 @@ public class PlayerLife : MonoBehaviour
     // Use this for initialization
 	void Start()
     {
+        currentLife = maxLife = playerHandler.GetPlayerMaxLife();
         SetLifeText();
 	}
 	
