@@ -14,6 +14,10 @@ public class TeleportHome : MonoBehaviour {
 
     IEnumerator ChangeLevel()
     {
+        if (controller == null)
+        {
+            controller = GameObject.FindWithTag("GameController");
+        }
         float fadeTime = controller.GetComponent<Fading>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
         GameController.characterStatsMenuActive = false;

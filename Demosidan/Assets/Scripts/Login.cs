@@ -41,18 +41,22 @@ public class Login : MonoBehaviour
     {
         int count = headers.Count;
 
+        URL += "?";
+
         foreach (KeyValuePair<string, string> entry in headers)
         {
             if (count > 1)
             {
                 count -= 1;
-                URL += "?" + entry.Key + "=" + entry.Value + "&";
+                URL += entry.Key + "=" + entry.Value + "&";
             }
             else
             {
-                URL += "?" + entry.Key + "=" + entry.Value;
+                URL += entry.Key + "=" + entry.Value;
             }
         }
+
+        Debug.Log(URL);
 
         WWW w = new WWW(URL);
 
@@ -68,7 +72,7 @@ public class Login : MonoBehaviour
 
         header.Clear();
         header.Add("username", usernameInput.text);
-        header.Add("password", passwordInput.text);
+        header.Add("password", AES.encrypt(passwordInput.text));
         StartCoroutine("TryLogin");
 
 
