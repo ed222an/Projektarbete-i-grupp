@@ -7,12 +7,14 @@ public class EnemyLife : MonoBehaviour
     public static event EnemyDeathEventManager.DeathAction WorkerBotDeath;
 
     public float maxLife;
+	public float invTime = 0.1f;
     public EnemyHandler enemyHandler;
 
     private Image healthBar;
     private Canvas hpBarCanvas;
     private float currentLife;
     private bool isAlive;
+	private bool canTakeDamage = true;
 	private PlayerHandler ph;
 
 #region Get/Set
@@ -38,12 +40,6 @@ public class EnemyLife : MonoBehaviour
 
         isAlive = true;
     }
-
-    // Use this for initialization
-	void Start()
-    {
-        
-	}
 	
 	// Update is called once per frame
 	void Update()
@@ -61,33 +57,45 @@ public class EnemyLife : MonoBehaviour
 	}
 
     //Take damage
-    IEnumerator OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        //TODO: Rewrite the player damage functionality to look more like the enemy version.
         if (other.transform.tag == "Weapon")
         {
-            if (!hpBarCanvas.enabled)
-                hpBarCanvas.enabled = true;
-			float damage = ph.GetTotalPlayerAttack();
-            currentLife -= damage;
-            UpdateHealthBar();
-            Debug.Log("Enemy took " + damage + " damage.");
-            enemyHandler.KnockbackOnHit(transform.position.x, other.transform.position.x);
+			if(canTakeDamage)
+			{
+				canTakeDamage = false;
 
-            yield return new WaitForSeconds(0.25f);
+	            if (!hpBarCanvas.enabled)
+				{
+	                hpBarCanvas.enabled = true;
+				}
+
+				float damage = ph.GetTotalPlayerAttack();
+	            currentLife -= damage;
+	            UpdateHealthBar();
+
+	            //Debug.Log("Enemy took " + damage + " damage.");
+
+	            enemyHandler.KnockbackOnHit(transform.position.x, other.transform.position.x);
+				StartCoroutine(ChangeDamageStatus());
+			}
         }
     }
 
+	// Make the enemy invulnerable for a set amount of time
+	private IEnumerator ChangeDamageStatus()
+	{
+		yield return new WaitForSeconds(invTime);
+		canTakeDamage = true;
+	}
+
+	// Destroy the enemy gameobject
     void DestroyEnemy()
     {
         DestroyObject(transform.gameObject);
     }
 
-    void OnDestroy()
-    { 
-        
-    }
-
+	// Update the healthbar symbol
     void UpdateHealthBar()
     {
         healthBar.fillAmount = currentLife / maxLife;
