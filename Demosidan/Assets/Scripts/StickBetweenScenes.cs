@@ -6,11 +6,22 @@ public class StickBetweenScenes : MonoBehaviour
 {
     private static List<GameObject> gameObjects = new List<GameObject>();
     private string[] tagsOnStickyObjects = new string[] { "GameController", "Inventory", "Player", "UI" };
+    private static bool inactiveObjects = false;
 
     public static int[] nonGameLevels = new int[] { 0, 17 };
 
     void Awake()
     {
+        if (inactiveObjects)
+        {
+            foreach (GameObject obj in gameObjects)
+            {
+                Debug.Log("Setting " + obj + " to active.");
+                obj.SetActive(true);
+            }
+            inactiveObjects = false;
+        }
+
         GameObject[] objectsToAdd;
 
         //Add all object that shall stick between every scene.
@@ -74,11 +85,11 @@ public class StickBetweenScenes : MonoBehaviour
                 //Clear all objects
                 foreach (GameObject obj in gameObjects)
                 {
-                    Debug.Log("Removing obj " + obj + ", blacklisted scene.");
-                    Destroy(obj);
+                    Debug.Log("Setting " + obj + " to inactive, blacklisted scene.");
+                    obj.SetActive(false);
                 }
 
-                gameObjects.Clear();
+                inactiveObjects = true;
             }
         }
     }
