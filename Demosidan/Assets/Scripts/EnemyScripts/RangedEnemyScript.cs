@@ -3,28 +3,58 @@ using System.Collections;
 
 public class RangedEnemyScript : MonoBehaviour 
 {
-    public float searchLazerLength;
     public GameObject bullet;
     public LayerMask rayCastLayers;
+	public float searchLazerLength;
     public float attackIntervalTime = 1f;
-
+	public float timeBetweenAttacks = 0.45f;
+	public bool facingRight = true;
     public bool turretMode = true;
 
     private bool lazerActive = true;
 
-    private float attackInterval = 0.2f;
+	private float attackInterval = 0.2f;
 
     private RaycastHit2D hit;
+	private Animator anim;
+	private RectTransform hpBarRect;
+	private GameObject player;
 
-	// Use this for initialization
+	// Audio
+	public AudioClip[] movingSounds;
+	public AudioClip[] attackSounds;
+	
+	private bool isPlaying = false;
+	private AudioSource audio;
+
 	void Start()
-    {
-        
+	{
+		anim = gameObject.GetComponent<Animator>();
+		hpBarRect = GetComponentInChildren<RectTransform>();
+		player = GameObject.FindGameObjectWithTag("Player");
+		audio = gameObject.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update()
     {
+		if (transform.position.x < player.transform.position.x)
+		{
+			if(!facingRight)
+			{
+				Flip();
+				StartCoroutine(PlayMovingSound());
+			}
+		}
+		else
+		{
+			if(facingRight)
+			{
+				Flip();
+				StartCoroutine(PlayMovingSound());
+			}
+		}
+
         if (turretMode)
         {
             //ShowLazer();
@@ -69,11 +99,17 @@ public class RangedEnemyScript : MonoBehaviour
 
     IEnumerator Shoot()
     {
+		anim.SetBool("Attacking", true);
         CreateBullet();
-        yield return new WaitForSeconds(0.45f);
+		StartCoroutine(PlayAttackSound());
+		yield return new WaitForSeconds(timeBetweenAttacks);
         CreateBullet();
-        yield return new WaitForSeconds(0.45f);
+		StartCoroutine(PlayAttackSound());
+		yield return new WaitForSeconds(timeBetweenAttacks);
         CreateBullet();
+		StartCoroutine(PlayAttackSound());
+		yield return new WaitForSeconds(timeBetweenAttacks);
+		anim.SetBool("Attacking", false);
     }
 
     void CreateBullet()
@@ -82,6 +118,52 @@ public class RangedEnemyScript : MonoBehaviour
         EnemyBullet bulletScript = bulletObj.GetComponent<EnemyBullet>();
         bulletScript.Instantiate(this.gameObject, rayCastLayers);
     }
+
+	// Flips the world around the enemy, allowing us to only use 1 set of animations.
+	void Flip()
+	{
+		facingRight = !facingRight;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+		
+		//Flip the HP bar aswell.
+		Vector3 hpBarScale = hpBarRect.localScale;
+		hpBarScale *= -1;
+		hpBarRect.localScale = hpBarScale;
+	}
+
+	// Plays the moving sound
+	private IEnumerator PlayMovingSound()
+	{
+		if (!isPlaying)
+		{
+			isPlaying = true;
+			
+			int random = Random.Range(0,movingSounds.Length);
+			audio.PlayOneShot(movingSounds[random]);
+			
+			yield return new WaitForSeconds(movingSounds[random].length);
+			
+			isPlaying = false;
+		}
+	}
+	
+	// Plays the attack sound
+	public IEnumerator PlayAttackSound()
+	{
+		if (!isPlaying)
+		{
+			isPlaying = true;
+			
+			int random = Random.Range(0,attackSounds.Length);
+			audio.PlayOneShot(attackSounds[random]);
+			
+			yield return new WaitForSeconds(attackSounds[random].length);
+			
+			isPlaying = false;
+		}
+	}
 
     //TODO: Create a lazer
     public void ShowLazer()
