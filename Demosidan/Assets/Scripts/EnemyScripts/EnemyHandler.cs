@@ -91,18 +91,24 @@ public class EnemyHandler : MonoBehaviour
         }
 		if (!isRanged)
 		{
-			if (target != null && isInRange && !isInAttackRange) {
+			if (target != null && isInRange) 
+            {
 				canPatrol = false;
 				startPatrolTimer = 1f;
 				FollowTarget ();
 
-				if (platformSticky && EdgeCheck ()) {
+				if (platformSticky && EdgeCheck ()) 
+                {
 					StopMovement ();
 				}
-			} else if (patrol && canPatrol && startPatrolTimer < 0) {
+			} 
+            else if (patrol && canPatrol && startPatrolTimer < 0) 
+            {
 				EdgeCheck ();
 				Patrol ();
-			} else {
+			} 
+            else 
+            {
 				StopMovement ();
 			}
 		}
@@ -163,7 +169,7 @@ public class EnemyHandler : MonoBehaviour
 
     bool EdgeCheck()
     {
-        if (!Physics2D.OverlapCircle(edgeCheck.position, edgeCheckRadius, whatIsGround) || !Physics2D.OverlapCircle(edgeCheck2.position, edgeCheckRadius, whatIsGround))
+        if (!Physics2D.OverlapCircle(edgeCheck2.position, edgeCheckRadius, whatIsGround))
         {
             changeDirection = true;
             return true;
@@ -180,17 +186,14 @@ public class EnemyHandler : MonoBehaviour
         }
     }
 
-    //The bots claws
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
             isInAttackRange = true;
-            rBody.velocity = new Vector2(0.0f, rBody.velocity.y);
         }
     }
 
-    //The bots claws
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
