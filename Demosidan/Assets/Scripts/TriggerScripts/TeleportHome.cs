@@ -30,7 +30,6 @@ public class TeleportHome : MonoBehaviour {
         if (other.tag == "Player")
         {
             StartCoroutine(ChangeLevel());
-            Debug.Log("Enter " + this.GetType().Name + " on object " + gameObject.name);
         }
     }
 }

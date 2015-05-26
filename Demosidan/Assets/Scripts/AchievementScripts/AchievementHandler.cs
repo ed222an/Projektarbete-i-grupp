@@ -44,12 +44,6 @@ public class AchievementHandler : MonoBehaviour
 
         achievements.Add(new Achievement("Hot ride", "Get in your hot, metallish vehicle.", 1));//TODO: Not working yet
 	}
-	
-	//Update is called once per frame
-	void Update()
-    {
-
-	}
 
     //Sets the achievement progress to the value supplied.
     public void SetAchievementProgress(string name, int progress)
@@ -141,11 +135,6 @@ public class AchievementHandler : MonoBehaviour
         }
 
         return compList.AsReadOnly();
-    }
-
-    private void LoadAchievements()
-    {
-
     }
 
     public string GetRewardTypeString(RewardType type)

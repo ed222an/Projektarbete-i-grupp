@@ -25,8 +25,7 @@ public class Switch : MonoBehaviour
 	{
         if (!onAndOffSwitch)
         {
-            objectiveText = objective.GetComponent<Text>();
-            
+            objectiveText = objective.GetComponent<Text>();            
         }
 
         anim = gameObject.GetComponent<Animator>();
@@ -61,8 +60,7 @@ public class Switch : MonoBehaviour
                 objectiveText.color = Color.green;
                 objectiveText.text += " DONE";
                 StartCoroutine("showCompletionText");
-            }
-            
+            }            
         }
 
         if (onAndOffSwitch)

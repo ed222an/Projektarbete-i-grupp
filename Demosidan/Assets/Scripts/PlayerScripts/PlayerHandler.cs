@@ -26,11 +26,6 @@ public class PlayerHandler : MonoBehaviour
 		playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         achHandler = GameObject.FindWithTag("GameController").GetComponent<AchievementHandler>();
     }
-	// Use this for initialization
-	void Start()
-    {
-        
-	}
 
     void Update()
     {

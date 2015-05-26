@@ -69,9 +69,7 @@ public class GameController : MonoBehaviour
                 inventory.GetComponentInChildren<Canvas>().enabled = false;
                 inventoryActive = false;
             }
-        }
-
-        
+        }   
     }
 
     void CheckForRestart()

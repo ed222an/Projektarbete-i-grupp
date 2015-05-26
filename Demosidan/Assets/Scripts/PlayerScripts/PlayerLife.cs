@@ -44,9 +44,6 @@ public class PlayerLife : MonoBehaviour
         healthBar = GameObject.Find("HpOverlayBar").GetComponent<Image>();
 		playerHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
         statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
-
-        
-
         isAlive = true;
     }
 

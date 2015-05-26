@@ -37,7 +37,6 @@ public class KillAllEnemies : MonoBehaviour
 
     private void AddKill()
     {
-        Debug.Log("Killed one");
         enemiesKilled += 1;
     }
 	

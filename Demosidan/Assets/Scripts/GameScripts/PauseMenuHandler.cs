@@ -13,11 +13,6 @@ public class PauseMenuHandler : MonoBehaviour
         poster = GameObject.FindWithTag("GameController").GetComponent<WWWPostPlayerData>();
     }
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         //Handle a second press, this should close the window

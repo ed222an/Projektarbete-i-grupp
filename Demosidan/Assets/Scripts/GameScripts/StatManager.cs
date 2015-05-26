@@ -28,11 +28,6 @@ public class StatManager : MonoBehaviour
     {
         achHandler = GetComponent<AchievementHandler>();
     }
-	
-	void Update () 
-    {
-
-	}
 
     public void AddKill(int amount = 1)
     {

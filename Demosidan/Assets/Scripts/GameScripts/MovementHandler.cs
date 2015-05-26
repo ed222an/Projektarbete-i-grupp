@@ -137,7 +137,6 @@ public class MovementHandler : MonoBehaviour
         {
             attackTimer -= Time.deltaTime;
         }
-
 	}
 
 	// Plays the jump sound

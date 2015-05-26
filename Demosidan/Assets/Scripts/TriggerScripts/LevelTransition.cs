@@ -12,12 +12,7 @@ public class LevelTransition : MonoBehaviour
     void Awake()
     {
         controller = GameObject.FindWithTag("GameController");
-
     }
-	void Start() 
-    {
-        
-	}
 
     void OnTriggerStay2D(Collider2D other)
     {
@@ -25,7 +20,6 @@ public class LevelTransition : MonoBehaviour
         {            
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("you pressed e in a trigger");
                 StartCoroutine(ChangeLevel());
             }
         }
@@ -47,7 +41,6 @@ public class LevelTransition : MonoBehaviour
         if (other.tag == "Player")
         {
             icon.SetActive(true);
-            Debug.Log("Enter " + this.GetType().Name + " on object " + gameObject.name);
         }
     }
 
@@ -56,7 +49,6 @@ public class LevelTransition : MonoBehaviour
         if (other.tag == "Player")
         {
             icon.SetActive(false);
-            Debug.Log("exit ladder trigger");
         }
     }
 }

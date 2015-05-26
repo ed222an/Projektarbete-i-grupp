@@ -15,12 +15,6 @@ public class SmoothCamera : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void Start()
-    {
-        
-    }
-
-	// Update is called once per frame
 	void Update() 
     {
         if (target)

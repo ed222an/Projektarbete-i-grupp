@@ -111,14 +111,14 @@ public class StickBetweenScenes : MonoBehaviour
     }
 
     bool CheckIfObjectExists(GameObject[] otherObjs)
-    {
-        
+    {        
         foreach (GameObject aObj in otherObjs)
         {
             //Debug.Log(aObj);
             if (gameObjects.Find(obj => obj == aObj))
                 return true;
         }
+
         return false;
     }
 }

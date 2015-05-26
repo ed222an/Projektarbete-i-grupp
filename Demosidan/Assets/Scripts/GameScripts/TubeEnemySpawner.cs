@@ -3,7 +3,6 @@ using System.Collections;
 
 public class TubeEnemySpawner : MonoBehaviour, ISwitch
 {
-
     public Transform startTransform;
     public Transform endTransform;
     public Transform enemyParent;
@@ -53,7 +52,6 @@ public class TubeEnemySpawner : MonoBehaviour, ISwitch
         spawnTime = Random.Range(minTime, maxTime);
     }
 	
-	// Update is called once per frame
 	void Update () 
     {
         if (spawnerEnabled)

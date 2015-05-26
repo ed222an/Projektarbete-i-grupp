@@ -25,14 +25,7 @@ public class CharacterStatsMenuHandler : MonoBehaviour
 
         playerHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
     }
-
-	// Use this for initialization
-	void Start()
-    {
-        
-	}
 	
-	// Update is called once per frame
 	void Update()
     {
         //Update values

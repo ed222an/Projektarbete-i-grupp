@@ -42,18 +42,6 @@ public class Item : MonoBehaviour
         itemTypeName.Add(ItemTypes.Boots, "Boots");
     }
 
-	// Use this for initialization
-	void Start()
-    {
-
-	}
-	
-	// Update is called once per frame
-	void Update()
-    {
-	
-	}
-
     public string GetTypeNameString(ItemTypes type)
     {
         if (type >= ItemTypes.End)

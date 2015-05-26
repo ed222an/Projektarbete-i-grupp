@@ -63,12 +63,6 @@ public class EnemyHandler : MonoBehaviour
             moveDirection = -1;
     }
 
-	// Use this for initialization
-	void Start() 
-    {
-        
-	}
-	
 	// Update is called once per frame
 	void FixedUpdate() 
     {
@@ -89,6 +83,7 @@ public class EnemyHandler : MonoBehaviour
         {
             isInRange = false;
         }
+
 		if (!isRanged)
 		{
 			if (target != null && isInRange) 
