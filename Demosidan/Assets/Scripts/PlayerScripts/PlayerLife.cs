@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour 
 {
+    public static bool canRevive = false;
     public MovementHandler movementHandler;
     public PlayerHandler playerHandler;
 
@@ -16,6 +17,12 @@ public class PlayerLife : MonoBehaviour
 	private Animator anim;
 
     #region Get/Set
+    public bool IsAlive
+    {
+        get { return isAlive; }
+        set { isAlive = value; }
+    }
+
     public float MaxLife
     {
         get { return maxLife; }
@@ -46,14 +53,13 @@ public class PlayerLife : MonoBehaviour
         statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
 		playerHandler = gameObject.GetComponent<PlayerHandler>();
 		anim = gameObject.GetComponent<Animator>();
-        isAlive = true;
+        IsAlive = true;
     }
 
     // Use this for initialization
 	void Start()
     {
-        currentLife = maxLife = playerHandler.GetPlayerMaxLife();
-        SetLifeText();
+        ResetLife();
 	}
 	
 	// Update is called once per frame
@@ -64,15 +70,21 @@ public class PlayerLife : MonoBehaviour
         if (healthBar == null)
             healthBar = GameObject.Find("HpOverlayBar").GetComponent<Image>();
 
-        if (currentLife <= 0 && isAlive)
+        if (currentLife <= 0 && IsAlive)
         {
-            isAlive = false;
+            IsAlive = false;
 
             StartCoroutine(KillPlayer());
         }
 
         UpdateLife();
 	}
+
+    public void ResetLife()
+    {
+        currentLife = maxLife = playerHandler.GetPlayerMaxLife();
+        SetLifeText();
+    }
 
     //Makes sure that the actual life and text is up to date based on stats.
     void UpdateLife()
@@ -84,15 +96,25 @@ public class PlayerLife : MonoBehaviour
         ModifyHpBar();
     }
 
+    public void RevivePlayer()
+    {
+        anim.SetBool("Dying", false);
+        anim.ResetTrigger("Die");
+        IsAlive = true;
+        ResetLife();
+        PlayerLife.canRevive = false;
+    }
+
     private IEnumerator KillPlayer()
     {
+        playerHandler.Kill();
+        statManager.AddDeath();
+
 		anim.SetBool("Dying", true);
 		anim.SetTrigger("Die");
 
 		yield return new WaitForSeconds (3.0f); // Testing death animation.
-
-        DestroyObject(transform.gameObject);
-        statManager.AddDeath();
+        canRevive = true;
     }
 
     public void DealDamageToPlayer(float damageToTake)

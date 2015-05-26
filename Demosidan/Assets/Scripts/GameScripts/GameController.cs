@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     public GameObject gameController;
     public GameObject inventory;
 
+    private PlayerHandler playerHandler;
+
     //TODO: Might not want to be lazy and use a static variable here.
     public static bool characterStatsMenuActive = false;
     public static bool inventoryActive = false;
@@ -20,6 +22,7 @@ public class GameController : MonoBehaviour
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory");
         restartText = GameObject.Find("RestartText").GetComponent<GUIText>();
+        playerHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
     }
 
     void Update()
@@ -74,18 +77,18 @@ public class GameController : MonoBehaviour
 
     void CheckForRestart()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        if (player != null)
+        if (playerHandler.IsAlive())
         {
             restartText.enabled = false;
             return;
         }
 
         restartText.enabled = true;
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && PlayerLife.canRevive)
         {
             restartText.enabled = false;
+            playerHandler.Revive();
+            SpawnPoint.spawnAt = 1;
             Application.LoadLevel(Application.loadedLevel);
         }
     }
