@@ -6,6 +6,7 @@ public class PlayerHandler : MonoBehaviour
 {
     public PlayerStats playerStats;
     public AchievementHandler achHandler;
+    private PlayerLife playerLife;
     private float goldCoins;
 
     public float GoldCoins
@@ -23,8 +24,9 @@ public class PlayerHandler : MonoBehaviour
         inventory = GameObject.FindGameObjectWithTag("Inventory");
         foreach (Item item in inventory.GetComponentsInChildren<Item>())
             items.Add(item);
-		playerStats = gameObject.GetComponent<PlayerStats>();
+		playerStats = GetComponent<PlayerStats>();
         achHandler = GameObject.FindWithTag("GameController").GetComponent<AchievementHandler>();
+        playerLife = GetComponent<PlayerLife>();
     }
 
     void Update()
@@ -69,4 +71,29 @@ public class PlayerHandler : MonoBehaviour
     {
         return achHandler.GetAllCompletedAchievements();
     }
+
+    public void SetActiveOnAllMonoComponents(bool state)
+    {
+        MonoBehaviour[] components = GetComponents<MonoBehaviour>();
+
+        foreach (MonoBehaviour comp in components)
+            comp.enabled = state;
+    }
+
+    public bool IsAlive()
+    {
+        return playerLife.IsAlive;
+    }
+
+    public void Revive()
+    {
+        SetActiveOnAllMonoComponents(true);
+        playerLife.RevivePlayer();
+    }
+
+    public void Kill()
+    {
+        SetActiveOnAllMonoComponents(false);
+    }
 }
+
