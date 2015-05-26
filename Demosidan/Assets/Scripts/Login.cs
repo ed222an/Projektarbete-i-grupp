@@ -74,9 +74,8 @@ public class Login : MonoBehaviour
         header.Add("username", usernameInput.text);
         header.Add("password", AES.encrypt(passwordInput.text));
         StartCoroutine("TryLogin");
-
-
     }
+
     //TODO: Give user feedback messages like "logged in" or "wrong credentials" etc
     //TODO: Check if internet connection
     //TODO: Check the JSON string if 1 or 0
@@ -92,7 +91,10 @@ public class Login : MonoBehaviour
             print(getUser.error);
         else
             print(getUser.text);
+        Dictionary<string, string> values = SimpleJason.ConvertJSON(getUser.text);
 
-
+        string result, message;
+        values.TryGetValue("result", out result);
+        values.TryGetValue("message", out message);
     }
 }
