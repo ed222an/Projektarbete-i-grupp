@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour 
 {
-    public static bool canRevive = false;
     public MovementHandler movementHandler;
     public PlayerHandler playerHandler;
 
@@ -102,7 +101,6 @@ public class PlayerLife : MonoBehaviour
         anim.ResetTrigger("Die");
         IsAlive = true;
         ResetLife();
-        PlayerLife.canRevive = false;
     }
 
     private IEnumerator KillPlayer()
@@ -114,7 +112,6 @@ public class PlayerLife : MonoBehaviour
 		anim.SetTrigger("Die");
 
 		yield return new WaitForSeconds (3.0f); // Testing death animation.
-        canRevive = true;
     }
 
     public void DealDamageToPlayer(float damageToTake)

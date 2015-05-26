@@ -84,7 +84,7 @@ public class GameController : MonoBehaviour
         }
 
         restartText.enabled = true;
-        if (Input.GetKeyDown(KeyCode.R) && PlayerLife.canRevive)
+        if (Input.GetKeyDown(KeyCode.R))
         {
             restartText.enabled = false;
             playerHandler.Revive();
