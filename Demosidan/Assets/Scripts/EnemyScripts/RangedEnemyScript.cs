@@ -10,6 +10,7 @@ public class RangedEnemyScript : MonoBehaviour
 	public float timeBetweenAttacks = 0.45f;
 	public bool facingRight = true;
     public bool turretMode = true;
+	public GameObject bulletSpawnpoint;
 
     private bool lazerActive = true;
 
@@ -38,44 +39,35 @@ public class RangedEnemyScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-		if (transform.position.x < player.transform.position.x)
+		if (player != null)
 		{
-			if(!facingRight)
-			{
-				Flip();
-				StartCoroutine(PlayMovingSound());
+			if (transform.position.x < player.transform.position.x) {
+				if (!facingRight) {
+					Flip ();
+					StartCoroutine (PlayMovingSound ());
+				}
+			} else {
+				if (facingRight) {
+					Flip ();
+					StartCoroutine (PlayMovingSound ());
+				}
+			}
+
+			if (turretMode) {
+				//ShowLazer();
+
+				if (UpdateAttackInterval ()) {
+					StartCoroutine (Shoot ());
+					Shoot ();
+				}
+			} else {
+				if (hit != null && hit.transform.gameObject.tag != "Player") {
+					UpdateLazerPosition ();
+				} else if (hit != null && hit.transform.gameObject.tag == "Player") {
+					Shoot ();
+				}
 			}
 		}
-		else
-		{
-			if(facingRight)
-			{
-				Flip();
-				StartCoroutine(PlayMovingSound());
-			}
-		}
-
-        if (turretMode)
-        {
-            //ShowLazer();
-
-            if (UpdateAttackInterval())
-            {
-                StartCoroutine(Shoot());
-                Shoot();
-            }
-        }
-        else
-        {
-            if (hit != null && hit.transform.gameObject.tag != "Player")
-            {
-                UpdateLazerPosition();
-            }
-            else if (hit != null && hit.transform.gameObject.tag == "Player")
-            {
-                Shoot();
-            }
-        }
 	}
 
     private void UpdateLazerPosition()
@@ -114,7 +106,7 @@ public class RangedEnemyScript : MonoBehaviour
 
     void CreateBullet()
     {
-        GameObject bulletObj = Instantiate(bullet, transform.position + new Vector3(0.2f, 0.2f, 0f), Quaternion.identity) as GameObject;
+		GameObject bulletObj = Instantiate(bullet, bulletSpawnpoint.transform.position, Quaternion.identity) as GameObject;
         EnemyBullet bulletScript = bulletObj.GetComponent<EnemyBullet>();
         bulletScript.Instantiate(this.gameObject, rayCastLayers);
     }
