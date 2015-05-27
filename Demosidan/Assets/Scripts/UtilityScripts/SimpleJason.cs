@@ -8,6 +8,11 @@ public static class SimpleJason
 {
     public static Dictionary<string, string> ConvertJSON(string JSON)
     {
+        if (string.IsNullOrEmpty(JSON))
+        {
+            return null;
+        }
+
         Dictionary<string, string> values = new Dictionary<string, string>();
 
         Regex pattern = new Regex("[\"|{|}]");
