@@ -113,11 +113,10 @@ public class EnemyHandler : MonoBehaviour
 
     void Update()
     {
-        //TODO: We have bugs here with null refs, also at playerObject.gameObject.GetComponentInParent<PlayerLife>().DealDamageToPlayer(enemyStats.damage);
-        //if (target == null)
-        //    target = GameObject.FindGameObjectWithTag("Player").transform;
-        //if (playerObject == null)
-        //    playerObject = transform.gameObject;
+        if (target == null)
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (playerObject == null && target != null)
+            playerObject = target.gameObject;
 
         if (startPatrolTimer > 0)
         {
@@ -139,7 +138,7 @@ public class EnemyHandler : MonoBehaviour
         {
             if (canAttack && isInAttackRange)
             {
-                playerObject.gameObject.GetComponentInParent<PlayerLife>().DealDamageToPlayer(enemyStats.damage);
+                playerObject.GetComponent<PlayerLife>().DealDamageToPlayer(enemyStats.damage);
                 canAttack = false;
                 attackTimer = enemyStats.attackSpeed;
 				StartCoroutine(PlayAttackSound());
