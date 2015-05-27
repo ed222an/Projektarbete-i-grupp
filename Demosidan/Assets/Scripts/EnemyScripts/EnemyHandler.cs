@@ -71,12 +71,8 @@ public class EnemyHandler : MonoBehaviour
             //If player is in scene, cast a line to the player to determine if the enemy can "see" the player or if there are other objects in the way
             hit = Physics2D.Linecast(rBody.position + new Vector2(0.0f, 0.5f), target.position, rayCastLayers);
             //Debug.DrawLine(rBody.position + new Vector2(0.0f, 0.5f), target.position);
-        }
-
-        //if the player is not visibly blocked by other objects from the enemys, then we can start checking if he is in the enemys vision range
-        if (target != null && hit.collider.gameObject.tag == "Player")
-        {
-            isInRange = Physics2D.OverlapArea(new Vector2(transform.position.x - followRangeRadiusX, transform.position.y - followRangeRadiusY),
+            if (hit.collider.gameObject.tag == "Player")
+                isInRange = Physics2D.OverlapArea(new Vector2(transform.position.x - followRangeRadiusX, transform.position.y - followRangeRadiusY),
                                                     new Vector2(transform.position.x + followRangeRadiusX, transform.position.y + followRangeRadiusY), playerLayer);
         }
         else
@@ -117,6 +113,12 @@ public class EnemyHandler : MonoBehaviour
 
     void Update()
     {
+        //TODO: We have bugs here with null refs, also at playerObject.gameObject.GetComponentInParent<PlayerLife>().DealDamageToPlayer(enemyStats.damage);
+        //if (target == null)
+        //    target = GameObject.FindGameObjectWithTag("Player").transform;
+        //if (playerObject == null)
+        //    playerObject = transform.gameObject;
+
         if (startPatrolTimer > 0)
         {
             startPatrolTimer -= Time.deltaTime;

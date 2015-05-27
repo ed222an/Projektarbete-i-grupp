@@ -36,6 +36,7 @@ public class PauseMenuHandler : MonoBehaviour
     {
         Application.LoadLevel("mainmenu");
         Time.timeScale = 1f;
+        SpawnPoint.spawnAt = 1;
         Destroy(pauseObject);
     }
 

@@ -72,6 +72,9 @@ public class EnemyLife : MonoBehaviour
 	                hpBarCanvas.enabled = true;
 				}
 
+                if (ph == null)
+                    ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
+
 				float damage = ph.GetTotalPlayerAttack();
 	            currentLife -= damage;
 	            UpdateHealthBar();
