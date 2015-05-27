@@ -1,16 +1,30 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PauseMenuHandler : MonoBehaviour
 {
     public GameObject pauseObject;
+    public GameObject confirmationWindow;
+    public Button uploadButton;
+    public Button downloadButton;
 
-    private WWWPostPlayerData poster;
+    private bool upload;
 
     void Awake()
     {
         Time.timeScale = 0.0f;
-        poster = GameObject.FindWithTag("GameController").GetComponent<WWWPostPlayerData>();
+
+        if (!CommunityUser.IsLoggedIn)
+        {
+            uploadButton.interactable = false;
+            downloadButton.interactable = false;
+        }
+        else
+        {
+            uploadButton.interactable = true;
+            downloadButton.interactable = true;
+        }
     }
 
     void Update()
@@ -27,11 +41,6 @@ public class PauseMenuHandler : MonoBehaviour
         Destroy(pauseObject);
     }
 
-    public void PostKillCount()
-    {
-        poster.PostPlayerKillData();
-    }
-
     public void GoToMainMenu()
     {
         Application.LoadLevel("mainmenu");
@@ -44,5 +53,28 @@ public class PauseMenuHandler : MonoBehaviour
     {
         Time.timeScale = 1f;
         Destroy(pauseObject);
+    }
+
+    public void SyncData(bool upload)
+    {
+        this.upload = upload;
+        confirmationWindow.SetActive(true);
+    }
+
+    public void ChoiceConfirmation(bool doAction)
+    {
+        if (doAction)
+        {
+            if (upload)
+            {
+                //uploaddata();
+            }
+            else
+            {
+                //downloaddata();
+            }
+        }
+
+        confirmationWindow.SetActive(false);
     }
 }
