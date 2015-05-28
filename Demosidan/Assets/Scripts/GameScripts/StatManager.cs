@@ -40,10 +40,10 @@ public class StatManager : MonoBehaviour
         killCount = kills;
         achHandler.SetAchievementProgressByType(AchType.kill, kills);
         jumpCount = jumps;
-        achHandler.AddAchievementProgressByType(AchType.jump, jumps);
+        achHandler.SetAchievementProgressByType(AchType.jump, jumps);
         deathCount = deaths;
         goldCount = gold;
-        achHandler.AddAchievementProgressByType(AchType.gold, amount);
+        achHandler.SetAchievementProgressByType(AchType.gold, gold);
     }
 
     public void AddKill(int amount = 1)
