@@ -1,0 +1,283 @@
+Initialize engine version: 5.0.0f4 (5b98b70ebeb9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 970 (ID=0x13c2)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo14_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo14_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo14_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo14_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo14_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo14_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.033 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo14_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Vanilla\Documents\GitHub\Projektarbete-i-grupp-Spel\Demosidan\Builds\Demo14_Data\Managed\System.dll (this message is harmless)
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.819857 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 297.
+Total: 0.234912 ms (FindLiveObjects: 0.014757 ms CreateObjectMapping: 0.013853 ms MarkObjects: 0.188231 ms  DeleteObjects: 0.017467 ms)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.201669 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 244.
+Total: 0.167149 ms (FindLiveObjects: 0.011444 ms CreateObjectMapping: 0.006926 ms MarkObjects: 0.142453 ms  DeleteObjects: 0.006324 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.373752 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 592.
+Total: 0.295448 ms (FindLiveObjects: 0.019877 ms CreateObjectMapping: 0.020479 ms MarkObjects: 0.237021 ms  DeleteObjects: 0.017769 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.604147 ms
+obj GameController (UnityEngine.GameObject) added to sticky list, unique ID = 11730
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+obj Inventory (UnityEngine.GameObject) added to sticky list, unique ID = 11690
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Unable to get object for destruction in StickBetweenScenes::Awake()
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+obj UI (UnityEngine.GameObject) added to sticky list, unique ID = 11874
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+
+Unloading 200 unused Assets to reduce memory usage. Loaded Objects now: 771.
+Total: 0.495726 ms (FindLiveObjects: 0.039453 ms CreateObjectMapping: 0.025900 ms MarkObjects: 0.274366 ms  DeleteObjects: 0.155403 ms)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Could not resolve host: www.metalgenre.se; No data record of requested type
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Murder uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+kills uploaded successfully
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Mass murder uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+deaths uploaded successfully
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Who likes robots anyways uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+jumps uploaded successfully
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement A robots worst enemy uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+gold uploaded successfully
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Filling the scrapyard uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Scrapyard full of robots, check uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Like a bunny uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Like a bunny 2 uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Like a bunny 3 uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Like a bunny 4 uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Everyone starts with a penny uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement More than a penny uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Golden riches uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Pile o gold uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Gold, GOLD GOOOOOLD uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Big force in every swing uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement Swing like a truck uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Achievement You are the truck uploaded.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.504761 ms
+
+Unloading 205 unused Assets to reduce memory usage. Loaded Objects now: 579.
+Total: 0.490907 ms (FindLiveObjects: 0.023491 ms CreateObjectMapping: 0.021985 ms MarkObjects: 0.341527 ms  DeleteObjects: 0.103602 ms)
+
+Setting Dwarf_3(Clone) (UnityEngine.GameObject) to inactive, blacklisted scene.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Setting GameController (UnityEngine.GameObject) to inactive, blacklisted scene.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Setting Inventory (UnityEngine.GameObject) to inactive, blacklisted scene.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Setting UI (UnityEngine.GameObject) to inactive, blacklisted scene.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
