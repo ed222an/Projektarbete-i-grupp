@@ -8,10 +8,17 @@ public class StickBetweenScenes : MonoBehaviour
     private string[] tagsOnStickyObjects = new string[] { "GameController", "Inventory", "Player", "UI" };
     private static bool inactiveObjects = false;
 
-    public static int[] nonGameLevels = new int[] { 0, 17 };
+    public static int[] nonGameLevels = new int[] { 0, 17, 37, 38 };
+    public static List<GameObject> objToInstantiate = new List<GameObject>();
 
     void Awake()
     {
+        if (objToInstantiate.Count != 0)
+        {
+            foreach (GameObject obj in objToInstantiate)
+                AddSingleObject(obj);
+        }
+
         if (inactiveObjects)
         {
             foreach (GameObject obj in gameObjects)
@@ -122,14 +129,13 @@ public class StickBetweenScenes : MonoBehaviour
         return false;
     }
 
-    public static void AddSingleObject(GameObject obj)
+    private void AddSingleObject(GameObject obj)
     {
         if (obj == null)
             return;
 
         obj = Instantiate(obj);
-        obj.SetActive(false);
+        DontDestroyOnLoad(obj);
         gameObjects.Add(obj);
-        inactiveObjects = true;
     }
 }
