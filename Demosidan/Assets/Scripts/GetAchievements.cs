@@ -39,7 +39,7 @@ public class GetAchievements : MonoBehaviour
                 d.TryGetValue("achievementIsDone", out achProgress);
                 int.TryParse(achProgress, out achProg);
 
-                achHandler.AddAchievementProgress(achName, achProg);
+                achHandler.SetAchievementProgress(achName, achProg);
             }
         }
     }

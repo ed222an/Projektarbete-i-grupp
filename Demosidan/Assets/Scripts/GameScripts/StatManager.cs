@@ -35,16 +35,27 @@ public class StatManager : MonoBehaviour
         achHandler = GetComponent<AchievementHandler>();
     }
 
+    public void UdpateAllStats(int kills, int jumps, int deaths, int gold)
+    {
+        killCount = kills;
+        achHandler.SetAchievementProgressByType(AchType.kill, kills);
+        jumpCount = jumps;
+        achHandler.AddAchievementProgressByType(AchType.jump, jumps);
+        deathCount = deaths;
+        goldCount = gold;
+        achHandler.AddAchievementProgressByType(AchType.gold, amount);
+    }
+
     public void AddKill(int amount = 1)
     {
         killCount += amount;
-        achHandler.AddAchievementProgressByType(AchType.kill, amount);
+        achHandler.AddAchievementProgressByType(AchType.kill, 1);
     }
 
     public void AddJump(int amount = 1)
     {
         jumpCount += amount;
-        achHandler.AddAchievementProgressByType(AchType.jump, amount);
+        achHandler.AddAchievementProgressByType(AchType.jump, 1);
     }
 
     public void AddDeath(int amount = 1)

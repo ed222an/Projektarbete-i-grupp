@@ -37,24 +37,21 @@ public class WWWGetPlayerData : MonoBehaviour
                 {
                     case "kills":
                         int.TryParse(temp, out kills);
-                        statManager.AddKill(kills);
                         break;
                     case "deaths":
                         int.TryParse(temp, out deaths);
-                        statManager.AddDeath(deaths);
                         break;
                     case "jumps":
                         int.TryParse(temp, out jumps);
-                        statManager.AddJump(jumps);
                         break;
                     case "gold":
                         int.TryParse(temp, out gold);
-                        statManager.AddGold(gold);
                         break;
                     default:
                         break;
                 }
             }
+            statManager.UdpateAllStats(kills, deaths, jumps, gold);
         }
     }
 }
