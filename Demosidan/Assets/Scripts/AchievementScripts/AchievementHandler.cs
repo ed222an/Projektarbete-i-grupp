@@ -36,7 +36,7 @@ public class AchievementHandler : MonoBehaviour
         achievements.Add(new Achievement("Everyone starts with a penny", "Collect your first gold coin.", 1, AchType.gold));
         achievements.Add(new Achievement("More than a penny", "Collect a total of 100 gold.", 100, AchType.gold));
         achievements.Add(new Achievement("Golden riches", "Collect a total of 500 gold.", 500, RewardType.atkSpd, 0.02f, AchType.gold));
-        achievements.Add(new Achievement("Golden riches 2", "Collect a total of 2000 gold.", 2000, RewardType.atkSpd, 0.03f, AchType.gold));
+        achievements.Add(new Achievement("Pile o gold", "Collect a total of 2000 gold.", 2000, RewardType.atkSpd, 0.03f, AchType.gold));
         achievements.Add(new Achievement("Gold, GOLD GOOOOOLD", "Collect a total of 5000 gold.", 5000, RewardType.damage, 5, AchType.gold));
 
         achievements.Add(new Achievement("Big force in every swing", "Reach a total of 4 attack damage.", 4, RewardType.str, 1, AchType.totalDamage));
