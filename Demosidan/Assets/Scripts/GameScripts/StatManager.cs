@@ -35,7 +35,7 @@ public class StatManager : MonoBehaviour
         achHandler = GetComponent<AchievementHandler>();
     }
 
-    public void UdpateAllStats(int kills, int jumps, int deaths, int gold)
+    public void UdpateAllStats(int kills, int deaths, int jumps, int gold)
     {
         killCount = kills;
         achHandler.SetAchievementProgressByType(AchType.kill, kills);
