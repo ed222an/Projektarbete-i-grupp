@@ -73,6 +73,13 @@ public class PauseMenuHandler : MonoBehaviour
         Destroy(pauseObject);
     }
 
+    public void GoToCharacterSelect()
+    {
+        Application.LoadLevel(38);
+        Time.timeScale = 1f;
+        Destroy(pauseObject);
+    }
+
     public void ClosePausMenu()
     {
         Time.timeScale = 1f;

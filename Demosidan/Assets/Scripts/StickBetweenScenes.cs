@@ -17,6 +17,8 @@ public class StickBetweenScenes : MonoBehaviour
         {
             foreach (GameObject obj in objToInstantiate)
                 AddSingleObject(obj);
+
+            objToInstantiate.Clear();
         }
 
         if (inactiveObjects)
@@ -44,10 +46,12 @@ public class StickBetweenScenes : MonoBehaviour
                     if (objectToDestroy == null)
                     {
                         Debug.LogWarning("Unable to get object for destruction in " + this.GetType() + "::Awake()");
-                        break;
                     }
-                    Debug.Log(objectToDestroy + " destroyed Unique ID = " + objectToDestroy.GetInstanceID());
-                    Destroy(objectToDestroy);
+                    else
+                    {
+                        Debug.Log(objectToDestroy + " destroyed Unique ID = " + objectToDestroy.GetInstanceID());
+                        Destroy(objectToDestroy);
+                    }                    
                 }
                 else
                 {
