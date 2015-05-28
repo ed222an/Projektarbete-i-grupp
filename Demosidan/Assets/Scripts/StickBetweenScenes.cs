@@ -121,4 +121,15 @@ public class StickBetweenScenes : MonoBehaviour
 
         return false;
     }
+
+    public static void AddSingleObject(GameObject obj)
+    {
+        if (obj == null)
+            return;
+
+        obj = Instantiate(obj);
+        obj.SetActive(false);
+        gameObjects.Add(obj);
+        inactiveObjects = true;
+    }
 }
