@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class WWWPostAchievementData : MonoBehaviour 
+public class WWWPostAchievementData
 {
     public string URL = "http://www.metalgenre.se/api/achievements/PostAchievement.php";
 
@@ -12,29 +12,35 @@ public class WWWPostAchievementData : MonoBehaviour
     const string username = "username";
     const string password = "password";
 
-    public void PostAllAchievements(List<Achievement> achList)
+    private bool isDone = true;
+
+    public bool IsDone
     {
-        foreach (Achievement ach in achList)
-        {
-            StartCoroutine(PostAchievement(ach));
-        }
+        get { return isDone; }
     }
 
-    IEnumerator PostAchievement(Achievement ach)
+    public IEnumerator PostAchievement(IList<Achievement> achList)
     {
-        WWWForm form = new WWWForm();
+        isDone = false;
 
-        form.AddField(achievement, ach.AchTitle);
-        form.AddField(achievementIsDone, ach.IsComplete() ? 1 : 0);
-        form.AddField(username, CommunityUser.Username);
-        form.AddField(password, CommunityUser.Password);
+        foreach (var ach in achList)
+        {
+            WWWForm form = new WWWForm();
 
-        WWW w = new WWW(URL, form);
-        yield return w;
+            form.AddField(achievement, ach.AchTitle);
+            form.AddField(achievementIsDone, ach.IsComplete() ? 1 : 0);
+            form.AddField(username, CommunityUser.Username);
+            form.AddField(password, CommunityUser.Password);
 
-        if (!string.IsNullOrEmpty(w.error))
-            print(w.error);
-        else
-            print("Achievement " + ach.AchTitle + " uploaded.");
+            WWW w = new WWW(URL, form);
+            yield return w;
+
+            if (!string.IsNullOrEmpty(w.error))
+                Debug.Log(w.error);
+            else
+                Debug.Log("Achievement " + ach.AchTitle + " uploaded.");
+        }
+
+        isDone = true;
     }
 }

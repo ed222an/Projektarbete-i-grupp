@@ -1,14 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WWWPostPlayerData : MonoBehaviour 
+public class WWWPostPlayerData
 {
     public string URL = "http://www.metalgenre.se/api/stats/PostStats.php";
 
     private string[] statNames = new string[] { "kills", "deaths", "jumps", "gold" };
+    private bool isDone = true;
+
+    public bool IsDone
+    {
+        get { return isDone; }
+    }
 
     public IEnumerator PostPlayerData()
     {
+        isDone = false;
+
         StatManager statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
 
         foreach (string statName in statNames)
@@ -39,9 +47,11 @@ public class WWWPostPlayerData : MonoBehaviour
             yield return w;
 
             if (!string.IsNullOrEmpty(w.error))
-                print(w.error);
+                Debug.Log(w.error);
             else
-                print(statName + " uploaded successfully");
+                Debug.Log(statName + " uploaded successfully");
         }
+
+        isDone = true;
     }
 }

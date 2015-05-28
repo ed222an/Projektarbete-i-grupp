@@ -2,15 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class WWWGetPlayerData : MonoBehaviour
+public class WWWGetPlayerData
 {
     public string URL = "http://www.metalgenre.se/api/stats/GetStats.php";
 
     private string[] statNames = new string[] { "kills", "deaths", "jumps", "gold" };
     private Dictionary<string, string> header = new Dictionary<string, string>();
+    private bool isDone = true;
+
+    public bool IsDone
+    {
+        get { return isDone; }
+    }
 
     public IEnumerator UpdateAllStats()
     {
+        isDone = false;
+
         StatManager statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
 
         int kills = 0, deaths = 0, jumps = 0, gold = 0;
@@ -22,7 +30,7 @@ public class WWWGetPlayerData : MonoBehaviour
         yield return getStat;
 
         if (string.IsNullOrEmpty(getStat.text))
-            print(getStat.error);
+            Debug.Log(getStat.error);
         else
         {
             List<Dictionary<string, string>> dataList = SimpleJason.ConvertJSONMany(getStat.text);
@@ -53,5 +61,7 @@ public class WWWGetPlayerData : MonoBehaviour
             }
             statManager.UdpateAllStats(kills, deaths, jumps, gold);
         }
+
+        isDone = true;
     }
 }

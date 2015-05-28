@@ -6,16 +6,24 @@ public class PauseMenuHandler : MonoBehaviour
 {
     public GameObject pauseObject;
     public GameObject confirmationWindow;
+    public GameObject loadingPanel;
     public Button uploadButton;
     public Button downloadButton;
-    public WWWGetPlayerData d;
-    public WWWPostPlayerData pd;
+
+    private WWWGetPlayerData d;
+    private WWWPostPlayerData pd;
+    private WWWPostAchievementData pa;
+    private AchievementHandler ah;
 
     private bool upload;
+    private bool isWorking;
 
     void Awake()
     {
+        ah = GameObject.FindWithTag("GameController").GetComponent<AchievementHandler>();
+
         Time.timeScale = 0.0f;
+        isWorking = false;
 
         if (!CommunityUser.IsLoggedIn)
         {
@@ -29,13 +37,25 @@ public class PauseMenuHandler : MonoBehaviour
         }
         d = new WWWGetPlayerData();
         pd = new WWWPostPlayerData();
+        pa = new WWWPostAchievementData();
     }
 
     void Update()
     {
-        //Handle a second press, this should close the window
-        if (Input.GetKeyDown(KeyCode.Escape))
-            ClosePausMenu();
+        if (isWorking)
+        {
+            if (d.IsDone && pd.IsDone && pa.IsDone)
+            {
+                isWorking = false;
+                loadingPanel.SetActive(false);
+            }
+        }
+        else
+        {
+            //Handle a second press, this should close the window
+            if (Input.GetKeyDown(KeyCode.Escape))
+                ClosePausMenu();
+        } 
     }
 
     //Continue the game.
@@ -69,12 +89,16 @@ public class PauseMenuHandler : MonoBehaviour
     {
         if (doAction)
         {
-            if (upload)
+            isWorking = true;
+            loadingPanel.SetActive(true);
+
+            if (upload && CommunityUser.IsLoggedIn)
             {
                 StartCoroutine(pd.PostPlayerData());
+                StartCoroutine(pa.PostAchievement(ah.GetAllAchievements()));
                 //uploaddata();
             }
-            else
+            else if (!upload && CommunityUser.IsLoggedIn)
             {
                 StartCoroutine(d.UpdateAllStats());
                 //downloaddata();
