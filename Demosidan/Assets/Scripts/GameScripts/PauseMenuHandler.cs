@@ -8,6 +8,8 @@ public class PauseMenuHandler : MonoBehaviour
     public GameObject confirmationWindow;
     public Button uploadButton;
     public Button downloadButton;
+    public WWWGetPlayerData d;
+    public WWWPostPlayerData pd;
 
     private bool upload;
 
@@ -25,6 +27,8 @@ public class PauseMenuHandler : MonoBehaviour
             uploadButton.interactable = true;
             downloadButton.interactable = true;
         }
+        d = new WWWGetPlayerData();
+        pd = new WWWPostPlayerData();
     }
 
     void Update()
@@ -67,10 +71,12 @@ public class PauseMenuHandler : MonoBehaviour
         {
             if (upload)
             {
+                StartCoroutine(pd.PostPlayerData());
                 //uploaddata();
             }
             else
             {
+                StartCoroutine(d.UpdateAllStats());
                 //downloaddata();
             }
         }

@@ -10,6 +10,7 @@ public class Login : MonoBehaviour
     public GameObject messageBox;
     public Text messageText;
     public GameObject loadingPanel;
+    private static GetAchievements g;
 
     //private static bool isLoggedIn = false;
     //private static string username;
@@ -30,32 +31,6 @@ public class Login : MonoBehaviour
     //{
     //    get { return Login.password; }
     //}
-
-    private WWW CreateWWWWithHeaders(string URL, Dictionary<string, string> headers)
-    {
-        int count = headers.Count;
-
-        URL += "?";
-
-        foreach (KeyValuePair<string, string> entry in headers)
-        {
-            if (count > 1)
-            {
-                count -= 1;
-                URL += entry.Key + "=" + entry.Value + "&";
-            }
-            else
-            {
-                URL += entry.Key + "=" + entry.Value;
-            }
-        }
-
-        Debug.Log(URL);
-
-        WWW w = new WWW(URL);
-
-        return w;
-    }
 
     public void DoLogin()
     {
@@ -81,7 +56,7 @@ public class Login : MonoBehaviour
     {
         loadingPanel.SetActive(true);
 
-        WWW getUser = CreateWWWWithHeaders(url, header);
+        WWW getUser = WWWUtility.CreateWWWWithHeaders(url, header);
         
         yield return getUser;
 

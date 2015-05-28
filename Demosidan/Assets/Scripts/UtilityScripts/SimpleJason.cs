@@ -12,7 +12,7 @@ public static class SimpleJason
         {
             return null;
         }
-
+        
         Dictionary<string, string> values = new Dictionary<string, string>();
 
         Regex pattern = new Regex("[\"|{|}]");
@@ -43,6 +43,64 @@ public static class SimpleJason
         }
 
         return values;
+    }
+
+    public static List<Dictionary<string, string>> ConvertJSONMany(string JSON)
+    {
+        if (string.IsNullOrEmpty(JSON))
+        {
+            return null;
+        }
+
+        List<Dictionary<string, string>> valuesList = new List<Dictionary<string, string>>();
+
+        Dictionary<string, string> values = new Dictionary<string, string>(); ;
+        string key, value;
+        bool atEnd;
+
+        if (JSON[0] == '[')
+        {
+            JSON = JSON.Substring(1);
+            atEnd = false;
+
+            while (!atEnd)
+            {
+                if (JSON.Length != 0)
+                {
+                    if (JSON[0] == '{')
+                    {
+                        values = new Dictionary<string, string>();
+                        JSON = JSON.Substring(1);
+                    }
+                    else if (JSON[0] == '\"')
+                    {
+                        JSON = JSON.Substring(1);
+                        key = Separate(JSON, '"');
+                        JSON = JSON.Substring(JSON.IndexOf(':') + 1);
+
+                        JSON = JSON.Substring(1);
+                        value = Separate(JSON, '"');
+                        JSON = JSON.Substring(JSON.IndexOf('"') + 1);
+
+                        if (JSON[0] == ',')
+                            JSON = JSON.Substring(1);
+
+                        values.Add(key, value);
+                    }
+                    else if (JSON[0] == '}')
+                    {
+                        valuesList.Add(values);
+                        JSON = JSON.Substring(2);
+                    }
+                    else if (JSON[0] == ']')
+                        atEnd = true;
+                }
+                else
+                    atEnd = true;
+            }
+        }
+
+        return valuesList;
     }
 
     private static string Separate(string s, char separator)

@@ -4,34 +4,44 @@ using System.Collections;
 public class WWWPostPlayerData : MonoBehaviour 
 {
     public string URL = "http://www.metalgenre.se/api/stats/PostStats.php";
-    public string statName = "kills";
-    public string username = "Admin";
-    public string password = "Password";
 
-    public void PostPlayerKillData()
+    private string[] statNames = new string[] { "kills", "deaths", "jumps", "gold" };
+
+    public IEnumerator PostPlayerData()
     {
-        StartCoroutine(PostPlayerData());
-    }
+        StatManager statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
 
-    IEnumerator PostPlayerData()
-    {
-        int killCount = GameObject.FindWithTag("StatManager").GetComponent<StatManager>().KillCount; //TODO: This should be passed to the function instead
+        foreach (string statName in statNames)
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("statName", statName);
+            switch (statName)
+            {
+                case "kills":
+                    form.AddField("statCount", statManager.KillCount);
+                    break;
+                case "deaths":
+                    form.AddField("statCount", statManager.DeathCount);
+                    break;
+                case "jumps":
+                    form.AddField("statCount", statManager.JumpCount);
+                    break;
+                case "gold":
+                    form.AddField("statCount", statManager.GoldCount);
+                    break;
+                default:
+                    break;
+            }
+            form.AddField("username", CommunityUser.Username);
+            form.AddField("password", CommunityUser.Password);
 
-        WWWForm form = new WWWForm();
+            WWW w = new WWW(URL, form);
+            yield return w;
 
-        form.AddField("statName", statName);
-        form.AddField("statCount", killCount);
-        form.AddField("username", username);
-        form.AddField("password", AES.encrypt(password));
-
-        Debug.Log("encrypted PW: " + AES.encrypt(password) + " name: " + username + " Kills: " + killCount);
-
-        WWW w = new WWW(URL, form);
-        yield return w;
-
-        if (!string.IsNullOrEmpty(w.error))
-            print(w.error);
-        else
-            print("Kill count uploaded.");
+            if (!string.IsNullOrEmpty(w.error))
+                print(w.error);
+            else
+                print(statName + " uploaded successfully");
+        }
     }
 }

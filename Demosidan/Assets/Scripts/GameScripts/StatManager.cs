@@ -6,6 +6,7 @@ public class StatManager : MonoBehaviour
     private int killCount;
     private int jumpCount;
     private int deathCount;
+    private int goldCount;
 
     public int KillCount
     {
@@ -22,6 +23,11 @@ public class StatManager : MonoBehaviour
         get { return deathCount; }
     }
 
+    public int GoldCount
+    {
+        get { return goldCount; }
+    }
+
     private AchievementHandler achHandler;
 
     void Awake()
@@ -32,17 +38,23 @@ public class StatManager : MonoBehaviour
     public void AddKill(int amount = 1)
     {
         killCount += amount;
-        achHandler.AddAchievementProgressByType(AchType.kill, 1);
+        achHandler.AddAchievementProgressByType(AchType.kill, amount);
     }
 
     public void AddJump(int amount = 1)
     {
         jumpCount += amount;
-        achHandler.AddAchievementProgressByType(AchType.jump, 1);
+        achHandler.AddAchievementProgressByType(AchType.jump, amount);
     }
 
     public void AddDeath(int amount = 1)
     {
         deathCount += amount;
+    }
+
+    public void AddGold(int amount = 1)
+    {
+        goldCount += amount;
+        achHandler.AddAchievementProgressByType(AchType.gold, amount);
     }
 }
