@@ -15,9 +15,11 @@ public class Switch : MonoBehaviour
 	private bool canFlip = true;
     private Component targetScript;
     private Text objectiveText;
+    private bool canPress;
 
     void Awake()
     {
+        canPress = false;
         targetScript = target.GetComponent<MonoBehaviour>();
     }
 
@@ -30,22 +32,23 @@ public class Switch : MonoBehaviour
 
         anim = gameObject.GetComponent<Animator>();
 	}
-	
-	void OnTriggerStay2D(Collider2D other)
-	{
-		if (other.tag == "Player")
-		{            
-			if (Input.GetKeyDown(KeyCode.E))
-			{
-				if(canFlip)
-				{
-					canFlip = false;
-					StartCoroutine(FlipSwitch());
-				}
-			}
-		}
-	}
-	
+
+    void Update()
+    {
+        if (canPress)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (canFlip)
+                {
+                    canFlip = false;
+                    canPress = false;
+                    StartCoroutine(FlipSwitch());
+                }
+            }
+        }        
+    }
+
 	IEnumerator FlipSwitch()
 	{
 		anim.SetTrigger ("Flip");
@@ -89,6 +92,14 @@ public class Switch : MonoBehaviour
         completionText.enabled = false;
         yield break;
     }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            canPress = true;
+        }
+    }
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
@@ -105,6 +116,7 @@ public class Switch : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
+            canPress = false;
 			icon.SetActive(false);
 		}
 	}

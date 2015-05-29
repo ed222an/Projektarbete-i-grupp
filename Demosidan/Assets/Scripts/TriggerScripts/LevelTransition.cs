@@ -3,25 +3,37 @@ using System.Collections;
 
 public class LevelTransition : MonoBehaviour 
 {
-    private GameObject controller;
-
     public GameObject icon;
     public int sceneToLoad;
     public int spawnPoint = 1;
 
+    private GameObject controller;
+    private bool canPress;
+
     void Awake()
     {
+        canPress = false;
         controller = GameObject.FindWithTag("GameController");
+    }
+
+    void Update()
+    {
+        if (canPress)
+        {
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                canPress = false;
+                StartCoroutine(ChangeLevel());
+            }
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Player")
-        {            
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartCoroutine(ChangeLevel());
-            }
+        {
+            canPress = true;
+            icon.SetActive(true);
         }
     }
 
@@ -36,18 +48,11 @@ public class LevelTransition : MonoBehaviour
         Application.LoadLevel(sceneToLoad);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            icon.SetActive(true);
-        }
-    }
-
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
+            canPress = false;
             icon.SetActive(false);
         }
     }
