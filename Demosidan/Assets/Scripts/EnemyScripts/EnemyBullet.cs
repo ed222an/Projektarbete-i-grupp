@@ -7,7 +7,6 @@ public class EnemyBullet : MonoBehaviour
 
     GameObject origin;
     Rigidbody2D rBody;
-    LayerMask hitableLayers;
 
     bool hasUpdated = false;
 
@@ -26,7 +25,7 @@ public class EnemyBullet : MonoBehaviour
         }
     }
 
-    public void Instantiate(GameObject obj, LayerMask hitableLayers)
+    public void Instantiate(GameObject obj)
     {
         if (obj == null)
         {
@@ -36,7 +35,8 @@ public class EnemyBullet : MonoBehaviour
 
         origin = obj;
         rBody = GetComponent<Rigidbody2D>();
-        this.hitableLayers = hitableLayers;
+        Physics2D.IgnoreLayerCollision(18, 12);
+        Physics2D.IgnoreLayerCollision(18, 18);
 
         if (origin.transform.position.x <= transform.position.x)
         {

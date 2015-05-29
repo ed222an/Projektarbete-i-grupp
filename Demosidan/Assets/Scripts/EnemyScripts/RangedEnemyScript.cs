@@ -108,7 +108,7 @@ public class RangedEnemyScript : MonoBehaviour
     {
 		GameObject bulletObj = Instantiate(bullet, bulletSpawnpoint.transform.position, Quaternion.identity) as GameObject;
         EnemyBullet bulletScript = bulletObj.GetComponent<EnemyBullet>();
-        bulletScript.Instantiate(this.gameObject, rayCastLayers);
+        bulletScript.Instantiate(this.gameObject);
     }
 
 	// Flips the world around the enemy, allowing us to only use 1 set of animations.

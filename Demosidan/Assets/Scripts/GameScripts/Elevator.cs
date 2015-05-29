@@ -31,5 +31,6 @@ public class Elevator : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime, transform.position.z);
 
         playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - moveSpeed * Time.deltaTime, playerTransform.position.z);
+        playerTransform.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 	}
 }
