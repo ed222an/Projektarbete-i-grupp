@@ -41,7 +41,7 @@ public class CharacterSelection : MonoBehaviour
         if (chosenDwarf == null)
             return;
 
-        StickBetweenScenes.objToInstantiate.Add(chosenDwarf);
+        StickBetweenScenes.objToInstantiate = chosenDwarf;
         SpawnPoint.spawnAt = 1;
 
         loadingImage.SetActive(true);

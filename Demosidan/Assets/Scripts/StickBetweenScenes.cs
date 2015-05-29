@@ -9,16 +9,15 @@ public class StickBetweenScenes : MonoBehaviour
     private static bool inactiveObjects = false;
 
     public static int[] nonGameLevels = new int[] { 0, 17, 37, 38 };
-    public static List<GameObject> objToInstantiate = new List<GameObject>();
+    public static GameObject objToInstantiate = null; // Make singel object
 
     void Awake()
     {
-        if (objToInstantiate.Count != 0)
+        if (objToInstantiate != null)
         {
-            foreach (GameObject obj in objToInstantiate)
-                AddSingleObject(obj);
+            AddSingleObject(objToInstantiate);
 
-            objToInstantiate.Clear();
+            objToInstantiate = null;
         }
 
         if (inactiveObjects)
@@ -93,6 +92,12 @@ public class StickBetweenScenes : MonoBehaviour
             //If the current level is blacklisted for the objects, destroy them.
             if (levelId == level)
             {
+                if (levelId == 0)
+                {
+                    GameObject obj = gameObjects.Find(fObj => fObj.tag == "Player");
+                    DestroyObject(obj);
+                    gameObjects.Remove(obj);
+                }
                 //Clear list from nulls
                 gameObjects.RemoveAll(obj => obj == null);
 
