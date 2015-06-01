@@ -101,6 +101,7 @@ public class EnemyLife : MonoBehaviour
 	// Destroy the enemy gameobject
     void DestroyEnemy()
     {
+        gameObject.GetComponent<EnemyLoot>().DropGold();
         DestroyObject(transform.gameObject);
     }
 

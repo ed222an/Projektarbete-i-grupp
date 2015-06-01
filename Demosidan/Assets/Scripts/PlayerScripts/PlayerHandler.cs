@@ -6,6 +6,7 @@ public class PlayerHandler : MonoBehaviour
 {
     public PlayerStats playerStats;
     public AchievementHandler achHandler;
+    private StatManager statManager;
     private PlayerLife playerLife;
     private float goldCoins;
 
@@ -26,6 +27,7 @@ public class PlayerHandler : MonoBehaviour
             items.Add(item);
 		playerStats = GetComponent<PlayerStats>();
         achHandler = GameObject.FindWithTag("GameController").GetComponent<AchievementHandler>();
+        statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
         playerLife = GetComponent<PlayerLife>();
     }
 
@@ -41,7 +43,7 @@ public class PlayerHandler : MonoBehaviour
     public void AddGold(int amount)
     {
         goldCoins += amount;
-        achHandler.AddAchievementProgressByType(AchType.gold, amount);
+        statManager.AddGold(amount);
     }
 
     public float GetTotalPlayerAttack()
