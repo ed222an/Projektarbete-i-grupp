@@ -5,12 +5,9 @@ using System.Collections;
 public class GameController : MonoBehaviour 
 {
     public static GameController controller;
-    public static int[] nonGameLevels = new int[] { 0 };
 
-    public GUIText restartText;
-    public GameObject gameController;
-    public GameObject inventory;
-
+    private GUIText restartText;
+    private GameObject inventory;
     private PlayerHandler playerHandler;
 
     //TODO: Might not want to be lazy and use a static variable here.
