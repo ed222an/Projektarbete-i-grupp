@@ -13,8 +13,13 @@ public class AchievementMenuHandler : MonoBehaviour {
     public Button achievementTabButton;
     public Button statisticsTabButton;
     public Sprite completeImage;
+    public Text kills;
+    public Text jumps;
+    public Text gold;
+    public Text deaths;
 
     private GameObject contentPanel;
+    private StatManager statMan;
 
     private IList<Achievement> achList;
     private List<GameObject> achievementDisplayObjects = new List<GameObject>();
@@ -22,6 +27,10 @@ public class AchievementMenuHandler : MonoBehaviour {
     void Awake()
     {
         contentPanel = GameObject.Find("Content Panel");
+        if (GameObject.FindGameObjectWithTag("GameController"))
+        {
+            statMan = GameObject.FindGameObjectWithTag("GameController").GetComponent<StatManager>();
+        }
     }
 
     void Start()
@@ -66,6 +75,15 @@ public class AchievementMenuHandler : MonoBehaviour {
             CloseAchievementMenu();
 
         UpdateAchievements();
+        UpdateLifetimeStats();
+    }
+
+    private void UpdateLifetimeStats()
+    {
+        kills.text = statMan.KillCount.ToString();
+        jumps.text = statMan.JumpCount.ToString();
+        gold.text = statMan.GoldCount.ToString();
+        deaths.text = statMan.DeathCount.ToString();
     }
 
     private void UpdateAchievements()
