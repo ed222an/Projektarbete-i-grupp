@@ -5,29 +5,44 @@ public class CoinScript : MonoBehaviour
 {
     private int goldAmount = 1;
 
+    private float pickupTimer;
+
     void Awake()
     {
+        pickupTimer = 1;
+
+        Physics2D.IgnoreLayerCollision(19, 8);
         Physics2D.IgnoreLayerCollision(19, 12);
         Physics2D.IgnoreLayerCollision(19, 17);
         Physics2D.IgnoreLayerCollision(19, 18);
         Physics2D.IgnoreLayerCollision(19, 19);
     }
 
-    void Start()
+    void Update()
     {
-        float xForce = Random.Range(0f, 2f);
-        float yForce = Random.Range(1f, 5f) + 1;
-        if (xForce == 0)
-            xForce = -1;
-        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(xForce, 5f), ForceMode2D.Impulse); //Add random force
+        if (pickupTimer > 0)
+        {
+            pickupTimer -= Time.deltaTime; 
+        }
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void Start()
+    {
+        float xForce = Random.Range(-2f, 2f);
+        float yForce = Random.Range(1f, 5f) + 1;
+
+        gameObject.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(xForce, yForce), ForceMode2D.Impulse); //Add random force
+    }
+
+    void OnTriggerStay2D(Collider2D coll)
     {
         if (coll != null && coll.gameObject.tag == "Player")
         {
-            coll.gameObject.GetComponent<PlayerHandler>().AddGold(goldAmount);
-            DestroyObject(this.gameObject);
+            if (pickupTimer <= 0)
+            { 
+                coll.gameObject.GetComponent<PlayerHandler>().AddGold(goldAmount);
+                DestroyObject(this.transform.parent.gameObject);
+            }
         }
     }
 

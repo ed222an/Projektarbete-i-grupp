@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
         Physics2D.IgnoreLayerCollision(17, 8);
         Physics2D.IgnoreLayerCollision(17, 15);
         Physics2D.IgnoreLayerCollision(17, 18);
+        Physics2D.IgnoreLayerCollision(17, 14);
 	}
 
 	void FixedUpdate ()
