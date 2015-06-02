@@ -46,6 +46,9 @@ public class EnemyLife : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
+        if (statManager == null)
+            statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
+
         if (currentLife <= 0 && isAlive)
         {
             isAlive = false;

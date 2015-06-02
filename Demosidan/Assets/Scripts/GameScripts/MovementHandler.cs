@@ -76,6 +76,9 @@ public class MovementHandler : MonoBehaviour
         if (Time.timeScale == 0 || !controllable)
             return;
 
+        if (statManager == null)
+            statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
+
 		// Jumping
         if (grounded && Input.GetKeyDown("space"))
         {

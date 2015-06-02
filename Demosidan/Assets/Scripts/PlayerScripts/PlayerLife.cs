@@ -68,6 +68,8 @@ public class PlayerLife : MonoBehaviour
             lifeText = GameObject.Find("HpBarText").GetComponent<Text>();
         if (healthBar == null)
             healthBar = GameObject.Find("HpOverlayBar").GetComponent<Image>();
+        if (statManager == null)
+            statManager = GameObject.FindWithTag("GameController").GetComponent<StatManager>();
 
         if (currentLife <= 0 && IsAlive)
         {
