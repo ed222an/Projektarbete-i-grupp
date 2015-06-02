@@ -74,6 +74,9 @@ public class GameController : MonoBehaviour
 
     void CheckForRestart()
     {
+        if (playerHandler == null)
+            playerHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>();
+
         if (playerHandler.IsAlive())
         {
             restartText.enabled = false;
