@@ -6,7 +6,7 @@ public class PauseMenuHandler : MonoBehaviour
 {
     public GameObject pauseObject;
     public GameObject confirmationWindow;
-    public GameObject loadingPanel;
+    public GameObject loadingImage;
     public Button uploadButton;
     public Button downloadButton;
 
@@ -47,7 +47,7 @@ public class PauseMenuHandler : MonoBehaviour
             if (d.IsDone && pd.IsDone && pa.IsDone)
             {
                 isWorking = false;
-                loadingPanel.SetActive(false);
+                loadingImage.SetActive(false);
             }
         }
         else
@@ -97,7 +97,7 @@ public class PauseMenuHandler : MonoBehaviour
         if (doAction)
         {
             isWorking = true;
-            loadingPanel.SetActive(true);
+            loadingImage.SetActive(true);
 
             if (upload && CommunityUser.IsLoggedIn)
             {
