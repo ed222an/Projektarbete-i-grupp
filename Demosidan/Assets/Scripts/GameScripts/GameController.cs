@@ -10,7 +10,6 @@ public class GameController : MonoBehaviour
     private GameObject inventory;
     private PlayerHandler playerHandler;
 
-    //TODO: Might not want to be lazy and use a static variable here.
     public static bool characterStatsMenuActive = false;
     public static bool inventoryActive = false;
     public static bool achievementActive = false;
@@ -35,7 +34,6 @@ public class GameController : MonoBehaviour
             //Character stats menu
             if (Input.GetKeyDown(KeyCode.C) && !characterStatsMenuActive)
             {
-                //TODO: Compile stats and achievements in one scene to eliminate the issue with closing and opening a new scene (looks like flickering)
                 if (achievementActive)
                 {
                     GameObject.Find("Achievementmenu").GetComponentInChildren<AchievementMenuHandler>().CloseAchievementMenu();
@@ -48,7 +46,6 @@ public class GameController : MonoBehaviour
             //Achievement menu
             if (Input.GetKeyDown(KeyCode.Y) && !achievementActive)
             {
-                //TODO: Compile stats and achievements in one scene to eliminate the issue with closing and opening a new scene (looks like flickering)
                 if (characterStatsMenuActive)
                 {
                     GameObject.Find("CharacterInformation").GetComponentInChildren<CharacterStatsMenuHandler>().CloseStatsMenu();

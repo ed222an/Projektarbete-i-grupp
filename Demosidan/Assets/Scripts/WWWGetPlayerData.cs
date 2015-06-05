@@ -5,8 +5,6 @@ using System.Collections.Generic;
 public class WWWGetPlayerData
 {
     public string URL = "http://www.metalgenre.se/api/stats/GetStats.php";
-
-    private string[] statNames = new string[] { "kills", "deaths", "jumps", "gold" };
     private Dictionary<string, string> header = new Dictionary<string, string>();
     private bool isDone = true;
 

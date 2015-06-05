@@ -7,12 +7,6 @@ public class GetAchievements : MonoBehaviour
     public string URL = "http://www.metalgenre.se/api/achievements/GetAchievement.php";
 
     private Dictionary<string, string> header = new Dictionary<string, string>();
-    private Dictionary<string, string> dic = new Dictionary<string, string>();
-
-    void Start()
-    {
-
-    }
 
     public IEnumerator GetAllAchievementsOnUser()
     {
@@ -21,8 +15,6 @@ public class GetAchievements : MonoBehaviour
         WWW getAch = WWWUtility.CreateWWWWithHeaders(URL, header);
 
         yield return getAch;
-
-        Dictionary<string, string> myDic = new Dictionary<string, string>();
 
         if (!string.IsNullOrEmpty(getAch.error))
             print(getAch.error);

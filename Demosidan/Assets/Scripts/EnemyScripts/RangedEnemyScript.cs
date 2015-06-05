@@ -12,8 +12,6 @@ public class RangedEnemyScript : MonoBehaviour
     public bool turretMode = true;
 	public GameObject bulletSpawnpoint;
 
-    private bool lazerActive = true;
-
 	private float attackInterval = 0.2f;
 
     private RaycastHit2D hit;
@@ -41,30 +39,42 @@ public class RangedEnemyScript : MonoBehaviour
     {
 		if (player != null)
 		{
-			if (transform.position.x < player.transform.position.x) {
-				if (!facingRight) {
-					Flip ();
-					StartCoroutine (PlayMovingSound ());
+			if (transform.position.x < player.transform.position.x) 
+            {
+				if (!facingRight) 
+                {
+					Flip();
+					StartCoroutine(PlayMovingSound());
 				}
-			} else {
-				if (facingRight) {
-					Flip ();
-					StartCoroutine (PlayMovingSound ());
+			} 
+            else 
+            {
+				if (facingRight) 
+                {
+					Flip();
+					StartCoroutine(PlayMovingSound());
 				}
 			}
 
-			if (turretMode) {
+			if (turretMode) 
+            {
 				//ShowLazer();
 
-				if (UpdateAttackInterval ()) {
-					StartCoroutine (Shoot ());
-					Shoot ();
+				if (UpdateAttackInterval()) 
+                {
+					StartCoroutine(Shoot());
+					Shoot();
 				}
-			} else {
-				if (hit != null && hit.transform.gameObject.tag != "Player") {
-					UpdateLazerPosition ();
-				} else if (hit != null && hit.transform.gameObject.tag == "Player") {
-					Shoot ();
+			} 
+            else 
+            {
+				if (hit != null && hit.transform.gameObject.tag != "Player") 
+                {
+					UpdateLazerPosition();
+				} 
+                else if (hit != null && hit.transform.gameObject.tag == "Player") 
+                {
+					Shoot();
 				}
 			}
 		}
@@ -156,11 +166,4 @@ public class RangedEnemyScript : MonoBehaviour
 			isPlaying = false;
 		}
 	}
-
-    //TODO: Create a lazer
-    public void ShowLazer()
-    {
-        hit = Physics2D.Linecast(transform.position + new Vector3(0f, 0.2f, 0f), transform.position + new Vector3(searchLazerLength, 0.2f, 0f), rayCastLayers);
-        Debug.DrawLine(transform.position, transform.position + new Vector3(searchLazerLength, 0f, 0f));
-    }
 }

@@ -8,8 +8,6 @@ public class EnemyBullet : MonoBehaviour
     GameObject origin;
     Rigidbody2D rBody;
 
-    bool hasUpdated = false;
-
     void OnCollisionEnter2D(Collision2D coll)
     {
         //if it's a wall etc, remove it, if it's the player, you know, do stuff

@@ -12,25 +12,9 @@ public class Login : MonoBehaviour
     public GameObject loadingPanel;
     private static GetAchievements g;
 
-    //private static bool isLoggedIn = false;
-    //private static string username;
-    //private static string password;
     private Dictionary<string,string> header = new Dictionary<string,string>();
 
     private string url = "http://www.metalgenre.se/api/achievements/GetUser.php";
-
-    //public static bool IsLoggedIn
-    //{
-    //    get { return Login.isLoggedIn; }
-    //}
-    //public static string Username
-    //{
-    //    get { return Login.username; }
-    //}
-    //public static string Password
-    //{
-    //    get { return Login.password; }
-    //}
 
     public void DoLogin()
     {
@@ -47,11 +31,6 @@ public class Login : MonoBehaviour
         StartCoroutine("TryLogin");
     }
 
-    //TODO: Give user feedback messages like "logged in" or "wrong credentials" etc
-    //TODO: Check if internet connection
-    //TODO: Check the JSON string if 1 or 0
-    //TODO: Set isloggedin depending on json
-    //TODO: Send back to mainmenu if logged in, disable login button until logged out or game exit
     private IEnumerator TryLogin()
     {
         loadingPanel.SetActive(true);
